@@ -1,0 +1,161 @@
+/* pages/my/home/index.wxss */
+page {
+    height: 100%;
+    background: #ffffff;
+}
+
+.height-30 {
+    height: 30rpx;
+}
+
+.container {
+    position: absolute;
+    top: 0rpx;
+}
+
+.view {
+    width: 750rpx;
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    padding-bottom: 60rpx;
+    /*background-image: url('http://cmtv.xmay.cc/image/live/bg_02.png')*/
+}
+
+.bg-F2F2F3 {
+    background: #f2f2f3;
+}
+
+.text-F86564 {
+    color: #F86564;
+}
+
+.bg-F86564 {
+    background: #F86564;
+}
+
+.radius-p {
+    border-top-left-radius: 6rpx;
+    border-top-right-radius: 6rpx;
+}
+
+.shadow-p {
+    -webkit-box-shadow: 14px 13px 7px -14px rgba(248, 100, 100, 1);
+    -moz-box-shadow: 14px 13px 7px -14px rgba(248, 100, 100, 1);
+    box-shadow: 14px 13px 7px -14px rgba(248, 100, 100, 1);
+}
+
+.shadow-p2 {
+    -webkit-box-shadow: 1px 0px 5px 0px rgba(235, 153, 153, 1);
+    -moz-box-shadow: 1px 0px 5px 0px rgba(235, 153, 153, 1);
+    box-shadow: 1px 0px 5px 0px rgba(235, 153, 153, 1);
+}
+
+.width-95rpx {
+    width: 95rpx;
+}
+
+.kf {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    right: -40rpx;
+    top: 200rpx;
+    z-index: 100;
+    width: 200rpx;
+    height: 50rpx;
+    background: #FFB4B4;
+    box-shadow: 0px 0px 5px 1px #FFB4B4;
+
+    border-bottom-left-radius: 25rpx;
+    border-top-left-radius: 25rpx;
+}
+
+.live-image {
+    width: 240rpx;
+    height: 150rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.item {
+    /*float: left;*/
+    width: 330rpx;
+    height: 340rpx;
+}
+
+.item-image {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 207rpx;
+    border-top-left-radius: 24rpx;
+    border-top-right-radius: 24rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.bottom {
+    width: 100%;
+    height: 135rpx;
+}
+
+.text-F86564 {
+    color: #F86564;
+}
+
+/* zmui-bar-ul */
+.zmui-bar-ul {
+    margin-top: -50rpx;
+    background: #fff;
+    border-radius: 40rpx 40rpx 0 0;
+    padding-top: 30rpx;
+    white-space: nowrap;
+    padding-left: 30rpx;
+    height: 110rpx;
+    width: 750rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.zmui-bar-li {
+    position: relative;
+    padding-top: 10rpx;
+    padding-right: 50rpx;
+    font-size: 26rpx;
+    color: #2F2F2F;
+}
+
+.zmui-bar-on {
+    position: relative;
+    padding-top: 0;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #2F2F2F;
+}
+
+.zmui-bar-li-img {
+    position: absolute;
+    left: 50%;
+    top: 50rpx;
+    transform: translateX(-130%);
+    width: 30rpx;
+    height: 17rpx;
+}
+
+.zmui-my-user-btn {
+    width: 180rpx;
+}
+
+.zmui-my-user-button {
+    font-size: 30rpx;
+    color: #FFFFFF;
+    text-align: center;
+    width: 180rpx;
+    height: 74rpx;
+    line-height: 74rpx;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 2rpx 0 0 rgba(221, 80, 80, 0.33);
+    border-radius: 37rpx;
+}

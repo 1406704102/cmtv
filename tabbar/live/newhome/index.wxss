@@ -1,0 +1,791 @@
+/**index.wxss**/
+page {
+    background: white;
+}
+
+/* zmui-top */
+.zmui-top {
+    height: 150rpx;
+}
+
+.zmui-top-bar {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    height: 150rpx;
+    background: #F86564;
+    border-radius: 0 0 48rpx 48rpx;
+}
+
+.zmui-top-search {
+    position: absolute;
+    display: flex;
+    left: 45rpx;
+    bottom: 66rpx;
+    width: 430rpx;
+    height: 64rpx;
+    border: 1px solid #FFFFFF;
+    border-radius: 32rpx;
+}
+
+.zmui-top-icon {
+    padding: 10rpx 20rpx 0 20rpx;
+}
+
+.zmui-top-line {
+    margin-top: 12rpx;
+    width: 1px;
+    height: 38rpx;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.zmui-top-icon-img {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.zmui-top-input-class {
+    padding: 5rpx 0 0 20rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: #FFFFFF;
+}
+
+/* zmui-banner */
+.zmui-banner {
+    padding-top: 30rpx
+}
+
+.zmui-banner-swiper {
+    height: 306rpx !important;
+    background: #FFFFFF;
+}
+
+.zmui-banner-swiper .zmui-swiper-li {
+    width: 710rpx !important;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    left: 20rpx;
+}
+
+.zmui-banner-swiper .zmui-swiper-li .zmui-swiper-item {
+    width: 100%;
+    display: block;
+    height: 100%;
+    border-radius: 30rpx;
+    transition: all 0.2s ease-in 0s;
+    overflow: hidden;
+}
+
+.zmui-swiper-item image {
+    width: 710rpx;
+    height: 310rpx;
+}
+
+.zmui-banner-swiper .wx-swiper-dot {
+    width: 8rpx;
+    height: 8rpx;
+    display: inline-flex;
+    background: none;
+    justify-content: space-between;
+}
+
+.zmui-banner-swiper .wx-swiper-dot::before {
+    content: '';
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.zmui-banner-swiper .wx-swiper-dot-active::before {
+    background: #fff;
+}
+
+.zmui-banner-swiper .wx-swiper-dot.wx-swiper-dot-active {
+    width: 16rpx;
+}
+
+/*  */
+
+.zmui-menu-ul {
+    padding-top: 44rpx;
+    display: flex;
+}
+
+.zmui-menu-li {
+    flex: 1;
+    text-align: center;
+}
+
+.zmui-meun-li-img {
+    width: 92rpx;
+    height: 92rpx;
+    border-radius: 50%;
+    box-shadow: 0 4rpx 7rpx 3rpx rgba(213, 213, 213, 0.5);
+
+}
+
+.zmui-menu-li-text {
+    font-size: 24rpx;
+    color: #2F2F2F;
+}
+
+/* zmui-bar-ul */
+.zmui-bar-ul {
+    padding-top: 40rpx;
+    white-space: nowrap;
+    padding-left: 30rpx;
+    height: 110rpx;
+    display: flex;
+}
+
+.zmui-bar-li {
+    position: relative;
+    padding-top: 10rpx;
+    padding-right: 50rpx;
+    font-size: 26rpx;
+    color: #2F2F2F;
+}
+
+.zmui-bar-on {
+    position: relative;
+    padding-top: 0;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #2F2F2F;
+}
+
+.zmui-bar-li-img {
+    position: absolute;
+    left: 50%;
+    top: 50rpx;
+    transform: translateX(-130%);
+    width: 30rpx;
+    height: 19rpx;
+}
+
+.zmui-bar-li-img2 {
+    /*position: absolute;*/
+    top: 30rpx;
+    left: -53%;
+    width: 30rpx;
+    height: 19rpx;
+}
+
+/* zmui-good-title */
+.zmui-good-title {
+    padding: 30rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.zmui-good-title-icon {
+    width: 56rpx;
+}
+
+.zmui-good-title-img {
+    width: 48rpx;
+    height: 20rpx;
+}
+
+.zmui-good-title-img-2 {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    border: 1rpx solid #F86564;
+}
+
+.line-height {
+    line-height: 20rpx;
+}
+
+.zmui-good-title-name {
+    flex: 1;
+    height: 54rpx;
+    line-height: 54rpx;
+    font-size: 36rpx;
+    color: #2F2F2F;
+}
+
+.zmui-title-button {
+    font-size: 24rpx;
+    color: #505050;
+    font-weight: bold;
+    width: 120rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+    border: 4rpx solid #EEEEEE;
+    border-radius: 27rpx;
+}
+
+.zmui-good-title-tag {
+    flex: 1;
+}
+
+.zmui-good-title-ul {
+    display: flex;
+}
+
+.zmui-good-title-li {
+    height: 54rpx;
+    line-height: 54rpx;
+    padding-right: 20rpx;
+    font-size: 26rpx;
+    color: #2F2F2F;
+}
+
+.zmui-good-title-on {
+    font-size: 36rpx;
+    color: #2F2F2F;
+    font-weight: bold;
+}
+
+
+/* zmui-hot-ul */
+.zmui-hot-ul {
+    position: relative;
+}
+
+.zmui-hot-li {
+    float: left;
+    display: flex;
+    width: 50%;
+}
+
+.zmui-hot-img {
+    padding: 20rpx 20rpx 20rpx 30rpx;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.zmui-hot-name {
+    line-height: 70rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #2F2F2F;
+}
+
+.zmui-hot-bot {
+    display: flex;
+}
+
+.zmui-hot-status {
+    margin-right: 10rpx;
+    width: 50rpx;
+    text-align: center;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 18rpx;
+    color: #F86564;
+    background: rgba(248, 101, 100, 0.1);
+    border: 1px solid #F86564;
+    border-radius: 4rpx;
+}
+
+.zmui-hot-text {
+    font-size: 20rpx;
+    color: #7E7E7E;
+}
+
+/* zmui-assess-ul */
+.zmui-assess-ul {
+    display: flex;
+    height: 400rpx;
+}
+
+.zmui-assess-li {
+    margin-left: 30rpx;
+}
+
+.zmui-assess-li-title {
+    width: 575rpx;
+    height: 97rpx;
+    padding: 20rpx;
+    background: rgba(246, 245, 245, 0.55);
+    border-radius: 10rpx 10rpx 0 0;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #000000;
+    line-height: 45rpx;
+}
+
+.zmui-assess-li-box {
+    width: 615rpx;
+    height: 220rpx;
+    background: #FFFFFF;
+    box-shadow: 0 4rpx 7rpx 3rpx rgba(229, 229, 229, 0.5);
+    border-radius: 10rpx;
+}
+
+.zmui-assess-li-user {
+    display: flex;
+    padding: 20rpx;
+}
+
+.zmui-assess-li-pic {
+    width: 46rpx;
+}
+
+.zmui-assess-li-name {
+    flex: 1;
+    height: 36rpx;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #8B8B8B;
+}
+
+.zmui-assess-li-more {
+    font-size: 24rpx;
+    color: #8B8B8B;
+}
+
+.zmui-assess-li-img {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50%;
+}
+
+.zmui-assess-li-infos {
+    padding: 0 20rpx;
+    font-size: 25rpx;
+    color: rgba(47, 47, 47, 0.7);
+    line-height: 41rpx;
+}
+
+/* zmui-good-ul */
+.zmui-good-ul {
+    display: flex;
+    height: 390rpx;
+}
+
+.zmui-good-li {
+    position: relative;
+    white-space: nowrap;
+    margin-left: 30rpx;
+    width: 238rpx;
+    height: 380rpx;
+    box-shadow: 0 4rpx 7rpx 3rpx rgba(229, 229, 229, 0.5);
+    padding-bottom: 8rpx;
+}
+
+.zmui-good-li-img {
+    width: 278rpx;
+    height: 380rpx;
+}
+
+.zmui-good-li-num-img {
+    width: 120rpx;
+    height: 28rpx;
+    /*margin-left: 15rpx;*/
+}
+
+.zmui-good-li-num-img2 {
+    width: 68rpx;
+    height: 28rpx;
+    margin-left: -5rpx;
+}
+
+.zmui-good-li-name {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0rpx;
+    padding-bottom: 10rpx;
+    text-align: center;
+    padding-left: 10rpx;
+    width: 238rpx;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column-reverse;
+    /*background: #FFFFFF;*/
+    /*border-radius: 44rpx 0px 16rpx 16rpx;*/
+    font-size: 20rpx;
+    color: #fdfdfd;
+    /*background: #000;*/
+}
+
+/*.zmui-good-li-name::before {*/
+/*    position: absolute;*/
+/*    z-index: 100;*/
+/*    content: '';*/
+/*    left: 0rpx;*/
+/*    top: 45%;*/
+/*    width: 10rpx;*/
+/*    height: 10rpx;*/
+/*    background: #F86564;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+.zmui-good-li-num {
+    position: absolute;
+    z-index: 2;
+    left: -7rpx;
+    top: 20rpx;
+}
+
+.zmui-goood-li-num-text {
+    position: absolute;
+    left: 15rpx;
+    top: 0rpx;
+    font-size: 19rpx;
+    color: #FFFFFF;
+    width: 100%;
+    /*background: #6a6a6a;*/
+    /*background-image: linear-gradient(120deg, #6a6a6a 50%, #ebedee 100%);*/
+}
+
+
+/* zmui-list */
+.zmui-list {
+    position: relative;
+}
+
+.zmui-list-li {
+    position: relative;
+    float: left;
+    margin-top: 30rpx;
+    margin-left: 30rpx;
+    width: 330rpx;
+    height: 314rpx;
+    background: #FFFFFF;
+    box-shadow: 0 5rpx 10rpx 0 rgba(229, 229, 229, 0.5);
+    border-radius: 24rpx;
+}
+
+.zmui-list-li-status {
+    position: absolute;
+    left: -5rpx;
+    top: 15rpx;
+    z-index: 1;
+}
+
+.zmui-list-li-status-img {
+    width: 66rpx;
+    height: 30rpx;
+}
+
+.zmui-list-li-text {
+    padding-left: 20rpx;
+    line-height: 36rpx;
+}
+
+.zmui-list-li-pic-img {
+    width: 330rpx;
+    height: 190rpx;
+    border-radius: 24rpx 24rpx 0 0;
+}
+
+.zmui-list-li-name {
+    padding-left: 20rpx;
+    font-size: 28rpx;
+    color: #111111;
+}
+
+.zmui-list-li-img {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50%;
+}
+
+.zmui-list-li-infos {
+    display: flex;
+    font-size: 22rpx;
+    color: #8B8B8B;
+}
+
+.zmui-list-li-infos {
+    padding: 20rpx;
+}
+
+.zmui-title-button {
+    font-size: 24rpx;
+    color: #505050;
+    font-weight: bold;
+    width: 120rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+    border: 4rpx solid #EEEEEE;
+    border-radius: 27rpx;
+}
+
+.zmui-good-title-tag {
+    flex: 1;
+}
+
+.zmui-good-title-ul {
+    display: flex;
+}
+
+.zmui-good-title-li {
+    height: 54rpx;
+    line-height: 54rpx;
+    padding-right: 20rpx;
+    font-size: 26rpx;
+    color: #2F2F2F;
+}
+
+.zmui-good-title-on {
+    font-size: 36rpx;
+    color: #2F2F2F;
+    font-weight: bold;
+}
+
+.zmui-tag-swiper .wx-swiper-dot {
+    width: 62rpx;
+    height: 8rpx;
+    background: #F0F0F0;
+    border-radius: 4rpx;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.zmui-banner-swiper .wx-swiper-dot.wx-swiper-dot-active {
+    width: 16rpx;
+    background: #00A9BD;
+}
+
+/*  */
+
+.zmui-menu-ul {
+    padding-top: 44rpx;
+    display: flex;
+}
+
+.zmui-menu-li {
+    flex: 1;
+    text-align: center;
+}
+
+.zmui-meun-li-img {
+    width: 92rpx;
+    height: 92rpx;
+    border-radius: 50%;
+}
+
+.zmui-menu-li-text {
+    font-size: 24rpx;
+    color: #2F2F2F;
+}
+
+
+.active {
+    box-shadow: 1px 5px 7px -5px #8d8d8d;
+}
+
+.type-bar {
+    width: 100%;
+    height: 65rpx;
+    border-bottom: rgba(199, 199, 199, 0.26) 1px solid;
+    display: flex;
+    justify-content: start;
+    padding-left: 20rpx;
+}
+
+.type-bar-image {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.icon {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+
+.icon2 {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+
+}
+
+.out {
+    margin-top: -20rpx;
+    /*padding: 10rpx;*/
+    padding-left: 20rpx;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/*设置行内块*/
+
+.out .item {
+    width: 46%;
+    height: 110px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 5rpx;
+}
+
+/* zmui-box */
+.zmui-box {
+    position: fixed;
+    display: flex;
+    z-index: 101;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.zmui-box-title {
+    flex: 1;
+    padding-left: 30rpx;
+    font-size: 24rpx;
+    font-weight: 300;
+    color: #FFFFFF;
+}
+
+.zmui-box-button {
+    margin-top: 8rpx;
+    margin-right: 30rpx;
+    /*text-align-last: center;*/
+    width: 168rpx;
+    height: 44rpx;
+    line-height: 48rpx;
+    background: linear-gradient(-88deg, #F86564 0%, #FD8382 100%);
+    border-radius: 22rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+
+/* =======================================
+		         tab标题 选择卡
+  ======================================= */
+
+/* 头部导航栏 */
+
+.tab-h {
+    margin-top: -30rpx;
+    /*border-top-left-radius: 30rpx;*/
+    /*border-top-right-radius: 30rpx;*/
+    /*margin-top: 550rpx;*/
+    height: 90rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* 超出部分隐藏 */
+    line-height: 80rpx;
+    /*background: #fff;*/
+    font-size: 28rpx;
+    white-space: nowrap; /* 设置滚动视图容器不换行 *//* 固定在头部 */
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+
+/* 每个tab标题样式 */
+.tab-item {
+    padding: 0 36rpx;
+    display: inline-block;
+}
+
+/* 选中其中一个tab标题时，修改样式 */
+
+.tab-item.tab-active {
+    /* box-sizing: border-box; */
+    /*background-color: #ffffff;*/
+    font-weight: bold;
+    font-size: 33rpx;
+    /* position: relative; */
+}
+
+/* 主体内容 预留头部导航栏的高度 */
+
+.tab-content {
+    /*margin-top: 630rpx;*/
+
+}
+
+/* 主体内容 scroll-view高度 */
+
+.scoll-h {
+    height: 100%;
+}
+
+
+.item {
+    /*float: left;*/
+    width: 330rpx;
+    height: 320rpx;
+}
+
+.item-image {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 186rpx;
+    border-top-left-radius: 24rpx;
+    border-top-right-radius: 24rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.bottom {
+    width: 100%;
+    height: 135rpx;
+}
+
+.hor {
+    display: flex;
+    flex-direction: row;
+}
+
+.zmui-header-user-tag-li {
+    padding: 0 10rpx;
+    height: 24rpx;
+    line-height: 22rpx;
+    background: #F86564;
+    border: 1px solid #F86564;
+    border-radius: 8rpx;
+    font-size: 18rpx;
+    color: #FFFFFF;
+    margin-right: 15rpx;
+}
+
+.zmui-header-user-img {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.video-icon {
+    z-index: 1000;
+    position: absolute;
+    width: 50rpx;
+    height: 50rpx;
+    background: red;
+    left: 50%;
+    top: -27rpx;
+    transform: translateX(-50%);
+}
+
+.icon-img {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+
+.cu-dialog2 {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 440rpx;
+    max-width: 100%;
+    /*background-color: #f8f8f8;*/
+    border-radius: 30rpx;
+}

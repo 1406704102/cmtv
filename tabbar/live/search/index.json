@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pbItem": "../../../components/ringItem/pbitem"
+  }
+}

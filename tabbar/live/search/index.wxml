@@ -1,0 +1,352 @@
+<!--pages/search/search.wxml-->
+<cu-custom bgColor="bg-F86564" isBack="{{true}}" iconColor="white">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">搜索</view>
+</cu-custom>
+<view style="position: fixed;width:750rpx;z-index:1000" >
+    <view class="cu-bar search bg-F86564 text-white">
+        <view class="search-form round text-white">
+            <text class="cuIcon-search text-white"></text>
+            <input type="text" placeholder="搜索栏目、活动、视频" placeholder-class="text-white" confirm-type="search"
+                   model:value="{{searchText}}" class="text-white" bindconfirm="doSearch"></input>
+        </view>
+        <view class="action text-df" catch:tap="cancel">
+            取消
+<!--            <button class="cu-btn bg-white shadow-gr round" catch:tap="cancel"></button>-->
+        </view>
+    </view>
+</view>
+<view class="margin-top-100" wx:if="{{!searchText}}">
+
+
+    <view class="zmui-history">
+        <view class="zmui-history-title">
+            <view class="zmui-history-name">历史搜索</view>
+            <view class="zmui-history-but" catch:tap="del">
+<!--                <view class="zmui-history-del-icon">-->
+<!--                    <image class="zmui-history-del-img" src="../../static/img/search/del.png"></image>-->
+<!--                </view>-->
+                <text class="cuIcon-close lg text-gray"></text>
+
+                <text>删除</text>
+            </view>
+        </view>
+
+        <view class="zmui-history-ul">
+            <view class="zmui-history-li" wx:for="{{history}}" catch:tap="dos" data-item="{{item}}">{{item}}</view>
+<!--            {{history}}-->
+<!--            <view class="zmui-history-more">-->
+<!--                <image class="zmui-history-more-img" src="../../static/img/search/arrow-down.png"></image>-->
+<!--            </view>-->
+        </view>
+    </view>
+
+    <view class="zmui-guess">
+        <view class="zmui-guess-title">
+            <view class="zmui-guess-name">猜你想搜</view>
+        </view>
+
+        <view class="zmui-guess-ul">
+            <view class="zmui-guess-li" wx:for="{{guessSearch}}" catch:tap="dos" data-item="{{item}}">{{item}}</view>
+<!--            <view class="zmui-guess-li">莱美theone</view>-->
+<!--            <view class="zmui-guess-li">苗疆女子变装</view>-->
+<!--            <view class="zmui-guess-li">莱美</view>-->
+<!--            <view class="zmui-guess-li">掌中之物改名</view>-->
+<!--            <view class="zmui-guess-li">杨紫 哭戏</view>-->
+<!--            <view class="zmui-guess-li">男人的把戏</view>-->
+<!--            <view class="zmui-guess-li">TF三代扮鬼</view>-->
+<!--            <view class="zmui-guess-li">熊猫宝宝</view>-->
+        </view>
+    </view>
+
+<!--    <scroll-view class="zmui-list" scroll-x="true" enable-flex="true">-->
+<!--        <view class="zmui-list-dl">-->
+<!--            <view class="zmui-list-dt">-->
+<!--                <image class="zmui-list-dt-img" src="../../static/img/search/hot.png"></image>-->
+<!--            </view>-->
+<!--            <view class="zmui-list-dd">-->
+<!--                <view class="zmui-list-ul">-->
+<!--                    <view class="zmui-list-li">-->
+<!--                        <view class="zmui-list-dd-num zmui-list-dd-one">1</view>-->
+<!--                        <view class="zmui-list-dd-name">丁真表白失败</view>-->
+<!--                        <view class="zmui-list-dd-tag">热</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li">-->
+<!--                        <view class="zmui-list-dd-num">2</view>-->
+<!--                        <view class="zmui-list-dd-name">蔡徐坤说李晨新发型丑</view>-->
+<!--                        <view class="zmui-list-dd-tag">热</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li">-->
+<!--                        <view class="zmui-list-dd-num">3</view>-->
+<!--                        <view class="zmui-list-dd-name">南京一大学食堂WiFi密码火了</view>-->
+<!--                        <view class="zmui-list-dd-tag">新</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li">-->
+<!--                        <view class="zmui-list-dd-num">4</view>-->
+<!--                        <view class="zmui-list-dd-name">酒店男员工凌晨刷开女住客房门</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li">-->
+<!--                        <view class="zmui-list-dd-num">5</view>-->
+<!--                        <view class="zmui-list-dd-name">男子为杀人潜逃苦练6年缩骨功</view>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+
+<!--        <view class="zmui-list-dl">-->
+<!--            <view class="zmui-list-dt">-->
+<!--                <image class="zmui-list-dt-img" src="../../static/img/search/menu.png"></image>-->
+<!--            </view>-->
+<!--            <view class="zmui-list-dd">-->
+<!--                <view class="zmui-list-ul">-->
+<!--                    <view class="zmui-list-li zmui-list-right">-->
+<!--                        <view class="zmui-list-dd-icon">-->
+<!--                            <image class="zmui-list-dd-img" src="../../static/img/ads/hot-1.png"></image>-->
+<!--                        </view>-->
+<!--                        <view class="zmui-list-dd-name">迪士尼花木兰</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li zmui-list-right">-->
+<!--                        <view class="zmui-list-dd-icon">-->
+<!--                            <image class="zmui-list-dd-img" src="../../static/img/ads/hot-2.png"></image>-->
+<!--                        </view>-->
+<!--                        <view class="zmui-list-dd-name">NIKE新品</view>-->
+<!--                    </view>-->
+<!--                    <view class="zmui-list-li zmui-list-right">-->
+<!--                        <view class="zmui-list-dd-icon">-->
+<!--                            <image class="zmui-list-dd-img" src="../../static/img/ads/hot-3.png"></image>-->
+<!--                        </view>-->
+<!--                        <view class="zmui-list-dd-name">S10全球总决赛</view>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </scroll-view>-->
+</view>
+<view class="margin-top-100" wx:if="{{userInfoList.length>0}}">
+    <view class="zmui-good-title">
+        <view class="zmui-good-title-icon flex flex-direction justify-center">
+            <image class="zmui-good-title-img"
+                   src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+        </view>
+        <view class="zmui-good-title-name">栏目</view>
+    </view>
+    <navigator wx:for="{{userInfoList}}" wx:key
+               url="/pages/my/userDetail/index?id={{item.id}}&tabShow=1&tabCur=1"
+               class="shadow bg-white margin-sm flex justify-between radius-l"
+               style="padding: 36rpx 35rpx 44rpx 33rpx;">
+
+        <view class="flex justify-start">
+            <view class='text-center'>
+                <view class="cu-avatar xl round"
+                      style="background-image:url({{item.avatar}});">
+
+                    <view wx:if="{{item.living === 2}}">
+                        <image wx:if="{{item.livingK !== 'null'}}" src="/images/Kwai.png"
+                               style="width: 34rpx;heght: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                        <image wx:elif="{{item.livingD !== 'null'}}" src="/images/TikTop2.png"
+                               style="width: 34rpx;height: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                        <image wx:else src="/images/live.png"
+                               style="width: 34rpx;height: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                    </view>
+
+                </view>
+            </view>
+            <view class='text-left justify-between flex flex-direction padding-left-sm margin-top-xs '
+                  style="height: 120rpx;width: 330rpx;">
+                <view class="flex justify-start text-lg">{{item.nickname}}
+                </view>
+                <view class="text-sm margin-top-xs text-cut" style="color: #6a6a6a">{{item.signature}}
+                </view>
+                <view class="flex justify-start">
+                    <view class="text-xs text-gray">{{item.fansNum}} 订阅</view>
+                    <view class="text-xs text-gray margin-left">{{item.likeNum}} 喜欢</view>
+                </view>
+            </view>
+        </view>
+        <view class="text-center flex justify-between flex-direction" style="margin-top: 38rpx">
+
+            <button class="cu-btn bg-F86564 shadow text-white"
+                    data-target="DialogModal2"
+                    data-item="{{item}}">栏目详情
+            </button>
+        </view>
+    </navigator>
+</view>
+<view class="margin-top-100" wx:if="{{activeInfoTalkNewList.length>0 || activeInfoList.length >0}}">
+    <view class="zmui-good-title">
+        <view class="zmui-good-title-icon flex flex-direction justify-center">
+            <image class="zmui-good-title-img"
+                   src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+        </view>
+        <view class="zmui-good-title-name">活动</view>
+    </view>
+    <view wx:for="{{activeInfoTalkNewList}}" class="box-shadow margin-lr-sm margin-top-sm radius-l padding-sm flex"
+          style="width: 710rpx;height: 200rpx" bind:tap="toNewDetail" data-id="{{item.id}}">
+        <view>
+            <image src="{{item.activeLogo}}" class="radius-l image">
+            </image>
+        </view>
+        <view class="margin-lr-sm flex flex-direction justify-between" style="width: 490rpx;">
+            <view class="flex">
+
+                <view class="text-lg text-bold text-cut">
+                    #{{item.activeName}}
+                </view>
+                <view class="cu-tag sm line-red  text-F86564 margin-right-xs margin-top-5"
+                      wx:if="{{item.isBasicReward === '1'}}">奖励生效中
+                </view>
+            </view>
+            <view class="margin-top-xs text-gray text-cut-2 text-sm">
+                {{item.activeDescription}}
+            </view>
+            <view class="margin-top-xs">
+                <view class="flex" style="width: 300rpx">
+                    <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:if="{{item.specialReward}}">
+                        {{item.specialReward}}
+                    </view>
+                    <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:else>{{item.basicReward}}草莓币
+                    </view>
+
+
+                    <view wx:for="{{item.labels}}" wx:key="{{index}}" style="width: 50%;">
+                        <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:if="{{index<3}}">
+                            {{item}}
+                        </view>
+                    </view>
+                </view>
+                <view style="width: 190rpx;">
+
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:for="{{activeInfoList}}" class="box-shadow margin-lr-sm margin-top-sm radius-l padding-sm flex"
+          style="width: 710rpx;height: 200rpx" catch:tap="activeDetail" data-item="{{item}}">
+        <view>
+            <image src="{{item.activeLogo}}" class="radius-l image">
+            </image>
+        </view>
+        <view class="margin-lr-sm flex flex-direction justify-between" style="width: 490rpx;">
+            <view class="flex">
+
+                <view class="text-lg text-bold text-cut-1">
+                    #{{item.activeName}}
+                </view>
+                <view class="cu-tag sm line-red  text-F86564 margin-right-xs margin-top-5"
+                      wx:if="{{item.isBasicReward === '1'}}">奖励生效中
+                </view>
+            </view>
+            <view class="margin-top-xs text-gray text-cut-2 text-sm">
+                {{item.activeSubtitle}}
+            </view>
+            <view class="margin-top-xs">
+                <view class="flex" style="width: 300rpx">
+                    <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:if="{{item.basicReward}}">
+                        {{item.basicReward}}草莓币
+                    </view>
+                    <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:if="{{item.specialReward}}">
+                        {{item.specialReward}}
+                    </view>
+
+
+                    <!--                <view wx:for="{{item.labels}}" wx:key="{{index}}" >-->
+                    <!--                    <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs">{{item}}</view>-->
+                    <!--                </view>-->
+                </view>
+                <view style="width: 190rpx;">
+
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="margin-top-100" wx:if="{{ringList.length>0}}">
+    <view class="zmui-good-title">
+        <view class="zmui-good-title-icon flex flex-direction justify-center">
+            <image class="zmui-good-title-img"
+                   src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+        </view>
+        <view class="zmui-good-title-name">彩铃</view>
+    </view>
+    <view style="height: 50%;">
+        <view class="padding-sm">
+            <view class="content">
+                <view class="left">
+                    <view wx:for="{{ringList}}">
+                        <pbItem wx:if="{{index%2==0}}" object2="{{item}}" activeName="true" type="ring"
+                                userId="{{userInfo.id}}"></pbItem>
+                    </view>
+                </view>
+
+                <view class="right">
+                    <view wx:for="{{ringList}}">
+                        <pbItem wx:if="{{index%2==1}}" object2="{{item}}" userId="{{userInfo.id}}"></pbItem>
+
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+</view>
+<view class="margin-top-100" wx:if="{{videoInfoList.length>0}}">
+    <view class="zmui-good-title">
+        <view class="zmui-good-title-icon flex flex-direction justify-center">
+            <image class="zmui-good-title-img"
+                   src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+        </view>
+        <view class="zmui-good-title-name">视频</view>
+    </view>
+    <view class="bg-white flex justify-start flex-wrap padding-top-xs margin-sm">
+        <navigator wx:for="{{videoInfoList}}" wx:key="{{item.id}}" hover-class="none"
+                   url="/pages/my/videoSwiper/index?id={{item.id}}&url={{item.videoUrl}}&name={{item.videoInfo.videoName}}&userId={{userInfo.id}}&type=user">
+            <view class="bg-white margin-bottom-sm  item shadow radius-xl" style="margin-left: 20rpx">
+                <view class="item-image" style="background-image: url('{{item.videoPic}}');background-size:cover;background-position: center center;">
+
+                    <view class="flex justify-end padding-right-xs text-white text-sm"
+                          style="height: 40rpx;background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+                        <view class="flex justify-end flex-direction">
+                            {{item.createTime}}
+                        </view>
+                    </view>
+
+                </view>
+                <view class="bottom flex flex-direction justify-between padding-top-xxs padding-left-xs padding-bottom-xs padding-right-xs">
+                    <view class="text-black text-cut-2">
+                        {{item.videoName}}
+                    </view>
+                    <view class="text-26 flex justify-between text-gray">
+                        <view class="text-center radius-xl flex justify-center">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-videofill lg"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-center">
+                                {{item.videoViewNum}}
+                            </view>
+                        </view>
+                        <view class="flex justify-between">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-like text-gray"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                {{item.videoLikeNum}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+
+    </view>
+
+</view>
+<view class="margin-top-100 flex justify-center" wx:if="{{ type === '2'&&searchText && videoInfoList.length===0&&ringList.length===0&&activeInfoTalkNewList.length===0&&activeInfoList.length===0&&userInfoList.length===0}}" >
+    <image class="image2  margin-top-150" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/detail//1614238027821.png">
+
+    </image>
+</view>

@@ -1,0 +1,227 @@
+<cu-custom bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png" isBack="{{true}}">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">活动</view>
+</cu-custom>
+<view class="zmui-banner">
+    <swiper class="zmui-banner-swiper" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+            duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+        <swiper-item class="zmui-swiper-li" wx:for="{{swiperList}}" wx:key="index">
+            <view class="zmui-swiper-item" catch:tap="imageClick"
+                  data-url="{{item.bannerJumpUrl}}">
+                <image src="{{item.bannerUrl}}" mode="aspectFill"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+
+<!--<view class="flex justify-between ">-->
+<!--    <view class="type-bar margin-top-sm">-->
+<!--        <view class="flex justify-center flex-direction">-->
+<!--            <image class="type-bar-image" src="/images/cm_icon.png"></image>-->
+<!--        </view>-->
+<!--        <view class="flex justify-center flex-direction margin-left-sm">-->
+<!--            <view>热门活动</view>-->
+<!--        </view>-->
+
+<!--    </view>-->
+<!--    <view  class="flex flex-direction justify-center" style="border-bottom: rgba(199, 199, 199, 0.26) 1px solid;">-->
+<!--        <navigator url="/pages/active/allActive/index" class="cu-tag line-gray round  text-gray margin-right-sm">-->
+<!--            <text class="text-black" style="line-height: 2rpx">-->
+<!--                全部活动-->
+<!--            </text>-->
+<!--        </navigator>-->
+<!--    </view>-->
+<!--</view>-->
+
+<view class="zmui-good-title">
+    <view class="zmui-good-title-icon flex flex-direction justify-center">
+        <image class="zmui-good-title-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+    </view>
+    <view class="zmui-good-title-name">热门活动</view>
+    <view class="zmui-good-title-more">
+        <navigator class="zmui-title-button" navigator url="/pages/active/allActive/index"  data-type="ring" >MORE</navigator>
+    </view>
+</view>
+
+<view class='out'>
+    <scroll-view scroll-x>
+        <view id='item1' class='item flex flex-direction'>
+            <view class='inner flex'>
+                <!--                <view class="radius-l bg-white flex" style="height:  100rpx">-->
+                <!--                    <image style="width: 100rpx;height: 100rpx" class="radius-l" src="https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/active/logo//1592985497857.png"></image>-->
+                <!--                    <view class="margin-lr-xs flex flex-direction justify-around">-->
+                <!--                        <view style="width: 200rpx;" class="text-cut">#{{item.activeName}}&#45;&#45;{{index%2}}</view>
+                -->
+                <!--                        <view class="text-xs flex">-->
+                <!--                            <view class="cu-tag sm line-red  text-F86564 margin-right-xs" wx:if="{{item.isBasicReward === '1'}}">有奖</view>-->
+                <!--                            <view class="text-gray text-cut" style="line-height: 35rpx;width: 125rpx">{{item.activeDescription}}</view>-->
+                <!--                        </view>-->
+                <!--                    </view>-->
+                <!--                </view>-->
+                <view wx:for="{{activeNewList}}">
+                    <view class="radius-l  flex margin-right-xs" style="height:  100rpx" wx:if="{{index%2==0}}"
+                          bind:tap="toNewDetail" data-id="{{item.id}}">
+                        <image style="width: 100rpx;height: 100rpx" class="radius-l"
+                               src="{{item.activeLogo}}"></image>
+                        <view class="margin-lr-xs flex flex-direction justify-around">
+                            <view style="width: 210rpx;" class="text-cut">#{{item.activeName}}</view>
+                            <view class="text-xs flex">
+                                <!-- <view class="cu-tag sm line-red  text-F86564 margin-right-xs"
+                                      wx:if="{{item.isBasicReward === '1'}}">有奖
+                                </view> -->
+                                <view class="text-gray text-cut" style="line-height: 35rpx;width: 200rpx">
+                                    {{item.activeDescription}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view  wx:for="{{activeList}}" >
+                    <view class="radius-l  flex margin-right-xs" style="height:  100rpx" wx:key="{{item.id}}" catch:tap="activeDetail" data-item="{{item}}"  wx:if="{{index%2==0}}">
+                        <image style="width: 100rpx;height: 100rpx" class="radius-l"
+                               src="{{item.activeLogo}}"></image>
+                        <view class="margin-lr-xs flex flex-direction justify-around">
+                            <view style="width: 210rpx;" class="text-cut">#{{item.activeName}}</view>
+                            <view class="text-xs flex">
+                                <!-- <view class="cu-tag sm line-red  text-F86564 margin-right-xs"
+                                      wx:if="{{item.isBasicReward === '1'}}">有奖
+                                </view> -->
+                                <view class="text-gray text-cut" style="line-height: 35rpx;width: 200rpx">
+                                    {{item.activeDescription}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+            <view class='inner flex'>
+                <view wx:for="{{activeNewList}}">
+                    <view class="radius-l flex margin-top-sm margin-right-xs" style="height:  100rpx"
+                          wx:if="{{index%2==1}}" bind:tap="toNewDetail" data-id="{{item.id}}">
+                        <image style="width: 100rpx;height: 100rpx" class="radius-l"
+                               src="{{item.activeLogo}}"></image>
+                        <view class="margin-lr-xs flex flex-direction justify-around">
+                            <view style="width: 210rpx;" class="text-cut">#{{item.activeName}}</view>
+                            <view class="text-xs flex">
+                                <!-- <view class="cu-tag sm line-red  text-F86564 margin-right-xs"
+                                      wx:if="{{item.isBasicReward === '1'}}">有奖
+                                </view> -->
+                                <view class="text-gray text-cut" style="line-height: 35rpx;width: 200rpx">
+                                    {{item.activeDescription}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view  wx:for="{{activeList}}"  class="margin-top-sm">
+                    <view class="radius-l flex margin-right-xs" style="height:  100rpx" wx:key="{{item.id}}" catch:tap="activeDetail" data-item="{{item}}" wx:if="{{index%2==1}}"
+                          bind:tap="toNewDetail" data-id="{{item.id}}">
+                        <image style="width: 100rpx;height: 100rpx" class="radius-l"
+                               src="{{item.activeLogo}}"></image>
+                        <view class="margin-lr-xs flex flex-direction justify-around">
+                            <view style="width: 210rpx;" class="text-cut">#{{item.activeName}}</view>
+                            <view class="text-xs flex">
+                                <!-- <view class="cu-tag sm line-red  text-F86564 margin-right-xs"
+                                      wx:if="{{item.isBasicReward === '1'}}">有奖
+                                </view> -->
+                                <view class="text-gray text-cut" style="line-height: 35rpx;width: 200rpx">
+                                    {{item.activeDescription}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!--        <view id='item2' class='item'>
+                    <view class='inner'>
+
+                        <view class="radius-l bg-gray flex" style="height:  100rpx">
+                            <image style="width: 100rpx;height: 100rpx;background-color:#000000;" class="radius-l" src="https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/active/logo//1592985497857.png"></image>
+                            <view class="margin-lr-xs flex flex-direction justify-around">
+                                <view>#种个草莓吧</view>
+                                <view class="text-xs flex">
+                                    <view class="cu-tag-20 bg-F86564 round text-white margin-right-xs">有奖</view>
+                                    <view class="text-gray" style="line-height: 28rpx">这是活动简介</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="margin-top-sm radius-l bg-gray">
+                            <image style="width: 100rpx;height: 100rpx;" src="https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/active/logo//1592985497857.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class='item'>
+                    <view class='inner'>
+                        <view >
+                            <image style="width: 100rpx;height: 100rpx; margin-top: 10rpx" src="https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/active/logo//1592985497857.png"></image>
+                        </view>
+                        <view>
+                            <image style="width: 100rpx;height: 100rpx;" src="https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/active/logo//1592985497857.png"></image>
+                        </view></view>
+                </view>-->
+    </scroll-view>
+</view>
+<view class="zmui-good-title">
+    <view class="zmui-good-title-icon flex flex-direction justify-center">
+        <image class="zmui-good-title-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon-arrow.png"></image>
+    </view>
+    <view class="zmui-good-title-name">新鲜话</view>
+<!--    <view class="zmui-good-title-more">-->
+<!--        <view class="zmui-title-button" catch:tap="switchTabbar" data-type="ring" >MORE</view>-->
+<!--    </view>-->
+</view>
+<view class="post-content padding-sm">
+    <view class="content-bg">
+        <view class="content">
+            <view class="left">
+                <view wx:for="{{hotAttList}}">
+                    <pbItem wx:if="{{index%2==0}}" object2="{{item}}" activeName="true"
+                            userId="{{userInfo.id}}"></pbItem>
+                </view>
+            </view>
+
+            <view class="right">
+                <view wx:for="{{hotAttList}}">
+                    <pbItem wx:if="{{index%2==1}}" object2="{{item}}" userId="{{userInfo.id}}"></pbItem>
+
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!--        <view class="margin-sm" wx:for="{{activeList}}" wx:key="{{item.id}}" catch:tap="activeDetail" data-item="{{item}}" >-->
+<!--            <view class="bg-white  radius-l active" style="width: 715rpx;height: 370rpx">-->
+<!--                <view class="radius-l" style="height: 255rpx;">-->
+<!--                    <image src="{{item.activePic}}" mode="scaleToFill" style="width: 100%;height: 100%;border-top-left-radius: 16rpx;border-top-right-radius: 16rpx"></image>-->
+<!--                </view>-->
+<!--                <view class="padding padding-top-sm radius-l flex justify-between" style="z-index: 1000;width: 600;">-->
+<!--                    <view>-->
+<!--                        <view class="text-lg text-black flex justify-start align-center">-->
+<!--                            <view class="flex justify-start align-center margin-right-sm">-->
+<!--                                {{item.activeName}}-->
+<!--                            </view>-->
+<!--                            <view wx:if="{{item.activeStatic === '0'}}" class="flex justify-start align-center text-sm text-gray">-->
+<!--                                <view class="cu-tag radius bg-gray sm text-black text-xs margin-left-xs">已结束</view>-->
+<!--                            </view>-->
+<!--                            <view wx:if="{{item.activeStatic === '1'}}" class="flex justify-start align-center text-sm text-yellow">-->
+<!--                                <view class="cu-tag radius bg-428597 sm text-white text-xs margin-left-xs">未开始</view>-->
+<!--                            </view>-->
+<!--                            <view wx:if="{{item.activeStatic === '2'}}" class="flex justify-start align-center text-sm" >-->
+<!--                                <view class="cu-tag radius bg-F86564 sm text-white text-xs margin-left-xs">进行中</view>-->
+
+<!--                            </view>-->
+<!--                        </view>-->
+<!--                        <view class="margin-top-xs text-gray text-sm">-->
+<!--                            {{item.activeSubtitle}}-->
+<!--                        </view>-->
+<!--                    </view>-->
+<!--                    <view  style="height: 80rpx;" class="flex justify-center flex-direction">-->
+<!--                        <button class="cu-btn sm round bg-F86564 text-white">查看详情</button>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+        <!--<view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 750rpx"></view>-->
+

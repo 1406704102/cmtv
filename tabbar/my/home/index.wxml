@@ -1,0 +1,539 @@
+<cu-custom bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="content" class="text-white">草莓台</view>
+</cu-custom>
+        <!--<image class="view" mode='widthFix' src="/images/componentBg.png">-->
+        <!--</image>-->
+        <!--<image class="view" mode='widthFix' src="/images/componentBg.png">-->
+        <!--</image>-->
+<!--<view class="kf"  style="background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/logo//1622703251033.png');background-repeat: no-repeat;background-size: 100% 100%;">-->
+<view class="kf shadow-p2" >
+    <button class="cu-btn flex justify-between align-center bg-brown" open-type="contact" style="background-color:transparent;padding-left:10rpx">
+        <image  src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/logo//1622703494582.png" style="width:35rpx;height:35rpx">
+        </image>
+        <view class="text-white text-sm margin-left-xs">
+            联系客服
+        </view>
+    </button>
+</view>
+<view class="padding-sm  view" style="background: linear-gradient( #F86564 , #f97777 80%)">
+    <view class=" padding-sm flex justify-start">
+        <view class="flex justify-start">
+            <view class='text-center'>
+                <view class="cu-avatar xl round border-F86564" style="background-image:url({{userInfo.avatar}})"></view>
+            </view>
+            <view class="flex justify-center flex-direction text-xl">
+<!--                {{hasUserInfo}}-->
+                <navigator url="../../../pages/my/login/login" wx:if="{{!hasUserInfo}}" class="margin-left flex justify-start">
+                    <view class="text-center text-lg text-white text-shadow">
+                        登录/注册
+                    </view>
+                </navigator>
+
+                <view wx:else class='text-center flex justify-between' style="width: 554rpx;">
+                    <view class="padding text-white">{{userInfo.nickname}}</view>
+                    <view class="flex justify-center flex-direction text-center">
+<!--                        <navigator url="/pages/goods/ucenter/index/index"-->
+<!--                                   class="cu-btn lines-red shadow radius-xl text-white">-->
+<!--                            <view>草莓商城</view>-->
+<!--                        </navigator>-->
+<!--                        <navigator url="/pages/goods/ucenter/index/index" class="zmui-my-user-btn" hover-class="none">-->
+<!--                            <view class="zmui-my-user-button">草莓商城</view>-->
+<!--                        </navigator>-->
+
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="flex justify-between text-lg text-white" style="height:80rpx" wx:if="{{hasUserInfo}}">
+        <view catch:tap="goOrder" class=" radius-xl flex justify-start align-center shadow-p" style="width:48%;height:100%;background-image:url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/logo//1622703498836.png');background-repeat: no-repeat;background-size: cover;">
+            <view class="margin-left-sm">
+                <image src="/images/my/dingdan.png" style="width:50rpx;height:50rpx"></image>
+            </view>
+            <view class="margin-left-sm">我 的 订 单</view>
+        </view>
+        <view catch:tap="goAddress" class="radius-xl flex justify-start align-center shadow-p"  style="width:48%;height:100%;background-image:url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/logo//1622704805898.png');background-repeat: no-repeat;background-size: cover;">
+            <view class="margin-left-sm">
+                <image src="/images/my/dizhi.png" style="width:50rpx;height:50rpx"></image>
+            </view>
+            <view class="margin-left-sm">地 址 管 理</view>
+        </view>
+    </view>
+    <view class="flex justify-between margin-top-sm padding-bottom-sm text-left text-white text-bold">
+        <navigator url="/pages/my/subFans/index?id={{userInfo.id}}&nickname={{userInfo.nickname}}&tabShow=0"
+                   class="flex justify-around flex-direction padding-left-lg radius-xl  shadow-p"
+                   style="width: 219rpx;height: 130rpx;background-image: url('http://cmtv.xmay.cc/image/my/subNum.png');background-repeat: no-repeat;background-size: 100% 100%;">
+            <view class="height-30 text-xxl text-shadow">
+                {{mySubscriptionNum}}
+            </view>
+            <view class="text-shadow">
+                关注
+            </view>
+        </navigator>
+        <navigator url="/pages/my/subFans/index?id={{userInfo.id}}&nickname={{userInfo.nickname}}&tabShow=1"
+                   class="flex justify-around flex-direction padding-left-lg radius-xl  shadow-p"
+                   style="width: 219rpx;height: 130rpx;background-image: url('http://cmtv.xmay.cc/image/my/fansNum.png');background-repeat: no-repeat;background-size: 100% 100%;  background-color:transparent;">
+            <view class="height-30 text-xxl text-shadow">
+                {{fansNum}}
+            </view>
+            <view class=" text-shadow">
+                粉丝
+            </view>
+        </navigator>
+        <!--        url="/pages/my/CHBeanLog/index?id={{userInfo.id}}"-->
+        <navigator url="/pages/my/CHBeanLog/index?id={{userInfo.id}}"
+                   class="flex justify-around flex-direction padding-left-lg radius-xl shadow-p"
+                   style="width: 219rpx;height: 130rpx;background-image: url('http://cmtv.xmay.cc/image/my/cmbNum.png');background-repeat: no-repeat;background-size: 100% 100%;">
+            <view class="height-30 text-xxl text-shadow">
+                {{CHBeanNum}}
+            </view>
+            <view class=" text-shadow">
+                草莓币
+            </view>
+        </navigator>
+    </view>
+</view>
+<scroll-view class="zmui-bar-ul " id="tabId2" scroll-left="{{scrollLeft}}" scroll-with-animation scroll-x="true" enable-flex="true">
+    <view class="zmui-bar-li {{index==TabCur?'zmui-bar-on':''}}" wx:for="{{tabList}}" wx:key="index"
+          data-id="{{index}}" bindtap="tabSelect">
+        <image class="zmui-bar-li-img" wx:if="{{index===TabCur}}" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/select-on.png"></image>
+        <text>{{item}}</text>
+    </view>
+</scroll-view>
+<view class="bg-white radius-p ">
+<!--        <scroll-view scroll-x class="nav" >-->
+<!--            <view class="flex text-center bg-white radius-p solid-bottom shadow">-->
+<!--                <view style="height: 65rpx;" class="flex-sub margin-top shadow {{index==TabCur?' text-F86564 cur ':''}}" wx:for="{{tabList}}" wx:key-->
+<!--                      bindtap="tabSelect" data-id="{{index}}">-->
+<!--    &lt;!&ndash;                <view class="cu-tag badge">9</view>&ndash;&gt;-->
+<!--                        {{item}}-->
+
+<!--                </view>-->
+<!--            </view>-->
+<!--        </scroll-view>-->
+
+    <view wx:if="{{tabShow === 0}}" class="bg-white padding-left-sm padding-right-sm">
+        <view class="bg-white flex justify-start radius-xl solid-bottom padding-top-sm padding-bottom-sm"
+              style="height: 190rpx"
+              hover-class='none' wx:for="{{remindLive}}" wx:key>
+            <view style="background-image: url('{{item.liveInfo.livePic}}')" class="radius live-image" mode='widthFix'>
+                <view class="margin-top-xs margin-left-xs bg-F86564 text-xs radius text-center text-white width-95rpx"
+                      wx:if="{{item.liveInfo.living==='2'}}">
+                    正在直播
+                </view>
+                <view class="margin-top-xs margin-left-xs bg-5eb1a9 text-xs radius text-center text-white width-95rpx"
+                      wx:if="{{item.liveInfo.living === '1'}}">
+                    等待直播
+                </view>
+            </view>
+            <view class="flex justify-between flex-direction  margin-left-sm" style="height: 155rpx;">
+                <view class="text-black text-cut-2" style="width: 410rpx;height: 80rpx;">
+                    {{item.liveInfo.liveName}}
+                </view>
+                <view class="flex justify-between" style="width: 410rpx">
+                    <view>
+                        <view class="flex justify-start text-gray text-sm">
+                            <view class="cu-item justify-center flex-direction flex margin-right-xs">
+                                <text class="cuIcon-voice sl"></text>
+                            </view>
+                            {{item.liveInfo.anchor}}
+                        </view>
+                        <view wx:if="{{item.liveInfo.living === '0'}}" class="flex justify-start text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-center flex-direction flex margin-right-xs">
+                                <text class="cuIcon-video sl"></text>
+                            </view>
+                            <view>
+                                {{item.liveInfo.sTime}} 直播
+                            </view>
+                        </view>
+                        <view wx:if="{{item.liveInfo.living === '1'}}" class="flex justify-start text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-center flex-direction flex margin-right-xs">
+                                <text class="cuIcon-video sl"></text>
+                            </view>
+                            <view>
+                                {{item.liveInfo.sTime}} 开播
+                            </view>
+                        </view>
+                        <view wx:if="{{item.liveInfo.living === '2'}}" class="flex justify-start text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-center flex-direction flex">
+                                <text class="cuIcon-video sl text-F86564"></text>
+                            </view>
+                            <view class="justify-center flex-direction flex margin-left-xs text-F86564">
+                                正在直播
+                            </view>
+                        </view>
+                    </view>
+                    <view>
+
+                        <button class="cu-btn sm bg-F86564 shadow round text-white  margin-top-sm"
+                                wx:if="{{item.liveInfo.living === '2'}}"
+                                catch:tap="showModal" data-target="DialogModal4"
+                                data-item="{{item.liveInfo}}">观看直播
+                        </button>
+                        <button class="cu-btn sm round shadow bg-ffb554 text-white  margin-top-sm"
+                                wx:if="{{item.liveInfo.living === '1'}}">等待开播
+                        </button>
+                    </view>
+                </view>
+            </view>
+            <!--            <button class="cu-btn round line-red shadow" wx:if="{{item.liveInfo.living === '2'}}" catch:tap="showModal3" data-target="DialogModal3" data-item="{{item.replay}}">-->
+            <!--                直播回放-->
+            <!--            </button>-->
+
+
+            <!--        <navigator wx:else class="cu-btn bg-gradual-blue shadow radius" url="/pages/my/startLive/index?id={{item.id}}">开始直播</navigator>-->
+            <!--        <text class='cuIcon-{{item.icon}}'></text>-->
+        </view>
+        <view class="cu-load text-F86564 margin-top-sm bg-white {{isSLiveLoad?'loading':'over'}}"
+              wx:if="{{isSLiveLoadShow}}"></view>
+
+    </view>
+<!--    <scroll-view wx:if="{{tabShow === 1}}" scroll-x-->
+<!--                 style="width: 100%;height:80rpx;white-space: nowrap">-->
+
+<!--        <view wx:for="{{typeLikeList}}" wx:key style="height: 50rpx;display:inline-block"-->
+<!--              class="margin-top-sm margin-left-sm">-->
+<!--            &lt;!&ndash;                    <button class="cu-btn sm">{{item}}</button>&ndash;&gt;-->
+<!--            <button class="cu-btn sm bg-{{item.color}} text-{{item.color === 'gray'?'black':'white'}}" bind:tap="typeLike"-->
+<!--                    data-name="{{item.name}}" data-index="{{index}}">{{item.name}}-->
+<!--            </button>-->
+
+<!--        </view>-->
+<!--    </scroll-view>-->
+
+    <view wx:if="{{tabShow === 1}}" class="bg-white flex justify-start flex-wrap padding-top-sm">
+        <navigator wx:for="{{videoLikeList}}" wx:key="{{item.id}}"
+                   url="/pages/my/videoSwiper/index?id={{item.videoInfo.id}}&url={{item.videoInfo.videoUrl}}&name={{item.videoInfo.videoName}}&userId={{userInfo.id}}&type=like"
+        >
+            <!--                   url="/pages/find/videoDetail/index?id={{item.videoInfo.id}}&url={{item.videoInfo.videoUrl}}&name={{item.videoInfo.videoName}}"-->
+
+            <view class="bg-white margin-bottom-sm  item shadow radius-xl margin-left">
+                <view class="item-image" style="background-image: url('{{item.videoInfo.videoPic}}');background-size:cover;background-position: center center;">
+                    <view class="flex justify-end padding-right-xs text-white text-sm"
+                          style="height: 40rpx;background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+                        <view class="flex justify-end flex-direction">
+                            {{item.videoInfo.createTime}}
+                        </view>
+                    </view>
+                </view>
+                <view class="bottom flex flex-direction justify-between padding-top-xs padding-left-xs padding-bottom-xs padding-right-xs">
+                    <view class="text-black text-cut-2">
+                        {{item.videoInfo.videoName}}
+                    </view>
+                    <view class="text-26 flex justify-between text-gray">
+                        <view class="text-center radius flex justify-center ">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-videofill lg"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-center">
+                                {{item.videoInfo.videoViewNum}}
+                            </view>
+                        </view>
+                        <view class="flex justify-between">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-like text-gray"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                {{item.videoInfo.videoLikeNum}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        <view class="cu-load text-F86564 bg-white {{isLikeLoad?'loading':'over'}}" wx:if="{{isLikeLoadShow}}"
+              style="width: 100%;"></view>
+    </view>
+
+<!--    视频类型-->
+<!--    <scroll-view wx:if="{{tabShow === 2}}" scroll-x-->
+<!--                 style="width: 100%;height:80rpx;white-space: nowrap">-->
+
+<!--        <view wx:for="{{typeList}}" wx:key style="height: 50rpx;display:inline-block"-->
+<!--              class="margin-top-sm margin-left-sm">-->
+<!--            &lt;!&ndash;                    <button class="cu-btn sm">{{item}}</button>&ndash;&gt;-->
+<!--            <button class="cu-btn sm bg-{{item.color}} text-{{item.color === 'gray'?'black':'white'}}" bind:tap="type"-->
+<!--                    data-name="{{item.name}}" data-index="{{index}}">{{item.name}}-->
+<!--            </button>-->
+
+<!--        </view>-->
+<!--    </scroll-view>-->
+
+    <view wx:if="{{tabShow === 2}}" class="bg-white flex justify-start flex-wrap padding-top-sm">
+
+        <navigator wx:for="{{videoList}}" wx:key="{{item.id}}"
+                   url="/pages/find/videoDetail/index?id={{item.id}}&url={{item.videoUrl}}&name={{item.videoInfo.videoName}}">
+            <view class="bg-white margin-bottom-sm  item shadow radius-xl" style="margin-left: 30rpx">
+
+                <view class="item-image" style="background-image: url('{{item.videoPic}}');background-size:cover;background-position: center center;">
+                    <view class="flex justify-end padding-right-xs text-white text-sm"
+                          style="height: 40rpx;background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+                        <view class="flex justify-end flex-direction">
+                            {{item.createTime}}
+                        </view>
+                    </view>
+                </view>
+                <view class="bottom flex flex-direction justify-between padding-top-xxs padding-left-xs padding-bottom-xs padding-right-xs">
+                    <view class="text-black text-cut-2">
+                        {{item.videoName}}
+                    </view>
+                    <view class="text-26 flex justify-between text-gray">
+                        <view class="text-center radius flex justify-center">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-videofill lg"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-end">
+                                {{item.videoViewNum}}
+                            </view>
+                        </view>
+                        <view class="flex justify-between">
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                <view class="cu-item">
+                                    <text class="cuIcon-like text-gray"></text>
+                                </view>
+                            </view>
+                            <view class="flex flex-direction justify-center margin-right-xs">
+                                {{item.videoLikeNum}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        <view class="cu-load text-F86564 bg-white {{isVideoLoad?'loading':'over'}}" wx:if="{{isVideoLoadShow}}"
+              style="width: 100%;"></view>
+
+    </view>
+    <view wx:if="{{tabShow === 3}}" class="padding-left padding-right shadow" style="height: 50%;">
+        <!--        <view class="cu-tag badge">9</view>-->
+        <view class="cu-bar bg-white flex justify-between radius-xl solid-bottom padding-top-sm padding-bottom-sm"
+              hover-class='none' wx:for="{{myLive}}" wx:key>
+            <view class="flex justify-start">
+                <view style="background-image: url('{{item.livePic}}')" class="radius live-image" mode='widthFix'>
+                    <view class="margin-top-xs margin-left-xs bg-F86564 text-xs radius text-center text-white width-95rpx"
+                          wx:if="{{item.living === '2'}}">正在直播
+                    </view>
+                    <view class="margin-top-xs margin-left-xs bg-green text-xs radius text-center text-white width-95rpx"
+                          wx:if="{{item.living === '1'}}">等待直播
+                    </view>
+                    <view class="margin-top-xs margin-left-xs bg-gray text-xs radius text-center text-black width-95rpx"
+                          wx:if="{{item.living === '0'}}">已经直播
+                    </view>
+                    <!--                <view class="margin-top-xs margin-left-xs bg-gray text-xs radius text-center text-F86564 width-95rpx" wx:if="{{item.living === '2'}}">已经直播</view>-->
+                </view>
+                <view class="flex-direction flex justify-between margin-left-sm" style="height: 140rpx">
+                    <view class="nav-name text-cut-2" style="width: 440rpx;">{{item.liveName}}</view>
+                    <view class="flex justify-between" style="width: 420rpx;">
+                        <view wx:if="{{item.living === '2'}}" class="flex justify-end text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-end flex-direction flex">
+                                <text class="cuIcon-video sl text-F86564"></text>
+                            </view>
+                            <view class="justify-end flex-direction flex margin-left-xs text-F86564">
+                                正在直播
+                            </view>
+                        </view>
+                        <view wx:if="{{item.living === '1'}}" class="flex justify-end text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-end flex-direction flex margin-right-xs">
+                                <text class="cuIcon-video sl"></text>
+                            </view>
+                            <view class="cu-item justify-end flex-direction flex margin-right-xs">
+                                {{item.sTime}}开播
+                            </view>
+                        </view>
+                        <view wx:if="{{item.living === '0'}}" class="flex justify-end text-gray text-sm"
+                              style="padding-top: 5rpx">
+                            <view class="cu-item justify-end flex-direction flex margin-right-xs">
+                                <text class="cuIcon-video sl"></text>
+                            </view>
+                            <view class="cu-item justify-end flex-direction flex margin-right-xs">
+                                已经直播
+                            </view>
+                        </view>
+                        <view>
+
+                            <button class="cu-btn bg-gray shadow radius" wx:if="{{item.living === '0'}}">已经直播</button>
+                            <button class="cu-btn bg-F86564 text-white shadow radius" wx:if="{{item.living === '2'}}"
+                                    bindtap="showModal2" data-target="DialogModal3" data-live="{{item}}"
+                            >结束直播
+                            </button>
+                            <button class="cu-btn bg-428597 shadow radius text-white" wx:if="{{item.living === '1'}}"
+                                    bind:tap="start"
+                                    data-item="{{item}}">开始直播
+                            </button>
+                        </view>
+
+                    </view>
+                </view>
+
+            </view>
+
+            <!--        <navigator wx:else class="cu-btn bg-gradual-blue shadow radius" url="/pages/my/startLive/index?id={{item.id}}">开始直播</navigator>-->
+            <!--        <text class='cuIcon-{{item.icon}}'></text>-->
+        </view>
+    </view>
+    <view class="cu-load text-F86564 bg-white margin-top-sm {{isLiveLoad?'loading':'over'}}"
+          wx:if="{{isLiveLoadShow}}"></view>
+
+</view>
+
+
+        <!--<view class="cu-bar bg-gray">-->
+        <!--    <view class="action">-->
+        <!--        <text class="cuIcon-title text-blue"></text>我的直播-->
+        <!--    </view>-->
+        <!--</view>-->
+
+        <!--<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">-->
+        <!--    <view class='load-progress-bar bg-F86564' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>-->
+        <!--    <view class='load-progress-spinner text-F86564'></view>-->
+        <!--</view>-->
+        <!--//获赞弹窗-->
+<view class="cu-modal {{modalName==='DialogModal2'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view class="flex justify-center flex-direction ">
+                {{userInfo.nickname}} 已获得
+            </view>
+            <view class="flex justify-center flex-direction text-red margin-left-xs margin-right-xs text-bold padding-top-xs text-xl">
+                {{userInfo.likeNum}}
+            </view>
+            <view class="flex justify-center flex-direction ">
+                个赞
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding flex justify-center">
+            <button class="cu-btn round bg-red shadow" style="width: 100%" bindtap="hideModal">
+                确定
+            </button>
+        </view>
+    </view>
+</view>
+        <!--//获取电话-->
+<view class="cu-modal {{modalName==='phone'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-lr text-lg text-black bg-white flex justify-center">
+            为了完整得向您提供草莓台各项服务，我们需要您授权获取您的联系方式
+        </view>
+        <view class="cu-bar bg-white padding flex justify-between">
+            <button class="cu-btn round lines-red shadow" style="width: 45%" bindtap="hideModal">
+                取消
+            </button>
+            <button class="cu-btn round bg-red shadow" style="width: 45%" open-type="getPhoneNumber"
+                    bindgetphonenumber="getPhoneNumber">
+                确定
+            </button>
+        </view>
+    </view>
+</view>
+
+        <!--//结束直播弹窗-->
+<view class="cu-modal {{modalName==='DialogModal3'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            确定结束直播
+        </view>
+        <view class="cu-bar bg-white padding flex justify-between">
+            <button class="cu-btn round lines-red shadow" style="width: 45%" bindtap="hideModal">
+                取消
+            </button>
+            <button class="cu-btn round bg-red shadow" style="width: 45%" bind:tap="end">
+                确定
+            </button>
+        </view>
+    </view>
+</view>
+<view class="cu-modal {{modalName==='DialogModal4'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view>
+                小程序观看或者复制
+            </view>
+            <view class="text-red padding-left-xs padding-right-xs">
+                {{clickItem.liveKUrl !== null ? '快手' : '' }}
+                {{clickItem.liveDUrl !== null ? '抖音' : '' }}
+            </view>
+            <view>
+                直播码
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <navigator class="cu-btn round lines-red shadow" style="width: 45%;"
+                       url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{clickItem.liveWxId}}">
+                <!--            <button class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">-->
+                小程序观看
+                <!--            </button>-->
+            </navigator>
+            <button wx:if="{{clickItem.liveKUrl}}" class="cu-btn round bg-red shadow" style="width: 45%;"
+                    bindtap="copyUrl" data-type="k">
+                复制直播码
+            </button>
+            <button class="cu-btn round bg-red shadow" wx:if="{{clickItem.liveDUrl}}" style="width: 45%;"
+                    bindtap="copyUrl" data-type="d">复制直播码
+            </button>
+        </view>
+    </view>
+</view>
+
+
+<view class="cu-modal {{modalName=='QRCode'?'show':''}}" catch:tap="hideModal">
+    <view class="cu-dialog"
+          style="background-repeat: no-repeat;background-size: 100% 100%;height: 916rpx;width:550rpx;top: 25%;left: 100rpx;position: fixed;background-image: url('{{QRCode}}')">
+        <!--        <scroll-view scroll-y style="height: 900rpx">-->
+        <!--            <image src="{{active.activeDetail}}" mode="widthFix"></image>-->
+        <!--        </scroll-view>-->
+
+        <view class=" justify-end text-white" style="position: absolute;bottom: 20rpx;right: 20rpx">
+            <view class="action" catch:tap="hideModal">
+                <text class="cuIcon-close lg text-F86564"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<!--<contact-button></contact-button>-->

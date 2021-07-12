@@ -1,0 +1,6 @@
+<cu-custom wx:if="{{share===1}}" isHome="{{true}}" iconColor="white" >
+    <view slot="backText" class="text-white">返回</view>
+    <!--    <view slot="content" class="text-white">草莓台</view>-->
+</cu-custom>
+<avideo-swiper video-list="{{videos}}" initial-index="{{videoIndex}}" bind:change="onChange" duration="{{duration}}" bind:play="onPlay" bind:forward="onPanelForward"></avideo-swiper>
+
