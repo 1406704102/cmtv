@@ -1,0 +1,157 @@
+<wxs module="touch" src="./touch.wxs"></wxs>
+<view class="aswiper">
+  <view id="aswiper__track" class="aswiper__track" bind:touchstart="{{touch.touchstart}}" catch:touchmove="{{touch.touchmove}}" bind:touchend="{{touch.touchend}}" change:trackData="{{touch.trackDataObserver}}" trackData="{{trackData}}" bind:transitionend="{{touch.onTransitionEnd}}">
+    <view wx:for="{{players}}" wx:for-item="player" wx:for-index="idx" wx:key="id" class="aswiper-item aswiper-item--hidden">
+      <view class="aswiper-content">
+        <video id="{{player.id}}" class="aswiper-item-video" data-player-idx="{{idx}}" src="{{player.src}}" loop="{{loop}}" autoplay="{{false}}" object-fit="{{objectFit}}" show-casting-button="{{false}}" enable-play-gesture="{{false}}" show-fullscreen-btn="{{false}}" enable-progress-gesture="{{false}}" show-center-play-btn="{{false}}" show-play-btn="{{false}}" show-progress="{{false}}" bindplay="onPlay" bindpause="onPause" bindended="onEnded" binderror="onError" bindtimeupdate="onTimeUpdate" bindwaiting="onWaiting" bindprogress="onProgress" bindloadedmetadata="onLoadedMetaData"></video>
+        <image hidden="{{player.scene && player.src}}" class="video-poster" src="{{player.poster}}" mode="aspectFill" />
+        <view class="video-overlay" data-player-idx="{{idx}}" bind:tap="onVideoOverlayTap">
+          <view class="aswiper-item-panel" hidden="{{delayShowPanel && !player.scene}}">
+            <default-panel wx:if="{{panelType === 'default'}}" video="{{curQueue[idx]}}" videoId="{{videoId}}" player-idx="{{idx}}" cur-player-idx="{{playerIdx}}" bind:btnComment="btnComment"></default-panel>
+            <normal-panel wx:elif="{{panelType === 'normal'}}" video="{{curQueue[idx]}}"></normal-panel>
+            <share-panel wx:else video="{{curQueue[idx]}}"></share-panel>
+          </view>
+          <image hidden="{{!player.scene || player.status !== 2}}" data-player-idx="{{idx}}" class="video-play-btn" src="./image/play-btn.png" mode="aspectFit" catch:tap="onVideoPlayBtnTap" />
+        </view>
+      </view>
+      <view class="aswiper-content__overlay"></view>
+    </view>
+  </view>
+</view>
+<zmui-bottom-popup show="{{popupShow}}" zmui-popup-class="zmui-popup" bind:close="btnComment">
+  <view class="zmui-popup-title"   catch:tap="replayClick3">
+    <view class="zmui-popup-title-close" catchtap="btnComment">
+      <image class="zmui-popup-title-close-img" src="../images/error.png"></image>
+    </view>
+    <view class="zmui-popup-title-text">
+      <text class="zmui-popup-title-num">{{video.videoCommentNum}}</text>
+      <text>条评论</text>
+    </view>
+  </view>
+<!--  <view class="zmui-popup-content">-->
+<!--    <view class="zmui-popup-ul">-->
+<!--      <view class="zmui-popup-li" wx:for="{{popupList}}" wx:key="index">-->
+<!--        <view class="zmui-popup-li-user">-->
+<!--          <view class="zmui-popup-li-avatar">-->
+<!--            <image class="zmui-popup-li-avatar-img" src="{{item.avatar}}"></image>-->
+<!--          </view>-->
+<!--          <view class="zmui-popup-li-infos">-->
+<!--            <view class="zmui-popup-li-name">{{item.name}}</view>-->
+<!--            <view class="zmui-popup-li-text">{{item.content}}</view>-->
+<!--          </view>-->
+<!--          <view class="zmui-popup-li-collect">-->
+<!--            <view class="zmui-popup-li-collect-pic" data-index="{{index}}" catchtap="btnCollect">-->
+<!--              <image wx:if="{{item.isCollect}}" class="zmui-popup-li-collect-pic-img"-->
+<!--                     src="../../static/img/global/upon.png"></image>-->
+<!--              <image wx:else class="zmui-popup-li-collect-pic-img" src="../../static/img/global/up.png"></image>-->
+<!--            </view>-->
+<!--            <view class="zmui-popup-li-collect-num">{{item.collect}}</view>-->
+<!--          </view>-->
+<!--        </view>-->
+
+<!--        <view class="zmui-popup-time">-->
+<!--          <view class="zmui-popup-time-text">{{item.time}}</view>-->
+<!--          <view class="zmui-popup-time-replay" data-index="{{index}}" catchtap="btnReplay">回复</view>-->
+<!--        </view>-->
+
+<!--        <view class="zmui-popup-replay-list" wx:if="{{item.assessShow}}">-->
+<!--          <view class="zmui-popup-replay-list-li" catchtap="btnReplayList" data-big="{{index}}" data-small="{{idx}}" wx:for="{{item.assessList}}"  wx:for-item="items" wx:for-index="idx" wx:key="idx">-->
+<!--            <view class="zmui-popup-replay-list-li-infos">-->
+<!--              <text class="zmui-popup-replay-list-li-infos-user">{{items.userFrom}}</text>-->
+<!--              <text class="zmui-popup-replay-list-li-infos-text">回复</text>-->
+<!--              <text class="zmui-popup-replay-list-li-infos-user">{{items.userTo}}</text>-->
+<!--              <text class="zmui-popup-replay-list-li-infos-text">: {{items.content}}</text>-->
+<!--            </view>-->
+<!--            <view class="zmui-popup-replay-list-li-time">{{items.time}}</view>-->
+<!--          </view>-->
+<!--        </view>-->
+
+<!--        <view class="zmui-popup-replay-infos" wx:else catchtap="btnShow" data-index="{{index}}">-->
+<!--          <view class="zmui-popup-replay-line">-->
+<!--            <image class="zmui-popup-replay-line-img" src="../../static/img/global/line.png"></image>-->
+<!--          </view>-->
+<!--          <view class="zmui-popup-replay-btn">-->
+<!--            <view class="zmui-popup-replay-btn-text">展开{{item.assessList.length}}条回复</view>-->
+<!--            <view class="zmui-popup-replay-btn-icon">-->
+<!--              <image class="zmui-popup-replay-btn-img" src="../../static/img/global/arrow-down.png"></image>-->
+<!--            </view>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+<!--    </view>-->
+<!--  </view>-->
+  <view class="zmui-popup-content"   catch:tap="replayClick3">
+    <view class="zmui-popup-ul">
+      <view class="zmui-popup-li" wx:for="{{replays}}" wx:key="{{item.id}}" wx:for-index="i">
+        <view class="zmui-popup-li-user">
+          <view class="zmui-popup-li-avatar">
+            <image class="zmui-popup-li-avatar-img" src="{{item.userAvatar}}"></image>
+          </view>
+          <view class="zmui-popup-li-infos">
+            <view class="zmui-popup-li-name">{{item.userName}}</view>
+            <view class="zmui-popup-li-text">{{item.replayDetail}}</view>
+          </view>
+          <view class="flex justify-center flex-direction"  style="width:80rpx;text-align: center">
+            <view class="flex justify-center" style="width:100%;margin-top:7rpx"  catch:tap="doLike2" data-item="{{item}}" data-index="{{i}}">
+              <image wx:if="{{item.like===0}}" src="/images/active/up.png"
+                     style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+              </image>
+              <image wx:if="{{item.like===1}}" src="/images/active/upon.png"
+                     style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+              </image>
+            </view>
+            <view class="zmui-popup-li-collect-num text-center" style="text-align:center">{{item.likeNum}}</view>
+          </view>
+        </view>
+
+        <view class="zmui-popup-time">
+          <view class="zmui-popup-time-text">{{item.createTime}}</view>
+          <view class="zmui-popup-time-replay"
+                catchtap="replayClick"
+                data-item="{{item}}" data-type="1" data-index ="{{i}}">回复</view>
+        </view>
+        <view class="zmui-popup-replay-infos" wx:if="{{item.replaySum>0}}">
+          <view class="zmui-popup-replay-line">
+            <image class="zmui-popup-replay-line-img" src="/images/active/line.png"></image>
+          </view>
+          <view class="zmui-popup-replay-btn" >
+            <view class="zmui-popup-replay-btn-text" catch:tap="showReplay" data-index="{{i}}">{{item.replaySum}}条回复 </view>
+            <view class="zmui-popup-replay-btn-icon">
+              <image class="zmui-popup-replay-btn-img"
+                     src="/images/active/arrow-down.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class="zmui-popup-replay-list"  wx:if="{{item.replaySum>0&&item.replayShow===true}}">
+          <view class="zmui-popup-replay-list-li"  wx:for="{{item.replays}}" wx:for-item="item2" catch:tap="replayClick2" data-item="{{item}}" data-item2="{{item2}}" data-index ="{{i}}">
+            <view class="zmui-popup-replay-list-li-infos" >
+              <text class="zmui-popup-replay-list-li-infos-user">{{item2.userName}}</text>
+              <text class="zmui-popup-replay-list-li-infos-text">回复</text>
+              <text class="zmui-popup-replay-list-li-infos-user">{{item2.replayName}}：</text>
+              <text class="zmui-popup-replay-list-li-infos-text">{{item2.replayDetail}}</text>
+            </view>
+            <view class="zmui-popup-replay-list-li-time">{{item2.createTime}}</view>
+          </view>
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+<!--  <view class="flex justify-center">-->
+<!--    <image class="image2  margin-top-150" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/detail//1615259176437.png">-->
+
+<!--    </image>-->
+<!--  </view>-->
+  <view class="zmui-popup-footer">
+    <view class="zmui-popup-footer-input">
+      <input type="text" class="zmui-popup-input" cursor-spacing="15" placeholder-class="zmui-popup-placeholder" placeholder="{{placeholder}}" focus="{{focus}}"  model:value="{{replayDetail}}" bind:blur="blur"/>
+    </view>
+<!--    <button class="cu-btn bg-green shadow-blur bg-F86564" style="width:150rpx" catch:tap="submit">发送</button>-->
+    <view class="sub" catch:tap="submit">
+      发布
+    </view>
+<!--    <view class="zmui-popup-footer-smile">-->
+<!--    </view>-->
+  </view>
+</zmui-bottom-popup>

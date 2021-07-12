@@ -1,0 +1,54 @@
+<view class="panel">
+  <view class="download" style=" height:50rpx;margin-top:{{CustomBar+10}}px;" catch:tap="downloadFile" data-item="{{videoData.videoInfo}}">
+    <image style="width:50rpx;height:50rpx" src="/images/downLoad.png"></image>
+  </view>
+  <view class="flex flex-direction justify-around bg-red" style="width: 100rpx;height: 500rpx">
+    {{videoData.videInfo.userAvatar}}
+    <view class="float-avatar">
+<!--      <view class='text-center' catch:tap="toUserDetail" data-item="{{videoData.videoInfo.userId}}">-->
+      <view class='text-center' catch:tap="downloadFile" data-item="{{videoData.videoInfo}}">
+        <view class="cu-avatar lg round border-F86564" style="background-image:url('{{videoData.videoInfo.userAvatar}}')"></view>
+      </view>
+    </view>
+
+    <button class="forward-btn like" plain="true" catch:tap="doLike">
+      <image class="forward-btn-img" src="{{likeImg}}" />
+      <view class="text-white text-shadow">{{videoData.videoInfo.videoLikeNum}}</view>
+    </button>
+    <button class="forward-btn replay" plain="true" catch:tap="btnComment">
+      <image class="forward-btn-img" src="/images/replay.png" />
+      <view class="text-white text-shadow">{{videoData.videoInfo.videoCommentNum}}</view>
+    </button>
+    <button class="forward-btn share" plain="true" catch:tap="onForwardTap" data-video="{{videoData.videoInfo}}" open-type="share">
+      <image class="forward-btn-img" src="/images/share.png" />
+      <view class="text-white text-shadow">{{videoData.videoInfo.videoShareNum}}</view>
+    </button>
+
+    <button wx:if="{{videoData.videoInfo.lvType.typeName==='视频彩铃'}}" bind:tap="setVideo" data-item="{{videoData.videoInfo}}"  class="forward-btn ring" plain="true" data-video="{{videoData.videoInfo}}">
+      <image class="forward-btn-img" src="/images/ring.png" />
+      <view class="text-white text-shadow">{{videoData.videoInfo.videoTypeName}}</view>
+    </button>
+  </view>
+  <view class="videoInfo text-white " >
+    <view class="text-xl text-bold text-shadow">
+      @{{videoData.videoInfo.userName}}
+
+
+    </view>
+    <view class="margin-top-xs margin-left text-shadow">
+      {{videoData.videoInfo.videoSynopsis}}
+    </view>
+  </view>
+  <view wx:if="{{question.replayDetail}}" class="qa text-white bg-blue" catch:tap="toQA" data-video="{{videoData.videoInfo}}">
+    <view class="text-cut-1">
+      {{question.replayDetail}}
+    </view>
+    <view>
+      >
+    </view>
+  </view>
+<!--  <view class="videoInfo bg-black"  style="filter: blur(150rpx)"  catch:tap="toUserDetail" data-item="{{videoData.videoInfo.userId}}">-->
+
+<!--  </view>-->
+</view>
+

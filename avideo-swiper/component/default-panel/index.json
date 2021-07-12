@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "zmui-bottom-popup": "../../../components/bottom-popup/bottom-popup"
+  }
+}

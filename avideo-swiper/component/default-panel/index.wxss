@@ -1,0 +1,243 @@
+.panel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.title {
+    display: block;
+    color: white;
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: 110rpx;
+    background: red;
+}
+.download {
+    display: block;
+    position: absolute;
+    right: 40rpx;
+    width: 50rpx;
+    height: 40rpx;
+}
+
+
+.panel .forward-btn {
+
+    position: absolute;
+    right: 30rpx;
+    border: 0;
+    margin-top: 10rpx;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.forward-btn-img {
+    display: block;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+/**/
+.float-button {
+    position: fixed;
+    height: 80rpx;
+    width: 80rpx;
+    right: 30rpx;
+}
+
+.float-button2 {
+    position: fixed;
+    height: 80rpx;
+    width: 160rpx;
+    right: 0rpx;
+}
+
+/*.share{*/
+
+/*}*/
+.comment {
+    bottom: 100rpx;
+}
+.replay{
+    bottom: 340rpx;
+}
+.like {
+    bottom: 500rpx;
+}
+
+.share {
+    bottom: 180rpx;
+}
+.ring{
+    bottom: 60rpx;
+    font-size: 20rpx;
+}
+
+.float-avatar {
+    position: absolute;
+    height: 96rpx;
+    width: 96rpx;
+    right: 22rpx;
+    bottom: 720rpx;
+}
+
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.attention {
+    position: fixed;
+    height: 40rpx;
+    width: 40rpx;
+    right: 49rpx;
+    bottom: 465rpx;
+}
+
+.float-back {
+    position: fixed;
+    height: 60rpx;
+    width: 120rpx;
+    left: 40rpx;
+    top: 90rpx;
+}
+
+.share-button {
+    position: fixed;
+    height: 120rpx;
+    width: 115rpx;
+    right: 22rpx;
+    bottom: 270rpx;
+}
+
+.share-button view button {
+    height: 100rpx;
+    width: 130rpx;
+}
+
+.share-button view button image {
+    width: 90rpx;
+    height: 78rpx;
+}
+
+.videoInfo {
+    color: white;
+    position: absolute;
+    height: 150rpx;
+    width: 450rpx;
+    left: 30rpx;
+    bottom: 100rpx;
+}
+.qa {
+    color: white;
+    position: absolute;
+    height: 90rpx;
+    left: 30rpx;
+    bottom: 0rpx;
+    width: 690rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.text-cut-1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: end;
+}
+.bg-black {
+    background: #000;
+}
+
+.text-detail {
+    font-size: 36rpx;
+    font-weight: bold;
+    box-shadow: black;
+}
+
+.margin-top-xs {
+    margin-top: 10rpx;
+}
+
+.margin-left {
+    margin-left: 30rpx;
+}
+
+.text-xs {
+    font-size: 30rpx;
+}
+.text-xl {
+    font-size: 36rpx;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-white {
+    color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.cu-avatar {
+    font-variant: small-caps;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    color: var(--white);
+    white-space: nowrap;
+    position: relative;
+    width: 64rpx;
+    height: 64rpx;
+    background-size: cover;
+    background-position: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+.cu-avatar.lg {
+    width: 96rpx;
+    height: 96rpx;
+    font-size: 2em;
+}
+
+.round {
+    border-radius: 5000rpx;
+}
+
+.border-F86564 {
+    border: #F86564 1px solid
+}
+
+.text-lg {
+    font-size: 32rpx;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-direction {
+    flex-direction: column;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+.text-shadow{
+    color: white; text-shadow: black 0.1em 0.1em 0.2em
+}
+
+
+
+
