@@ -1,0 +1,90 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/active/attTalk/index",
+          "pathName": "pages/active/attTalk/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "pages/my/sign/index",
+          "pathName": "pages/my/sign/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/active/detailStep/index",
+          "pathName": "pages/active/detailStep/index",
+          "query": "share=1&id=71a517576b844d048d333f4938698ac3",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/goods/ucenter/index/index",
+          "pathName": "pages/goods/ucenter/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/auth/login/login",
+          "pathName": "pages/auth/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/find/setVideo/index",
+          "pathName": "pages/find/setVideo/index",
+          "query": "id=88cd1c54de67423cbf68aa69fde2cfef",
+          "scene": null
+        },
+        {
+          "name": "pages/quarterly/email/index/slowindex",
+          "pathName": "pages/quarterly/email/index/slowindex",
+          "query": "share=1",
+          "scene": null
+        },
+        {
+          "name": "pages/quarterly/email/home/index",
+          "pathName": "pages/quarterly/email/home/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/qa/index",
+          "pathName": "pages/find/qa/index",
+          "query": "userId=42c61753585644ac8745640b971f0b34",
+          "scene": null
+        },
+        {
+          "name": "pages/auth/login/login",
+          "pathName": "pages/auth/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/active/lottery/index",
+          "pathName": "pages/active/lottery/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

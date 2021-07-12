@@ -1,0 +1,37 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
+.text-F86564 {
+    color: #F86564;
+}
+
+content-bg {
+    /* border-top:1px #dadada solid; */
+    background-color: #eef0f0;
+}
+
+.content {
+    clear: both;
+    overflow: hidden;
+    width: 710rpx;
+}
+
+.content .left, .content .right {
+    width: 345rpx;
+}
+
+.content .left {
+    float: left;
+}
+
+.content .right {
+    float: right;
+}
+
+.box-shadow {
+    /*border: 1rpx #cdcdcd solid;*/
+    box-shadow: 0 1rpx 6rpx #c6c6c6;
+}
+page{
+    background: #F1F1F1;
+}
