@@ -1,0 +1,196 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/6/11 下午3:17:09 
+使用方法：
+1. 在"pages\find\home\index.wxml"中使用`include`指令引入此模板，
+2. 在"pages\find\home\index.wxss"中使用`import`指令引入"pages\find\home\index.skeleton.wxss"
+3. 书写对应的逻辑，来控制骨架屏的显示与隐藏
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<view class="sk-container">
+  <view is="colorui/components/cu-custom">
+    <view class="cu-custom custom--cu-custom" style="height:84px">
+      <view class="cu-bar custom--cu-bar fixed custom--fixed bg-F86564 custom--bg-F86564" style="height:84px;padding-top:44px;">
+        <view class="content custom--content" style="top:44px">
+          <view class="text-white sk-transparent sk-text-23-3333-893 sk-text" style="background-size: 20.6452% 1.875rem; background-position-x: 50%;">推荐</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="justify-center flex view margin-top-sm">
+    <view class="radius" style="width: 355px;">
+      <swiper autoplay="true" circular="true" class="screen-swiper radius" duration="500" easing-function="easeOutCubic" indicator-active-color="#F86564" indicator-dots="true" interval="5000" current="1" current-item-id="true">
+        <swiper-item class="radius" style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+          <image class="radius sk-image" mode="aspectFill"></image>
+        </swiper-item>
+        <swiper-item class="radius" style="position: absolute; width: 100%; height: 100%; transform: translate(-100%, 0px) translateZ(0px);">
+          <image class="radius sk-image" mode="aspectFill"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view class="padding-top-sm">
+    <view>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/live//1590657775400.jpg')">
+          <view class="flex justify-start padding-left-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            %%%🙃
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-957 sk-text" style="background-size: 15.6539% 1.05rem;">
+            1zz1
+          </view>
+          <view class="text-xs flex justify-between text-gray">
+            <view class="text-center radius flex justify-center text-red" style="border: none; width: 40px; height: 17px;">
+              <view class="flex flex-direction justify-center">
+                <view class="cu-item"><text class="cuIcon-videofill lg text-red sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center sk-transparent sk-text-14-2857-985 sk-text" style="margin-right: 2px; background-size: 100% 0.875rem; background-position-x: 50%;">
+                直播
+              </view>
+            </view>
+            <view class="flex justify-between">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-like text-gray sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center margin-right-xs sk-transparent sk-text-14-2857-270 sk-text" style="background-size: 100% 0.875rem;">
+                1240
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <navigator>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/video//1591754282353.jpg')">
+          <view class="flex justify-end padding-right-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            06-10
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-823 sk-text" style="background-size: 59.2593% 1.05rem;">
+            大撒大撒大撒大撒
+          </view>
+          <view class="text-xs flex justify-between text-gray">
+            <view class="text-center radius flex justify-center" style="width: 40px;height: 17px;">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-videofill lg sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center sk-transparent sk-opacity">
+                2
+              </view>
+            </view>
+            <view class="flex justify-between">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-like text-gray sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center margin-right-xs sk-transparent sk-opacity">
+                1
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/video//1590996075944.png')">
+          <view class="flex justify-end padding-right-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            06-10
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-996 sk-text" style="background-size: 51.8519% 1.05rem;">
+            的萨达萨达萨达
+          </view>
+          <view class="text-xs flex justify-between text-gray">
+            <view class="text-center radius flex justify-center" style="width: 40px;height: 17px;">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-videofill lg sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center sk-transparent sk-opacity">
+                2
+              </view>
+            </view>
+            <view class="flex justify-between">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-like text-gray sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center margin-right-xs sk-transparent sk-opacity">
+                1
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/video//1590996075944.png')">
+          <view class="flex justify-end padding-right-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            06-10
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-504 sk-text" style="background-size: 51.8519% 1.05rem;">
+            额外全额我去饿
+          </view>
+          <view class="text-xs flex justify-between text-gray">
+            <view class="text-center radius flex justify-center" style="width: 40px;height: 17px;">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-videofill lg sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center sk-transparent sk-opacity">
+                1
+              </view>
+            </view>
+            <view class="flex justify-between">
+              <view class="flex flex-direction justify-center margin-right-xs">
+                <view class="cu-item"><text class="cuIcon-like text-gray sk-pseudo sk-pseudo-circle"></text></view>
+              </view>
+              <view class="flex flex-direction justify-center margin-right-xs sk-transparent sk-opacity">
+                1
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/video//1591754039413.jpg')">
+          <view class="flex justify-end padding-right-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            06-10
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-346 sk-text" style="background-size: 59.2593% 1.05rem;">
+            肯定就是拉到拉萨
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 10px">
+        <view class="item-image sk-image" style="background-image: url('https://obs-qych.obs.cn-north-1.myhuaweicloud.com//cmtv/video//1590996075944.png')">
+          <view class="flex justify-end padding-right-xs text-white text-sm sk-transparent sk-image" style="background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+            06-10
+          </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-left-xs padding-bottom-xs padding-right-xs">
+          <view class="text-sm sk-transparent sk-text-14-2857-795 sk-text" style="background-size: 11.5355% 1.05rem;">
+            null
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator></navigator>
+    <navigator></navigator>
+    <navigator></navigator>
+    <navigator></navigator>
+    <navigator></navigator>
+    <view class="cu-load text-F86564 bg-white over sk-pseudo sk-pseudo-circle"></view>
+  </view>
+</view>

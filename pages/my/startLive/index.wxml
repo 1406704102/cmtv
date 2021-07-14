@@ -1,0 +1,56 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">直播信息</view>
+</cu-custom>
+<form>
+<!--    <view  class="cu-load bg-red erro loading"></view>-->
+    <view class="cu-form-group margin-top">
+        <view class="title">直播名称</view>
+        <input model:value="{{live.liveName}}" disabled></input>
+    </view>
+    <view class="cu-form-group ">
+        <view class="title">直播类型</view>
+        <input model:value="{{live.liveTypeName}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">开始时间</view>
+        <input model:value="{{live.startTime}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">结束时间</view>
+        <input model:value="{{live.endTime}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">直播平台</view>
+        <input model:value="{{live.livePlatform}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">小程序直播id</view>
+        <input value="{{live.liveWxId}}" type="number" disabled/>
+    </view>
+    <view wx:if="{{TikTop}}" class="cu-form-group">
+        <view class="title">抖音直播链接</view>
+        <input model:value="{{liveDUrl}}"></input>
+    </view>
+    <view wx:if="{{Kwai}}" class="cu-form-group">
+        <view class="title">快手直播链接</view>
+        <input model:value="{{liveKUrl}}"></input>
+    </view>
+    <!--    <view class="cu-form-group margin-top">-->
+    <!--        <view class="title">普通选择</view>-->
+    <!--        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">-->
+    <!--            <view class="picker">-->
+    <!--                {{index?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}-->
+    <!--            </view>-->
+    <!--        </picker>-->
+    <!--    </view>-->
+</form>
+<view class="padding-lr-sm">
+
+    <button class="cu-btn block bg-F86564 margin-tb-sm lg text-white" bind:tap="startLive">
+        <text class="{{loading}} iconfont-spin text-white"></text>开始直播</button>
+    <view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+        <view class='load-progress-bar bg-F86564' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+        <view class='load-progress-spinner bg-F86564'></view>
+    </view>
+</view>

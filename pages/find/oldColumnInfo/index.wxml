@@ -1,0 +1,212 @@
+<cu-custom wx:if="{{share === 0}}" isBack="{{true}}" iconColor="{{color}}">
+    <!--    bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png"-->
+    <view slot="backText" class="text-{{color}} ">返回</view>
+    <view slot="content" class="text-{{color}} ">{{columnInfo.columnName}}</view>
+</cu-custom>
+<cu-custom wx:if="{{share === 1}}" isHome="{{true}}" iconColor="{{color}}" >
+    <view slot="backText" class="text-{{color}}">主页</view>
+    <view slot="content" class="text-{{color}}">{{columnInfo.columnName}}</view>
+</cu-custom>
+<view class="container">
+    <view style="background: url('{{liveInfo.liveBg}}')  center center no-repeat; background-size: cover;width: 750rpx;height: 610rpx; position:fixed;z-index:-1000">
+
+    </view>
+    <view class="zmui-header">
+        <!--        <view class="zmui-header-title" style="top: {{height}}px">-->
+        <!--            <view class="zmui-header-title-back" bindtap="goback">-->
+        <!--                <image class="zmui-header-title-img" src="../../static/img/global/back.png"></image>-->
+        <!--            </view>-->
+        <!--        </view>-->
+
+        <view class="zmui-header-infos">
+            <view class="zmui-header-avatar">
+                <image class="zmui-header-avatar-img" src="{{liveInfo.liveCover}}"></image>
+            </view>
+            <view class="flex flex-direction justify-between margin-left-sm margin-bottom-xs">
+                <view>
+                    <view class="zmui-header-user-title">{{liveInfo.liveName}}</view>
+<!--                    <view class="zmui-header-user-tag">-->
+<!--                        <view class="zmui-header-user-tag-li" wx:if="{{activeInfo.specialReward}}">-->
+<!--                            {{activeInfo.specialReward}}</view>-->
+<!--                        <view class="zmui-header-user-tag-li" wx:else>{{activeInfo.basicReward}}草莓币</view>-->
+<!--                        <view class="zmui-header-user-tag-li" wx:for="{{labels}}" wx:key="{{index}}" >{{item}}</view>-->
+<!--                    </view>-->
+                    <view class="margin-top text-sm">
+
+                        <view class="flex justify-start text-white margin-top-xs">
+                            <view class="flex justify-start"  style="line-height:35rpx">
+                                <view class="margin-right-xs">
+                                <image class="zmui-header-user-img" src="../../../images/tabbar/my.png"></image>
+                                </view>
+                                <view class="text-shadow" >{{columnInfo.anchorName}}</view>
+                            </view>
+                            <view class="flex justify-start margin-left">
+<!--                                <view class="margin-right-xs">-->
+<!--                                    <image class="zmui-header-user-img" src="../../../images/active/mark.png"></image>-->
+<!--                                </view>-->
+<!--                                <view class="text-shadow">{{markNum}}</view>-->
+                            </view>
+                        </view>
+                        <view class="zmui-header-user-detail text-shadow">{{columnInfo.synopsis}}</view>
+                    </view>
+
+                </view>
+                <view class="zmui-header-user-btn flex justify-end padding-right">
+                    <navigator wx:if="{{liveInfo.videoUrl !== '' && liveInfo.videoUrl !==null }}" url="/pages/find/columnInfoVideo/index?videoUrl={{liveInfo.videoUrl}}" data-videoUrl="{{liveInfo.videoUrl}}"
+                               class="zmui-header-user-button">查看视频
+                    </navigator>
+<!--                    <view class="zmui-header-user-button" wx:if="{{liveInfo.liveStatic === '0' }}">直播未开始</view>-->
+                    <navigator
+                            url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{liveInfo.wxLiveId}}"
+                            class="zmui-header-user-button" wx:if="{{liveInfo.liveStatic === '1' }}">观看直播
+                    </navigator>
+                    <navigator
+                            url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{liveInfo.wxLiveId}}"
+                            class="zmui-header-user-button" wx:if="{{liveInfo.liveStatic === '2' }}">观看直播
+                    </navigator>
+                </view>
+            </view>
+        </view>
+
+
+
+    </view>
+
+
+    <view>
+
+        <!-- tab导航栏 -->
+        <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+            <view class="tab-item {{currentTab == index ? 'tab-active' : ''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{tabName}}">{{item.name}}
+                <image class="zmui-bar-li-img2" wx:if="{{currentTab == (index)}}" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/select-on.png"></image>
+
+            </view>
+        </scroll-view>
+
+        <!-- 主体内容 -->
+                    <swiper current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx" class="tab-content">
+<!--        <swiper current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:1000rpx" class="tab-content">-->
+
+
+<!--            <swiper-item wx:for="{{tabName.length}}">&lt;!&ndash; 当几个页面样式一样时，可以用wx:for循环遍历重复出来 &ndash;&gt;-->
+            <swiper-item ><!-- 当几个页面样式一样时，可以用wx:for循环遍历重复出来 -->
+                <scroll-view scroll-x="false" scroll-y="true" class="scoll-h" enable-back-to-top="true">
+
+                    <view class="bg-white goods-item margin-sm radius-l box-shadow flex" wx:for="{{goods}}">
+                        <view class="goods-img image">
+                            <image src="{{item.goodPic}}" mode="aspectFill"></image>
+                        </view>
+                        <view class="flex justify-between flex-direction padding-sm" style="width:100%">
+                            <view class="goods-title text-cut-2">
+                                {{item.goodName}}
+                            </view>
+                            <view class="goods-title flex justify-between ">
+                                <view class="good-b-l flex flex-direction justify-around">
+                                    <view class="good-price text-red text text-bold">
+                                        {{item.goodPrice/100}} 元
+                                    </view>
+                                    <view class="good-others flex text-grey justify-start text-xs">
+                                        <view class="margin-right-xs flex flex-direction justify-center text-center">
+                                            {{item.source}}
+                                        </view>
+                                        <view class="margin-right-xs flex flex-direction justify-center">
+                                            |
+                                        </view>
+                                        <view class=" flex flex-direction justify-center margin-right-xs">
+                                            <image  src="/images/active/upon.png" class="zmui-footer-tab-icon-img">
+                                            </image>
+                                        </view>
+                                        <view class=" flex flex-direction justify-center margin-top-5">
+                                            {{item.clickNum}}
+                                        </view>
+                                    </view>
+                                </view>
+<!--                                <view class="goods-br flex justify-center flex-direction">-->
+<!--                                    <button class="cu-btn lines-gray shadow " style="width:180rpx">去购买</button>-->
+<!--                                </view>-->
+                                <view class="zmui-good-title-more flex flex-direction justify-end">
+                                    <view class="zmui-title-button" catch:tap="toBuy" data-item="{{item}}">去购买</view>
+                                </view>
+                            </view>
+                        </view>
+
+                    </view>
+<!--                    <view class="bg-gray" style="height:300rpx">{{choosedTabInformation}}</view>-->
+<!--                    <view class="bg-black" style="height:300rpx">{{choosedTabInformation}}</view>-->
+<!--                    <view  class="bg-F86564" style="height:300rpx">{{choosedTabInformation}}</view>-->
+<!--                    <view class="bg-F1F1F1" style="height:300rpx">{{choosedTabInformation}}</view>-->
+<!--                    <view class="bg-green" style="height:300rpx">{{choosedTabInformation}}</view>-->
+<!--                    <view class="bg-6d6d6d" style="height:300rpx">{{choosedTabInformation}}</view>-->
+                </scroll-view>
+            </swiper-item>
+<!--            <swiper-item >&lt;!&ndash; 当几个页面样式一样时，可以用wx:for循环遍历重复出来 &ndash;&gt;-->
+<!--                <scroll-view scroll-x="false" scroll-y="true" class="scoll-h" enable-back-to-top="true">-->
+
+<!--                    <view class="bg-white goods-item margin-sm radius-l box-shadow flex" wx:for="{{lives}}">-->
+<!--                        <view class="goods-img image">-->
+<!--                            <image src="{{item.liveCover}}" mode="aspectFill"></image>-->
+<!--                        </view>-->
+<!--                        <view class="flex justify-between flex-direction padding-sm" style="width:100%">-->
+<!--                            <view class="goods-title text-cut-2">-->
+<!--                                {{item.liveName}}-->
+<!--                            </view>-->
+<!--                            <view class="goods-title flex justify-between text-sm ">-->
+<!--                                <view class="good-b-l flex flex-direction justify-around">-->
+
+<!--                                    <view class="good-price text-red text-bold">-->
+<!--                                        推荐产品: {{item.sonSum}} 款-->
+<!--                                    </view>-->
+<!--                                    <view class="good-others flex text-grey justify-start" style="width:300rpx;margin-left:0rpx">-->
+<!--                                        <view class="margin-right-xs ">-->
+<!--                                            {{item.startTime}}-->
+<!--                                        </view>-->
+<!--                                    </view>-->
+
+<!--                                </view>-->
+<!--                                <view class="zmui-good-title-more flex flex-direction justify-end">-->
+<!--                                    <view class="zmui-title-button" catch:tap="toOldLive" data-columnInfo="{{columnInfo}}">查看详情</view>-->
+<!--                                </view>-->
+<!--                            </view>-->
+<!--                        </view>-->
+
+<!--                    </view>-->
+<!--&lt;!&ndash;                    <view class="bg-gray" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <view class="bg-black" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <view  class="bg-F86564" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <view class="bg-F1F1F1" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <view class="bg-green" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <view class="bg-6d6d6d" style="height:300rpx">{{choosedTabInformation}}</view>&ndash;&gt;-->
+<!--                </scroll-view>-->
+<!--            </swiper-item>-->
+        </swiper>
+    </view>
+</view>
+
+<view class="cu-modal {{modalName==='DialogModal'?'show':''}}"
+>
+    <view class="cu-dialog2">
+
+        <view class="cu-bar justify-end">
+            <view class="content" style="height: 110rpx;width: 110rpx;bottom:-100rpx">
+                <image src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/video//1621562652709.png" style="height: 110rpx;width: 110rpx;"></image>
+            </view>
+            <!--            <view class="action bg-brown" bindtap="hideModal"  style="height: 110rpx;bottom:-100rpx">-->
+
+            <!--                <text class="cuIcon-close text-red "  style="bottom:-100rpx"></text>-->
+            <!--            </view>-->
+        </view>
+        <view class=" text-lg text-black bg-white flex justify-center flex-direction" style=" padding-top:80rpx;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;">
+            <view class="text-lg text-bold">
+                购买口令已复制
+            </view>
+            <view class="text-sm margin-top-10">
+                {{clickItem.recommendTips}}
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding flex justify-center">
+            <button class="cu-btn round lines-red shadow" bindtap="copyUrl" style="width: 55%;">
+                确定
+            </button>
+        </view>
+    </view>
+</view>

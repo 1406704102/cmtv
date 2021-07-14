@@ -1,0 +1,57 @@
+/* pages/slowindex/slowindex.wxss */
+
+.zmui-container {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.zmui-bg {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.zmui-bg-img {
+  width: 100%;
+  height: 100%;
+}
+
+.zmui-header {
+  position: fixed;
+  z-index: 98;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.zmui-back {
+  position: absolute;
+  left: 0;
+  bottom: 20rpx;
+}
+
+.zmui-back-img {
+  padding-left: 30rpx;
+  width: 47rpx;
+  height: 30rpx;
+}
+
+.zmui-button {
+  position: fixed;
+  left: 50%;
+  bottom: 145rpx;
+  z-index: 3;
+  width: 312rpx;
+  transform: translateX(-50%);
+  height: 90rpx;
+  background: #FFFFFF;
+  border-radius: 45rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #392913;
+}

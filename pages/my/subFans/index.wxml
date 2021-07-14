@@ -1,0 +1,72 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{nickname}}</view>
+</cu-custom>
+<scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+        <view class="cu-item flex-sub {{index==TabCur?' text-F86564 cur':''}}" wx:for="{{tabList}}" wx:key
+              bindtap="tabSelect" data-id="{{index}}">
+            {{item}}
+        </view>
+    </view>
+</scroll-view>
+<view class="margin-top-sm" wx:if="{{tabShow === '0'}}">
+    <view wx:for="{{subList}}" wx:key="{{item.id}}" class="solid-bottom bg-white flex justify-between padding-sm "
+          style="height: 180rpx">
+        <view class="flex justify-start">
+            <view class='text-center'>
+                <view class="cu-avatar round solid"
+                      style="background-image:url({{item.subAvatar}});width: 140rpx;height: 140rpx;"></view>
+            </view>
+            <view class='text-left margin-left-sm'>
+                <!--                <view class="padding text-white">{{userInfo.nickname}}</view>-->
+                <view class="padding-top-xs text-lg">{{item.subName}}</view>
+                <view class="padding-top text-gray text-sm text-cut-2" style="width: 400rpx;">{{item.subSignature}}</view>
+            </view>
+        </view>
+        <view class="flex flex-direction justify-center">
+            <button class="cu-btn sm round line-gray shadow" catch:tap="unSub" data-subId="{{item.subId}}">取消订阅
+            </button>
+        </view>
+    </view>
+</view>
+<view class="margin-top-sm flex justify-start flex-wrap align-center bg-white padding-left-sm padding-bottom-sm" wx:if="{{tabShow === '1'}}">
+    <view wx:for="{{fansList}}" wx:key="{{item.id}}" class="margin-right-sm margin-top-sm">
+        <view class="text-center" style="width: 101.6667rpx">
+            <view class="cu-avatar round solid"
+                  style="background-image:url({{item.fansAvatar}});width: 100rpx;height: 100rpx;"></view>
+            <view>
+                {{item.fansName}}
+            </view>
+        </view>
+    </view>
+
+
+<!--    <view wx:for="{{fansList}}" wx:key="{{item.id}}" class="solid-bottom bg-white flex justify-between padding-sm "-->
+<!--          style="height: 180rpx">-->
+<!--        <view class="flex justify-start">-->
+<!--            <view class='text-center'>-->
+<!--                <view class="cu-avatar round solid"-->
+<!--                      style="background-image:url({{item.fansAvatar}});width: 140rpx;height: 140rpx;"></view>-->
+<!--            </view>-->
+<!--            <view class='text-left margin-left-sm'>-->
+<!--                &lt;!&ndash;                <view class="padding text-white">{{userInfo.nickname}}</view>&ndash;&gt;-->
+<!--                <view class="padding-top text-lg">{{item.fansName}}</view>-->
+<!--                <view class="padding-top text-gray text-sm">{{item.fansSignature}}</view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--&lt;!&ndash;        <view class="flex flex-direction justify-center">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="cu-btn sm round line-gray shadow" catch:tap="unSub" data-subId="{{item.fansId}}">&ndash;&gt;-->
+<!--&lt;!&ndash;                <view class="cu-item margin-right-xs">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <text class="cuIcon-check lg text-gray"></text>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <text>{{item.name}}</text>&ndash;&gt;-->
+<!--&lt;!&ndash;                </view>&ndash;&gt;-->
+<!--&lt;!&ndash;                订<view class="padding-right"></view>阅&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </view>&ndash;&gt;-->
+<!--    </view>-->
+</view>
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-F86564' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+    <view class='load-progress-spinner text-F86564'></view>
+</view>

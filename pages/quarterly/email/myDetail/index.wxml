@@ -1,0 +1,137 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{email.authorName}}</view>
+</cu-custom>
+
+
+        <!--pages/slowread/slowread.wxml-->
+<view class="zmui-container  margin-bottom-xl">
+    <view class="zmui-writer">
+        <view class="zmui-user-infos" wx:if="{{userInfo.id !== email.authorId}}">
+            <view class="zmui-user-avatar">
+                <image class="zmui-user-avatar-img" src="{{userInfo.avatar}}">
+                </image>
+            </view>
+            <view class="zmui-user-name">{{userInfo.nickname}} 收</view>
+        </view>
+        <view class="zmui-content">
+            <text>{{email.emailContent}}</text>
+        </view>
+        <view>
+            <view wx:if="{{email.videoShow === '1'}}" class="cu-form-group margin-top" >
+                <video autoplay style="width: 100%;" src="{{email.videoUrl}}"></video>
+            </view>
+            <view wx:elif="{{email.videoUrl!==null && email.videoShow === '0'}}" class="margin-top">
+                <image src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/email/video.jpg" mode='widthFix' class="radius-l" style="width:100%"/>
+
+            </view>
+            <view wx:if="{{imgs.length===1}}">
+                <image src="{{imgs[0]}}" mode='widthFix' class="radius-l" style="width:100%" catch:tap="previewImg" data-url="{{imgs[0]}}" data-imgs="{{imgs}}"/>
+
+            </view>
+            <view class="grid flex-sub padding-lr {{imgs.length>5 ? 'col-3':'col-2'}}  grid-square margin-top"
+                  wx:else>
+                <view class="bg-img" style="background-image:url({{item}});" wx:for="{{imgs}}" wx:key="{{index}}" catch:tap="previewImg" data-url="{{item}}" data-imgs="{{imgs}}">
+                </view>
+            </view>
+        </view>
+        <view class="zmui-user-to">
+<!--            <view class="zmui-user-up">-->
+<!--                <image class="zmui-user-up-img" wx:if="{{isLike}}" src="../../../../images/icon-btn-on.png"></image>-->
+<!--                <image class="zmui-user-up-img" wx:else src="../../../../images/icon-btn-off.png"></image>-->
+<!--                <view class="zmui-user-up-text {{isLike?'zmui-user-up-on':''}}">{{email.likeNum}}</view>-->
+<!--            </view>-->
+            <view class="zmui-user-width"></view>
+            <view class="zmui-user-to-avatar">
+                <!--                <image class="zmui-user-to-avatar-img" src="{{email.authorAvatar}}"></image>-->
+                <image class="zmui-user-to-avatar-img"
+                       src="{{email.authorAvatar === null  ? '../../../../images/niming.png': email.authorAvatar}}"></image>
+            </view>
+            <view class="zmui-user-to-name">{{email.authorName}}</view>
+        </view>
+        <view class="zmui-user-time">{{email.createTime}}</view>
+    </view>
+
+    <view class="zmui-btn flex {{type === '0' ? ' justify-between':' justify-center'}}">
+        <view class="zmui-writer-button flex justify-center" catch:tap="doLike" wx:if="{{type === '0'}}">点 赞</view>
+        <!--        <view class="zmui-btn-line"></view>-->
+        <view class="  {{type === '0' ? ' zmui-writer-button-replay':' zmui-writer-button2'}} flex justify-center"
+                   catch:tap="toReplay" data-id="{{email.id}}">回 信
+        </view>
+    </view>
+
+    <view class="zmui-replay-ul">
+        <view class="zmui-replay-li" wx:for="{{replayLists}}" wx:key="index" wx:for-item="item"  bindtap="goDetail" data-id="{{item.id}}">
+            <view class="zmui-title-icon">
+                <image class="zmui-title-icon-img" src="../../../../images/icon-alt.png"></image>
+            </view>
+            <view class="zmui-title-name">{{item.commentsContent}}</view>
+        </view>
+    </view>
+</view>
+
+
+<!--<view>-->
+<!--    <view class="cu-list menu-avatar">-->
+<!--        <view class="cu-item">-->
+<!--            <view class="cu-avatar round lg"-->
+<!--                  style="background-image:url({{email.authorAvatar}});"></view>-->
+<!--            <view class="content flex-sub">-->
+<!--                <view>{{email.authorName}}</view>-->
+<!--                <view class="text-gray text-sm flex justify-between">-->
+<!--                    {{email.createTime}}-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="text-content">-->
+<!--        {{email.emailContent}}-->
+<!--    </view>-->
+<!--    <view wx:if="{{email.videoShow === '1'}}" class="cu-form-group">-->
+<!--        <video autoplay style="width: 100%;" src="{{email.videoUrl}}"></video>-->
+<!--    </view>-->
+<!--    <view wx:elif="{{email.videoUrl!==null && email.videoShow === '0'}}">-->
+<!--        <text>视频审核中...</text>-->
+<!--    </view>-->
+<!--    <view class="grid flex-sub padding-lr {{imgs.length>5 ? 'col-3':'col-2'}}  grid-square" wx:if="{{imgs.length>0}}">-->
+<!--        <view class="bg-img" style="background-image:url({{item}});" wx:for="{{imgs}}" wx:key="{{index}}">-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="text-gray text-sm text-right padding" catch:tap="doLike">-->
+<!--        <text class="cuIcon-attentionfill margin-lr-xs"></text> 10-->
+<!--        <text class="cuIcon-appreciatefill margin-lr-xs {{isLike ? 'text-F86564':''}}"></text><text catch:tap="doLike">{{email.likeNum}}</text>-->
+<!--        <text class="cuIcon-messagefill margin-lr-xs"></text> 30-->
+<!--    </view>-->
+
+<!--</view>-->
+
+<!--<view>-->
+<!--    <view class="cu-list menu-avatar">-->
+<!--        <view class="cu-item">-->
+<!--            <view class="cu-avatar round lg"-->
+<!--                  style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>-->
+<!--            <view class="content flex-sub">-->
+<!--                <view>凯尔</view>-->
+<!--                <view class="text-gray text-sm flex justify-between">-->
+<!--                    2019年12月3日-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="text-content">-->
+<!--        {{email.emailContent}}-->
+<!--    </view>-->
+<!--    <view class="grid flex-sub padding-lr {{imgs.length>5 ? 'col-3':'col-2'}}  grid-square" wx:if="{{imgs.length>0}}">-->
+<!--        <view class="bg-img" style="background-image:url({{item}});" wx:for="{{imgs}}" wx:key="{{index}}">-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="text-gray text-sm text-right padding">-->
+<!--        <text class="cuIcon-attentionfill margin-lr-xs"></text> 10-->
+<!--        <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20-->
+<!--        <text class="cuIcon-messagefill margin-lr-xs"></text> 30-->
+<!--    </view>-->
+
+<!--</view>-->
+
+
+

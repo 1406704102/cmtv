@@ -1,0 +1,44 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<view class="padding-lr-sm">
+    <view  wx:for="{{attTalkList}}" wx:key="{{item.id}}" style="border-top:#F2F2F3 1rpx solid " class="padding-sm flex justify-start">
+        <view>
+            <image src="{{item.userAvatar}}" class="icon2"></image>
+        </view>
+        <view class="margin-left-sm" style="width: 600rpx;">
+            <view class="text-xl" style="color:#00A9BD;">{{item.userName}}</view>
+            <view class="text-cut-5 margin-top-xs">{{item.attDetail}}
+            </view>
+            <view class="margin-top-xs" wx:if="{{item.attPic}}">
+                <image src="{{item.attPic}}" mode="aspectFill" bindtap='previewImg' data-url="{{item.attPic}}" style="width: 450rpx;height: 450rpx;border-radius: 10rpx"></image>
+            </view>
+            <view class="margin-top-sm flex justify-between align-center">
+                <view class="text-sm text-gray">
+                    {{item.createTime}}
+                </view>
+                <view class="flex justify-end">
+                    <navigator url="/pages/active/replayAtt/index?id={{item.id}}&name={{item.userName}}" class="text-gray margin-right flex justify-start">
+                        <image src="/images/active/replay.png" style="width: 30rpx;height: 30rpx;">
+                        </image>
+                        <view class="margin-left-xs text-sm">
+                            {{item.replayNum}}
+                        </view>
+                    </navigator>
+
+                    <view class="text-gray flex justify-start"  catch:tap="doLike" data-item="{{item}}" data-index="{{index}}" data-activeStatic="{{active.activeStatic}}">
+                        <image wx:if="{{item.like===1}}" src="/images/active/upon.png" style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                        </image>
+                        <image wx:else src="/images/active/up.png" style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                        </image>
+                        <view class="margin-left-xs text-sm">
+                            {{item.likeNum}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 710rpx"></view>
+</view>

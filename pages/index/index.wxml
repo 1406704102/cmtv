@@ -1,0 +1,32 @@
+
+<live wx:if="{{PageCur=='live'}}"></live>
+<find wx:if="{{PageCur=='find'}}"></find>
+<active wx:if="{{PageCur=='active'}}"></active>
+<my wx:if="{{PageCur=='my'}}"></my>
+<my ></my>
+<!--<view class="cu-bar tabbar bg-white shadow foot">-->
+<!--  <view class="action" bindtap="NavChange" data-cur="live">-->
+<!--    <view class='cuIcon-cu-image'>-->
+<!--      <image src="/images/tabbar/basics{{PageCur=='live'?'_cur':''}}.png"></image>-->
+<!--    </view>-->
+<!--    <view class="{{PageCur=='live'?'text-green':'text-gray'}}">元素</view>-->
+<!--  </view>-->
+<!--  <view class="action" bindtap="NavChange" data-cur="find">-->
+<!--    <view class='cuIcon-cu-image'>-->
+<!--      <image src="/images/tabbar/component{{PageCur=='find'?'_cur':''}}.png"></image>-->
+<!--    </view>-->
+<!--    <view class="{{PageCur=='find'?'text-green':'text-gray'}}">组件</view>-->
+<!--  </view>-->
+<!--  <view class="action" bindtap="NavChange" data-cur="active">-->
+<!--    <view class='cuIcon-cu-image'>-->
+<!--      <image src="/images/tabbar/plugin{{PageCur=='active'?'_cur':''}}.png"></image>-->
+<!--    </view>-->
+<!--    <view class="{{PageCur=='active'?'text-green':'text-gray'}}">扩展</view>-->
+<!--  </view>-->
+<!--  <view class="action" bindtap="NavChange" data-cur="my">-->
+<!--    <view class='cuIcon-cu-image'>-->
+<!--      <image src="/images/tabbar/about{{PageCur=='my'?'_cur':''}}.png"></image>-->
+<!--    </view>-->
+<!--    <view class="{{PageCur=='my'?'text-green':'text-gray'}}">关于</view>-->
+<!--  </view>-->
+<!--</view>-->

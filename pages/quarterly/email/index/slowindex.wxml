@@ -1,0 +1,15 @@
+<!--pages/slowindex/slowindex.wxml-->
+<view class="zmui-container">
+  <view class="zmui-bg">
+    <image class="zmui-bg-img" src="{{img}}"></image>
+  </view>
+
+  <view class="zmui-header" style="height:{{CustomBar}}px;">
+    <view class="zmui-back flex align-center" bindtap="goBack">
+      <image class="zmui-back-img" src="../../../../images/arrow-back.png"></image>
+      <text class="margin-left-sm align-center text-white">{{text}}</text>
+    </view>
+  </view>
+
+  <view class="zmui-button flex justify-center text-bold align-center" bindtap="goClowlists" wx:if="{{login}}">立即进入</view>
+</view>

@@ -1,0 +1,322 @@
+/* pages/active/detailTalk-new/index.wxss */
+page{
+    background: #fff;
+}
+.icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+.icon2 {
+    width: 38rpx;
+    height: 38rpx;
+}
+.post-content {
+    padding: 30rpx 20rpx;
+    box-sizing: border-box;
+}
+.view {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+.left-view {
+    margin-right: 2%;
+}
+content-bg {
+    /* border-top:1px #dadada solid; */
+    background-color: #3c3f41;
+}
+
+.content {
+    clear: both;
+    overflow: hidden;
+    width: 710rpx;
+}
+
+.content .left, .content .right {
+    width: 345rpx;
+}
+
+.content .left {
+    float: left;
+}
+
+.content .right {
+    float: right;
+}
+.add-btn {
+    background: #F86564;
+    color: #fff;
+    width: 190rpx;
+    height: 60rpx;
+    position: fixed;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 35rpx;
+    border-radius: 30rpx;
+    left: 280rpx;
+    bottom: 60rpx;
+}
+.blur5{
+    text-shadow:0 0 8px rgba(255,0,0,1);
+}
+
+
+.container{
+    position: absolute;
+    top: 0;
+    width: 750rpx;
+}
+
+.zmui-header {
+    /*position: relative;*/
+    position: fixed;
+
+    width: 100%;
+    height: 610rpx;
+}
+
+.zmui-header-infos {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    left: 0;
+    bottom: 70rpx;
+}
+
+.zmui-header-bg {
+    width: 100%;
+    height: 600rpx;
+}
+
+.zmui-header-avatar {
+    padding-left: 25rpx;
+}
+
+.zmui-header-user {
+    padding-left: 20rpx;
+}
+
+.zmui-header-user-title {
+    /*height: 50rpx;*/
+    font-size: 35rpx;
+    color: #FFFFFF;
+}
+
+.zmui-header-user-tag {
+    display: flex;
+}
+
+.zmui-header-user-tag-li {
+    padding: 0 10rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    background: #F86564;
+    border: 1px solid #F86564;
+    border-radius: 4rpx;
+    font-size: 18rpx;
+    color: #FFFFFF;
+    margin-right: 15rpx;
+}
+
+.zmui-header-user-infos {
+    padding-top: 30rpx;
+}
+
+.zmui-header-user-detail {
+    padding-right: 20rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+}
+
+.zmui-header-avatar-img {
+    border-radius: 10rpx;
+    width: 235rpx;
+    height: 363rpx;
+}
+
+.zmui-header-user-infos {
+    display: flex;
+}
+
+.zmui-header-user-see {
+    margin-right: 30rpx;
+}
+
+.zmui-header-user-see {
+    display: flex;
+}
+
+.zmui-header-user-text {
+    padding-left: 10rpx;
+    padding-top: 10rpx;
+    font-size: 26rpx;
+    color: #FFFFFF;
+}
+
+.zmui-header-user-img {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.zmui-header-user-img-edit {
+    width: 21rpx;
+    height: 21rpx;
+}
+
+.zmui-header-user-btn {
+    display: flex;
+    padding-bottom: 10rpx;
+}
+
+.zmui-header-user-button {
+    text-align: center;
+    width: 218rpx;
+    height: 51rpx;
+    line-height: 51rpx;
+    border: 1px solid #FFFFFF;
+    border-radius: 26rpx;
+    font-size: 27rpx;
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-right: 10rpx;
+}
+
+.zmui-header-title {
+    position: absolute;
+    width: 100%;
+    height: 44px;
+     overflow: hidden;
+}
+
+.zmui-header-title-back {
+    position: absolute;
+    left: 30rpx;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.zmui-header-title-text {
+    text-align: center;
+    line-height: 44px;
+    font-size: 36rpx;
+    color: #FFFFFF;
+}
+
+.zmui-header-title-img {
+    width: 17rpx;
+    height: 33rpx;
+}
+
+
+/* =======================================
+		         tab标题 选择卡
+  ======================================= */
+
+/* 头部导航栏 */
+
+.tab-h {
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
+    margin-top: 550rpx;
+    height: 90rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* 超出部分隐藏 */
+    line-height: 80rpx;
+    background: #fff;
+    /*border-bottom: 1rpx solid #cecece;*/
+    font-size: 28rpx;
+    white-space: nowrap; /* 设置滚动视图容器不换行 *//* 固定在头部 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+
+/* 每个tab标题样式 */
+.tab-item {
+    padding: 0 36rpx;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+
+}
+
+/* 选中其中一个tab标题时，修改样式 */
+
+.tab-item.tab-active {
+    /*color: #F86564;*/
+    /* box-sizing: border-box; */
+    background-color: #ffffff;
+    font-size: 35rpx;
+    font-weight: bold;
+    /* position: relative; */
+}
+.zmui-bar-li-img2 {
+    /*position: absolute;*/
+    top: 30rpx;
+    left: -30%;
+    width: 30rpx;
+    height: 19rpx;
+}
+
+/* 主体内容 预留头部导航栏的高度 */
+
+.tab-content {
+    margin-top: 630rpx;
+}
+
+/* 主体内容 scroll-view高度 */
+
+.scoll-h {
+    height: 100%;
+}
+
+
+.goods-item{
+    height: 210rpx;
+}
+.goods-img image{
+    width: 210rpx;
+    height: 210rpx;
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+}
+.zmui-footer-tab-icon-img {
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 5rpx;
+}
+.goods-title {
+    height: 70rpx;
+    line-height: 35rpx;
+}
+.good-others{
+    line-height: 20rpx;
+}
+.zmui-title-button {
+    font-size: 24rpx;
+    color: #505050;
+    font-weight: bold;
+    width: 130rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+    border: 2rpx solid #505050;
+    border-radius: 27rpx;
+}
+.cu-dialog2 {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450rpx;
+    max-width: 100%;
+    /*background-color: #f8f8f8;*/
+    border-radius: 30rpx;
+}

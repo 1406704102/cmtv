@@ -1,0 +1,12 @@
+
+<cu-custom isBack="{{true}}" iconColor="#FFFFFF" bgColor="bg-F86564">
+  <view slot="backText" class="text-white">返回</view>
+  <view slot="content" class="text-white">登录草莓币商城</view>
+</cu-custom>
+<view class="container">
+  <view class="login-box">
+    <button class="wx-login-btn bg-F86564" bindtap="getUserProfile">登录草莓商城</button>
+    <button class="wx-login-btn bg-F86564" bindtap="cancel">取消</button>
+<!--    <button type="primary" class="account-login-btn" bindtap="accountLogin">账号登录</button>-->
+  </view>
+</view>

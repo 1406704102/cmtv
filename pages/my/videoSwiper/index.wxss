@@ -1,0 +1,18 @@
+page {
+	background-color: #000;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+.my-input {
+	position: fixed;
+	bottom: 100px;
+	left: 20px;
+	height: 30px;
+	width: 100px;
+	background-color: red;
+}
+.avideo-swiper {
+	width:100%;height:100%;position: absolute;top: 0rpx;
+}

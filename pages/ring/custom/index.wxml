@@ -1,0 +1,56 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">企业定制</view>
+</cu-custom>
+<view class="body">
+    <view>
+        <view class="flex justify-start" style="line-height:45rpx">
+            <image src="/images/column/qiye.png">
+
+            </image>
+            <view class="text-F86564 text-df text-bold">
+                企业名称
+            </view>
+        </view>
+        <input class="input" model:value="{{companyName}}" placeholder="请填写您的企业名称" placeholder-class="ph" />
+
+    </view>
+    <view class="margin-top">
+        <view class="flex justify-start"  style="line-height:45rpx">
+            <image src="/images/column/phone.png">
+
+            </image>
+            <view class="text-F86564 text-df text-bold">
+                联系方式
+            </view>
+        </view>
+        <input class="input" model:value="{{companyTelephone}}" placeholder="请填写您的联系方式" type="number" placeholder-class="ph"/>
+
+    </view>
+    <view class="margin-top">
+        <view class="flex justify-start"  style="line-height:45rpx">
+            <image src="/images/column/jianjie.png">
+
+            </image>
+            <view class="text-F86564 text-df  text-bold">
+                需求简介
+            </view>
+        </view>
+        <textarea class="textarea"  model:value="{{companyDemand}}" placeholder="请简要填写您需求的彩铃内容" placeholder-class="ph"/>
+
+    </view>
+    <button class="btn bg-F86564 text-white " catch:tap="sub">提交需求</button>
+
+    <view class="tips">
+        <view >
+            <view class="text-center">
+                注意事项
+            </view>
+            <view>
+                <view wx:for="{{tips}}" class="margin-top-10 text-df">
+                    {{item}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

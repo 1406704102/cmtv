@@ -1,0 +1,22 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">今日步数排行</view>
+</cu-custom>
+<view wx:for="{{attStepList}}" wx:key="{{item}}" class="padding-sm flex justify-between" style="border-bottom:#F2F2F3 1rpx solid ">
+    <view  class="flex justify-center flex-direction text-xxl  margin-right-sm">
+        {{index+1}}
+    </view>
+    <view >
+        <image src="{{item.userAvatar}}" class="icon2"></image>
+    </view>
+    <view class="flex justify-between margin-left-sm" style="width: 540rpx">
+        <view class="flex justify-center flex-direction" style="height: 90rpx;">
+            <view class="text-lg">
+                {{item.userName}}
+            </view>
+        </view>
+        <view style="height: 90rpx;font-size: 45rpx" class="flex-direction flex justify-center align-center">
+            {{item.stepNum}}
+        </view>
+    </view>
+</view>

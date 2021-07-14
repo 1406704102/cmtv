@@ -1,0 +1,7 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">活动详情</view>
+</cu-custom>
+<view>
+    <image src="{{active.activeDetail}}" mode="widthFix"></image>
+</view>

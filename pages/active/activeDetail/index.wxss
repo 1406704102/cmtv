@@ -1,0 +1,4 @@
+/* pages/active/activeDetail/index.wxss */
+image{
+    width: 750rpx;
+}

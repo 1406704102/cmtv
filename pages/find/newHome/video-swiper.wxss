@@ -1,0 +1,120 @@
+@import '../../../components/common.wxss';
+
+page{
+    background-color: #000000;
+    height: 100%;
+}
+
+mp-video-swiper {
+    width: 100%;
+    height: 100%;
+}
+.imagePlayer{
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  z-index: 1000;
+  opacity: 0.6
+}
+.viewFloat{
+  position: fixed;
+  display: flex;
+  z-index: 100;
+  width: 500rpx;
+  bottom: 60px;
+  color: white;
+  margin:20rpx;
+  flex-direction: column
+
+}
+.videoTitle{
+  font-size: 18px;
+  font-weight: 500;
+
+}
+.videoDes{
+  font-size: 14px;
+}
+.viewTabContainer{
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  border-top: 0.5px solid white;
+  bottom: 0;
+}
+.viewTab{
+  color: white;
+}
+.float-button {
+  position: fixed;
+  height: 80rpx;
+  width: 80rpx;
+  right: 30rpx;
+}
+.float-button2 {
+  position: fixed;
+  height: 80rpx;
+  width: 160rpx;
+  right: 0rpx;
+}
+/*.share{*/
+
+/*}*/
+.comment{
+  bottom: 100rpx;
+}
+.like{
+  bottom: 440rpx;
+}
+
+.float-avatar{
+  position: fixed;
+  height: 96rpx;
+  width: 96rpx;
+  right: 22rpx;
+  bottom: 590rpx;
+}
+image {
+  width: 100%;
+  height: 100%;
+}
+.attention{
+  position: fixed;
+  height: 40rpx;
+  width: 40rpx;
+  right: 49rpx;
+  bottom: 465rpx;
+}
+.float-back {
+  position: fixed;
+  height: 60rpx;
+  width: 120rpx;
+  left: 40rpx;
+  top: 90rpx;
+}
+.share-button {
+  position: fixed;
+  height: 120rpx;
+  width: 115rpx;
+  right: 22rpx;
+  bottom: 270rpx;
+}
+.share-button view button {
+  height: 100rpx;
+  width: 130rpx;
+}
+.share-button view button image {
+  width: 90rpx;
+  height: 78rpx;
+}
+.videoInfo{
+  position: fixed;
+  height: 100rpx;
+  width: 450rpx;
+  left: 30rpx;
+  bottom: 150rpx;
+}

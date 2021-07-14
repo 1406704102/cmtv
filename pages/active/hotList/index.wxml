@@ -1,0 +1,25 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">热力排行</view>
+</cu-custom>
+
+<view wx:for="{{hotList}}" wx:key="{{item.id}}" class="padding-sm padding-lr-xl flex justify-between" style="border-bottom:#F2F2F3 1rpx solid ">
+    <view class="flex justify-start align-center">
+        <view class="text-xl text-black">
+            {{index+1}}
+        </view>
+        <view class="margin-lr-sm">
+            <image src="{{item.userAvatar}}" class="icon2"></image>
+        </view>
+        <view class="text-xl text-black">
+            {{item.userName}}
+        </view>
+    </view>
+    <view class="flex justify-end align-center">
+        <view class="text-xxl text-yellow">
+            {{item.heat}}
+        </view>
+    </view>
+</view>
+
+<view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 750rpx"></view>

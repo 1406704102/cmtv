@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationStyle": "default",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTitleText": "视频彩铃",
+  "navigationBarTextStyle": "white"
+}

@@ -1,0 +1,4 @@
+/* pages/active/activeDetailNew/index.wxss */
+page{
+    background: #fff;
+}

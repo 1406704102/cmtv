@@ -1,0 +1,23 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">草莓币</view>
+</cu-custom>
+<view class="margin-top-sm">
+    <view wx:for="{{logList}}" wx:key="{{item.id}}"
+          class="solid-bottom bg-white flex justify-between padding-lr-sm padding-tb-xs "
+          style="height: 120rpx">
+        <view class='text-left margin-left-sm flex flex-direction justify-around'>
+            <!--                <view class="padding text-white">{{userInfo.nickname}}</view>-->
+            <view class=" text-lg">{{item.message}}</view>
+            <view class=" text-gray text-sm " style="width: 400rpx;">{{item.createTime}}</view>
+        </view>
+        <view class="flex flex-direction justify-center margin-right-sm text-xxl text-F86564 text-bold">
+            {{item.num}}
+        </view>
+    </view>
+</view>
+<view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 750rpx"></view>
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-F86564' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+    <view class='load-progress-spinner text-F86564'></view>
+</view>

@@ -1,0 +1,395 @@
+/* pages/slowlists/slowlists.wxss */
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+}
+page {
+    background: #F6F6F6;
+}
+
+/* zmui-content-ul */
+.zmui-content-ul {
+    padding: 0 0 50rpx 0;
+    overflow: hidden;
+}
+
+.zmui-content-li {
+    margin: 50rpx 40rpx 0 40rpx;
+    padding: 40rpx;
+    overflow: hidden;
+    background: #FAFAFA;
+    border: 1px solid #F4F4F4;
+    box-shadow: 0 2rpx 9rpx 1rpx rgba(229, 229, 229, 0.7);
+    border-radius: 25rpx;
+}
+
+.zmui-content-title {
+    display: flex;
+    height: 80rpx;
+}
+
+.zmui-content-icon {
+    position: relative;
+}
+
+.zmui-content-icon-dot {
+    position: absolute;
+    top: -5rpx;
+    left: 34rpx;
+    z-index: 1;
+    width: 10rpx;
+    height: 10rpx;
+    background: #FF0200;
+    border-radius: 50%;
+}
+
+.zmui-content-icon-img {
+    width: 39rpx;
+    height: 40rpx;
+}
+
+.zmui-content-title-name {
+    padding-left: 20rpx;
+    flex: 1;
+    line-height: 40rpx;
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.zmui-content-title-time {
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #8B8B8B;
+}
+
+.zmui-content-content {
+    font-size: 32rpx;
+    color: #0F0D0B;
+    line-height: 60rpx;
+}
+
+.zmui-content-bottom {
+    overflow: hidden;
+}
+
+.zmui-contet-bottom-type-img {
+    width: 37rpx;
+    height: 32rpx;
+}
+
+.zmui-content-bottom {
+    display: flex;
+    padding: 50rpx 0 0 0;
+}
+
+.zmui-content-bottom-type {
+    flex: 1;
+}
+
+.zmui-content-author {
+    display: flex;
+}
+
+.zmui-content-author-img {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50%;
+}
+
+.zmui-content-author-text {
+    padding-left: 20rpx;
+    line-height: 36rpx;
+    font-size: 22rpx;
+    color: #8B8B8B;
+}
+/* zmui-add-btn */
+.zmui-add-btn {
+    z-index: 1000;
+    position: fixed;
+    right: 20rpx;
+    bottom: 150rpx;
+}
+
+.zmui-add-btn-img {
+    width: 138rpx;
+    height: 138rpx;
+}
+
+/*  */
+.zmui-header {
+    position: relative;
+    height: 450rpx;
+    overflow: hidden;
+}
+
+.zmui-header-img {
+    width: 100%;
+    height: 450rpx;
+}
+
+.zmui-header-time {
+    position: absolute;
+    z-index: 2;
+    right: 40rpx;
+    bottom: 40rpx;
+    font-size: 36rpx;
+    color: #FFFFFF;
+}
+
+.zmui-header-border {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 25rpx;
+    background: #F6F6F6;
+    border-radius: 25rpx 25rpx 0 0;
+}
+
+.zmui-choose-bar {
+    position: relative;
+    width: 100%;
+    height: 108rpx;
+}
+
+.zmui-choose {
+    position: absolute;
+    z-index: 90;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 108rpx;
+}
+
+.zmui-navbar-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2rpx 3rpx 10rpx 0 rgba(56, 56, 56, 0.09);
+    background: #F6F6F6;
+}
+
+.zmui-choose-ul {
+    padding: 0 20rpx;
+    display: flex;
+}
+
+.zmui-choose-li {
+    position: relative;
+    text-align: center;
+    padding: 0 20rpx;
+}
+
+.zmui-choose-li-dot {
+    position: absolute;
+    top: 15rpx;
+    right: 16rpx;
+    z-index: 1;
+    width: 10rpx;
+    height: 10rpx;
+    background: #FF0200;
+    border-radius: 50%;
+}
+.zmui-choose-li-name {
+    line-height: 98rpx;
+    font-size: 36rpx;
+    color: #2F2F2F;
+}
+
+.zmui-choose-li-on {
+    padding-top: 10rpx;
+}
+
+.zmui-choose-li-on .zmui-choose-li-name {
+    line-height: 60rpx;
+    font-size: 40rpx;
+    color: #F86564;
+}
+
+.zmui-choose-li-english {
+    font-size: 14rpx;
+    color: #F86564;
+}
+
+.zmui-choose-width {
+    flex: 1;
+}
+
+.zmui-choose-switch-ul {
+    display: flex;
+    margin: 35rpx 20rpx 0 0;
+    width: 130rpx;
+    height: 37rpx;
+    padding: 3rpx;
+    background: #e4e4e4;
+    border-radius: 20rpx;
+}
+
+.zmui-choose-switch-li {
+    text-align: center;
+    flex: 1;
+    height: 34rpx;
+    line-height: 34rpx;
+    font-size: 22rpx;
+    color: #a6a6a6;
+}
+
+.zmui-choose-switch-li-on {
+    background: #FFFFFF;
+    color: #000000;
+    border-radius: 17rpx;
+}
+
+/*  加载更多   */
+.zmui-loading {
+    margin: 0 5px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+    animation: weuiLoading 1s steps(12, end) infinite;
+    background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
+    background-size: 100%;
+}
+.zmui-loadmore {
+    width: 65%;
+    margin: 1.5em auto;
+    line-height: 1.6em;
+    font-size: 30rpx;
+    text-align: center;
+    color: #666666;
+}
+.zmui-loadmore__tips {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* zmui-navigation-bar */
+.zmui-navigation-bar {
+    position: fixed;
+    z-index: 99;
+    background: #F6F6F6;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.zmui-navigation-back {
+    position: fixed;
+    z-index: 98;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.zmui-navigation-title {
+    text-align: center;
+    font-size: 40rpx;
+    color: #2F2F2F;
+}
+
+.zmui-status-bar {
+    width: 100%;
+}
+
+.zmui-back {
+    position: absolute;
+    left: 0;
+    bottom: 20rpx;
+}
+
+.zmui-back-img {
+    padding-left: 30rpx;
+    width: 47rpx;
+    height: 30rpx;
+}
+/* zmui-popup-bg */
+.zmui-popup {
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 451rpx;
+    height: 458rpx;
+}
+
+.zmui-popup-bg {
+    width: 451rpx;
+    height: 458rpx;
+}
+
+.zmui-popup-close {
+    position: absolute;
+    z-index: 1;
+    top: 30rpx;
+    right: 30rpx;
+    width: 20rpx;
+    height: 20rpx;
+}
+
+.zmui-popup-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 70rpx;
+    transform: translateX(-50%);
+}
+
+.zmui-popup-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 330rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.zmui-popup-titlea {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 295rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.zmui-popup-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 220rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+}
+
+.zmui-popup-time {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 170rpx;
+    font-size: 35rpx;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.zmui-popup-button {
+    padding: 0;
+    width: 197rpx !important;
+    height: 56rpx;
+    line-height: 56rpx;
+    background: #FFFFFF;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    color: #FC7978;
+}

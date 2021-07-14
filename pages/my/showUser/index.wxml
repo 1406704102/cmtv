@@ -1,0 +1,74 @@
+<cu-custom isBack="{{true}}" >
+    <view slot="backText" >返回</view>
+    <view slot="content" >达人列表</view>
+</cu-custom>
+<view class="padding">
+    <view class="radius-l padding-sm margin-bottom" wx:for="{{indexShow}}" wx:for-item="user" style="background-image: url({{user.background}});background-repeat: no-repeat;background-size: cover;width:690rpx;height:260rpx">
+        <view class="text-white">
+            <view catch:tap="toUserDetail" data-item="{{user}}" data-tabshow="&tabShow=1"
+                  class="flex justify-start">
+                <view>
+                    <image src="{{user.figure}}" mode="aspectFill" class="radius-l shadow-lg"
+                           style="width:145rpx;height:220rpx">
+
+                        <view class="zmui-good-li-num" wx:if="{{user.living}}">
+                            <image class="zmui-good-li-num-img2"
+                                   src="/images/my/liveIng.png"></image>
+                        </view>
+                    </image>
+
+                </view>
+                <view class="flex flex-direction margin-left-sm">
+                    <view style="height:120rpx" class="flex flex-direction justify-start">
+
+                        <view class="text-bold text-lg">{{user.nickname}}</view>
+                        <view class="text-sm margin-top-10 text-cut-2 margin-right-xs" style="line-height:24rpx;color: rgba(255, 255, 255, 0.8)">
+                            {{user.signature}}
+                        </view>
+                    </view>
+                    <view class="flex justify-between padding-bottom-sm text-left text-white text-bold"
+                          style="margin-top:10rpx">
+<!--                        <view class="flex justify-end flex-direction padding-left-sm padding-top-xs padding-bottom-xs radius-l margin-right-sm"-->
+<!--                              catch:tap="toUserDetail" data-item="{{user}}" data-tabshow="&tabShow=0"-->
+<!--                              style="width: 157rpx;height: 93rpx;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/live//1621412511124.png');background-repeat: no-repeat;background-size: 100% 100%;">-->
+<!--                            <view class="text-26 text-bold padding-bottom-xs">-->
+<!--                                {{user.liveNum}}-->
+<!--                            </view>-->
+<!--                            <view class="text-xxs">-->
+<!--                                直播-->
+<!--                            </view>-->
+<!--                        </view>-->
+                        <view class="flex justify-end flex-direction padding-left-sm padding-top-xs padding-bottom-xs radius-l margin-right-sm"
+                              catch:tap="toUserDetail" data-item="{{user}}" data-tabshow="&tabShow=0"
+                              style="width: 150rpx;height: 93rpx;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/live//1621412511124.png');background-repeat: no-repeat;background-size: 100% 100%;">
+                            <view class="text-26 text-bold padding-bottom-xs">
+                                {{user.liveNum}}
+                            </view>
+                            <view class="text-xxs">
+                                直播
+                            </view>
+                        </view>
+                        <view class="flex justify-end flex-direction padding-left-sm padding-top-xs padding-bottom-xs  radius-l  margin-right-sm"
+                              style="width: 150rpx;height: 93rpx;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/live//1621412538198.png');background-repeat: center;background-size: 100% 100%;">
+                            <view class="text-26 text-bold padding-bottom-xs">
+                                {{user.videoNum}}
+                            </view>
+                            <view class="text-xxs">
+                                视频
+                            </view>
+                        </view>
+                        <view class="flex justify-end flex-direction  padding-left-sm padding-top-xs padding-bottom-xs  radius-l  margin-right-sm"
+                              style="width: 150rpx;height: 93rpx;background-image: url('http://cmtv.xmay.cc/image/my/fansNum.png');background-repeat: no-repeat;background-size: 100% 100%;">
+                            <view class="text-26 text-bold padding-bottom-xs">
+                                {{user.fansNum}}
+                            </view>
+                            <view class="text-xxs">
+                                粉丝
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

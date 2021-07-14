@@ -1,0 +1,43 @@
+<cu-custom isBack="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{userName}}</view>
+</cu-custom>
+<view class="padding-lr-sm">
+    <view wx:for="{{allAttStepList}}" wx:key="{{item}}" class="padding-sm flex justify-start"
+          style="border-top:#F2F2F3 1rpx solid ">
+
+        <view style="height: 90rpx;">
+            <image src="{{item.userAvatar}}" class="icon2"></image>
+        </view>
+        <view class="flex justify-between margin-left-sm" style="width: 510rpx">
+            <view class="flex justify-between flex-direction" style="height: 90rpx;">
+                <view class="text-lg">
+                    {{item.userName}}
+                </view>
+                <view class="text-gray text-26">
+                    {{item.createTime}}
+                </view>
+            </view>
+            <view style="height: 90rpx;font-size: 45rpx"
+                  class="flex-direction flex justify-center align-center">
+                {{item.stepNum}}
+            </view>
+        </view>
+        <view style="height: 85rpx;width: 40rpx"
+              class="margin-left-sm margin-top-xs flex flex-direction justify-between" catch:tap="doLike"
+              data-item="{{item}}" data-index="{{index}}">
+            <view class="text-center text-gray">
+                {{item.likeNum}}
+            </view>
+            <view class="flex justify-center">
+                <image wx:if="{{item.like===0}}" src="/images/active/unlike.png"
+                       style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                </image>
+                <image wx:if="{{item.like===1}}" src="/images/active/liking.png"
+                       style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                </image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 710rpx"></view>

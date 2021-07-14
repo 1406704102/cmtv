@@ -1,0 +1,170 @@
+<!--pages/quarterly//email/home/index.wxml-->
+<view class="zmui-container">
+    <!--    <cu-custom wx:if="{{share === 0}}" isHome="{{true}}" >-->
+    <!--        <view slot="backText" class="text-white">主页</view>-->
+    <!--        <view slot="content" class="text-white">{{active.activeName}}</view>-->
+
+    <!--    </cu-custom>-->
+    <view class="zmui-add-btn" catch:tap="goclowwrite">
+        <image class="zmui-add-btn-img" src="../../../../images/tianxie.png"></image>
+    </view>
+    <view class="zmui-navigation-back" wx:if="{{!isFixed}}" style="height:{{CustomBar + 'px'}};">
+        <view class="zmui-back flex align-center" bindtap="goBack">
+            <image class="zmui-back-img" src="../../../../images/arrow-back.png"></image>
+            <text class="margin-left-sm align-center text-white">{{text}}</text>
+        </view>
+    </view>
+
+    <view class="zmui-popup" wx:if="{{isPopup}}">
+        <image class="zmui-popup-bg" src="../../../../images/dot-bg.png"></image>
+        <image class="zmui-popup-close" bindtap="closePopup" src="../../../../images/close-bg.png"></image>
+        <view class="zmui-popup-title">邮件未送达</view>
+        <view class="zmui-popup-titlea">暂时无法完整阅读</view>
+        <view class="zmui-popup-text">剩余送达时间</view>
+        <view class="zmui-popup-time">{{sendTime}} 分钟</view>
+        <view class="zmui-popup-btn">
+            <button class="zmui-popup-button" bindtap="closePopup">确 定</button>
+        </view>
+    </view>
+
+    <view class="zmui-navigation-bar" wx:if="{{isFixed}}">
+        <view class="zmui-status-bar" style="height: {{StatusBar + 'px'}};"></view>
+        <view class="zmui-navigation-title"
+              style="height: {{(CustomBar - StatusBar) + 'px'}}; line-height: {{(CustomBar - StatusBar) + 'px'}};">慢邮件
+        </view>
+        <view class="zmui-back flex align-center" bindtap="goBack">
+            <image class="zmui-back-img" src="../../../../images/arrow-back-blank.png"></image>
+            <text class="margin-left-sm align-center">{{text}}</text>
+        </view>
+
+    </view>
+
+
+    <view class="zmui-header">
+        <image class="zmui-header-img" src="{{img}}"></image>
+        <view class="zmui-header-time">{{date}}</view>
+        <view class="zmui-header-border"></view>
+    </view>
+
+    <view class="zmui-choose-bar">
+        <view class="zmui-choose {{isFixed?'zmui-navbar-fixed':''}}" style="top: {{isFixed?CustomBar + 'px':'0'}}"
+              id="zmui-id">
+            <view class="zmui-choose-ul">
+<!--                {{typeIndex}}-->
+                <view class="zmui-choose-li {{index === typeIndex?'zmui-choose-li-on':''}}" data-index="{{index}}"
+                      bindtap="changType" wx:for="{{typeArr}}" wx:key="index">
+                    <view class="zmui-choose-li-dot" wx:if="{{index && isTypeNew}}"></view>
+                    <view class="zmui-choose-li-name">{{item.name}}</view>
+                    <view class="zmui-choose-li-english" wx:if="{{index === typeIndex}}">{{item.english}}</view>
+                </view>
+            </view>
+            <view class="zmui-choose-width"></view>
+            <view class="zmui-choose-switch">
+                <view class="zmui-choose-switch-ul" wx:if="{{typeIndex === 0}}">
+                    <view class="zmui-choose-switch-li {{index === tagIndex?'zmui-choose-switch-li-on':''}}"
+                          data-index="{{index}}" bindtap="changTag" wx:for="{{tagArr}}" wx:key="index">{{item}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="zmui-content-ul">
+        <view class="zmui-content-li" wx:for="{{emailList}}" wx:for-item="item" catch:tap="goreadmail"
+              data-id="{{item.id}}" data-item="{{item}}"
+              wx:key="id">
+            <view class="zmui-content-title" wx:if="{{item.emailType !== '1'}}">
+                <view class="zmui-content-icon">
+                    <view class="zmui-content-icon-dot" wx:if="{{item.emailType !== '1'&&item.isRead === '0' && userInfo.id !== item.authorId}}"></view>
+                    <image class="zmui-content-icon-img" wx:if="{{userInfo.id === item.authorId}}"
+                           src="../../../../images/icon-send.png"></image>
+                    <image class="zmui-content-icon-img" wx:else src="../../../../images/icon-mail.png"></image>
+                </view>
+                <view class="zmui-content-title-name" wx:if="{{userInfo.id === item.authorId}}">发出的信件</view>
+                <view class="zmui-content-title-name" wx:else>我的收信</view>
+                <view class="zmui-content-title-time" wx:if="{{item.stime <= 0 && item.emailType === '0' && typeIndex === 1  && userInfo.id !== item.authorId}}">已抵达，可阅读</view>
+<!--                <view class="zmui-content-title-time" wx:else>{{item.stime}}-->
+<!--                {{userInfo.id !== item.authorId}}-->
+<!--                {{typeIndex === 1}}-->
+<!--                {{item.emailType === '1'}}-->
+<!--                {{item.stime > 0}}-->
+<!--{{item.emailType}}-->
+                <view class="zmui-content-title-time" wx:if="{{item.stime > 0 && item.emailType === '0' && typeIndex === 1  && userInfo.id !== item.authorId}}">{{item.stime}}
+                    分钟 后送达
+                </view>
+
+            </view>
+            <view class="zmui-content-content text-cut-2  text-bold">{{item.emailContent}}</view>
+            <view class="zmui-content-bottom">
+                <view class="zmui-content-bottom-type">
+                    <image class="zmui-contet-bottom-type-img" wx:if="{{item.emailPic !==null}}"
+                           src="../../../../images/icon-img.png"></image>
+                    <image class="zmui-contet-bottom-type-img" wx:elif="{{item.videoUrl !== null}}"
+                           src="../../../../images/icon-video.png"></image>
+                </view>
+                <view class="zmui-content-author">
+                    <image class="zmui-content-author-img"
+                           src="{{item.isAnonymous === '1'  ? '../../../../images/niming.png': item.authorAvatar}}"></image>
+                    <view class="zmui-content-author-text">{{item.authorName}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--    <navigator url="/pages/quarterly/email/detail/index?id={{item.id}}" wx:for="{{emailList}}" wx:for-item="item"-->
+    <!--               wx:key="id" class="padding-xl radius shadow bg-blue margin-tb">-->
+    <!--        <text class="text-cut-3 ">-->
+    <!--            {{item.emailContent}}-->
+    <!--        </text>-->
+    <!--        <text>-->
+    <!--            {{item.likeNum}}-->
+    <!--        </text>-->
+    <!--        <text wx:if="{{item.emailType === '1'}}">公开</text>-->
+    <!--        <text wx:elif="{{item.emailType === '2'}}">系统-->
+    <!--            +-->
+    <!--            <text wx:if="{{item.isRead === '0'}}">未读</text>-->
+    <!--            <text wx:else>已读</text>-->
+    <!--        </text>-->
+    <!--        <text wx:else>私有-->
+    <!--            +-->
+    <!--            <text wx:if="{{item.isRead === '0'}}">未读</text>-->
+    <!--            <text wx:else>已读</text>-->
+    <!--        </text>-->
+    <!--        <text wx:if="{{item.stime<0}}">-->
+    <!--            已送达-->
+    <!--        </text>-->
+    <!--        <text wx:else>{{item.stime}} 分钟 后送达</text>-->
+    <!--    </navigator>-->
+    <!--<navigator url="/pages/quarterly/email/detail/index?id={{item.emailId}}" wx:for="{{emailList}}" wx:for-item="item" wx:if="{{emailType === '0'}}"-->
+    <!--           wx:key="id" class="padding-xl radius shadow bg-blue margin-tb">-->
+    <!--    <text class="text-cut-3 ">-->
+    <!--        {{item.openEmailInfo.emailContent}}-->
+    <!--    </text>-->
+    <!--    <text>-->
+    <!--        {{item.openEmailInfo.likeNum}}-->
+    <!--    </text>-->
+    <!--    <text wx:if="{{item.openEmailInfo.emailType === '1'}}">公开</text>-->
+    <!--    <text wx:elif="{{item.openEmailInfo.emailType === '2'}}">系统-->
+    <!--        +-->
+    <!--        <text wx:if="{{item.isRead === '0'}}">未读</text>-->
+    <!--        <text wx:else>已读</text>-->
+    <!--    </text>-->
+    <!--    <text wx:else>私有-->
+    <!--        +-->
+    <!--        <text wx:if="{{item.isRead === '0'}}">未读</text>-->
+    <!--        <text wx:else>已读</text>-->
+    <!--    </text>-->
+    <!--</navigator>-->
+    <view class="cu-load text-F86564 bg-F6F6F6 margin-bottom-xl {{isLoad?'loading':'over'}}"
+          wx:if="{{isLoadShow}}"></view>
+
+    <!--    <navigator url="/pages/quarterly/email/add/index" class="radius shadow shadow-lg">-->
+    <!--        <image src="/images/attention.png"-->
+    <!--               style="position: fixed;bottom: 150rpx;right: 100rpx;z-index: 9999;height:100rpx;width:100rpx;">-->
+    <!--        </image>-->
+    <!--    </navigator>-->
+    <view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+        <view class='load-progress-bar bg-F86564'
+              style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+        <view class='load-progress-spinner text-F86564'></view>
+    </view>
+</view>

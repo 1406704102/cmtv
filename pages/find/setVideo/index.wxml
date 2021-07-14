@@ -1,0 +1,135 @@
+<!--<cu-custom isCustom="{{true}}">-->
+<!--    <view slot="backText" class="text-white">返回</view>-->
+<!--    <view slot="content" class="text-white">{{name}}</view>-->
+<!--</cu-custom>-->
+<cu-custom wx:if="{{share === 0}}" iconColor="white" isBack="{{true}}">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<cu-custom wx:if="{{share === 1}}" iconColor="white" isHome="{{true}}">
+    <view slot="backText" class="text-white">主页</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<video src="{{videoInfo.videoUrl}}" autoplay="{{autoPlay}}" object-fit="contain" loop="{{true}}"
+       show-fullscreen-btn="{{false}}" enable-auto-rotation="{{false}}">
+</video>
+<view class="view-bg flex justify-around flex-direction align-center " style="z-index: 200;">
+    <view class="text-xxl margin-top text-white text-bold flex-direction justify-center text-center"
+          style="z-index: 300;width: 750rpx; text-shadow: black 0.1em 0.1em 0.2em">
+        <view>
+            草莓台
+        </view>
+    </view>
+    <view style="z-index: 200;text-shadow: black 0.1em 0.1em 0.2em" class="text-sm text-white margin-top">
+        正在拨号...
+    </view>
+    <view style="z-index: 300;width: 480rpx;height: 60rpx;border-radius: 30rpx;background-color:rgba(255,255,255,0.4);text-shadow: black 0.1em 0.1em 0.2em" class="justify-center flex margin-top text-white align-center">
+        <!--        <image class="icon" src="/images/video/zgyd.png"></image>-->
+        对方呼叫您号码，TA能看到的效果
+    </view>
+
+
+</view>
+<view style="z-index: 200;text-shadow: black 0.1em 0.1em 0.2em" class="view-b">
+    <view style="z-index: 250;" class="flex justify-around margin-top-100">
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/jy.png"></image>
+            <view class="text-white margin-top-xs">
+                静音
+            </view>
+        </view>
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/ysq.png"></image>
+            <view class="text-white margin-top-xs">
+                免提
+            </view>
+        </view>
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/dx.png"></image>
+            <view class="text-white margin-top-xs">
+                短信
+            </view>
+        </view>
+    </view>
+    <view style="z-index: 250;" class="flex justify-around margin-top-xl">
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/xp.png"></image>
+            <view class="text-white margin-top-xs">
+                视频通话
+            </view>
+        </view>
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/tjth.png"></image>
+            <view class="text-white margin-top-xs">
+                添加通话
+            </view>
+        </view>
+        <view class="item-view flex align-center flex-direction">
+            <image class="icon2" src="/images/video/txl.png"></image>
+            <view class="text-white margin-top-xs">
+                通讯录
+            </view>
+        </view>
+    </view>
+
+    <view style="z-index: 250; width: 750rpx;" class="flex justify-center margin-top-100 flex-direction align-center">
+        <button style="width: 600rpx;" class="cu-btn round shadow text-white text-sm bg-F86564" bindtap="showModal2"
+                data-target="DialogModal3">设为视频彩铃
+        </button>
+        <view class="margin-top text-white text-xs text-shadow: black 0.1em 0.1em 0.2em">仅为展示效果，实际效果以用户终端播放呈现为准</view>
+    </view>
+</view>
+<view class="cu-modal {{modalName==='DialogModal3'?'show':''}}">
+    <view style="background-repeat: no-repeat;background-size: 100% 100%;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/video//1608861119716.png');position: relative;display: inline-block;vertical-align: middle;margin-left: auto;margin-right: auto;width: 550rpx;height: 600rpx;max-width: 100%;border-radius: 10rpx;overflow: hidden;">
+
+                <view class="cu-bar justify-end">
+                    <view class="action" bindtap="hideModal" style="margin-right: 60rpx">
+                        <text class="cuIcon-close text-red"></text>
+                    </view>
+                </view>
+                <view class=" padding-top padding-bottom text-lg text-white flex justify-between flex-direction align-center" style="height: 200rpx;">
+                    <input placeholder="输入您的手机号码" placeholder-style="color:#fff" model:value="{{phone}}" style="background:#fdc5c5;border-radius: 40rpx;height: 50%;width: 70%"></input>
+
+                    <button class="cu-btn round bg-red shadow margin-top" style="width: 35%" bind:tap="checkPhone">
+                        确认设置
+                    </button>
+                </view>
+    </view>
+</view>
+
+<view class="cu-modal {{modalName==='DialogModal4'?'show':''}}">
+    <view style="background-repeat: no-repeat;background-size: 100% 100%;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/video//1608861184875.png');position: relative;display: inline-block;vertical-align: middle;margin-left: auto;margin-right: auto;width: 550rpx;height: 500rpx;max-width: 100%;border-radius: 10rpx;overflow: hidden;">
+
+
+        <view class="cu-bar justify-end">
+            <view class="action" bindtap="hideModal" style="margin-right: 50rpx;margin-bottom: 30rpx;">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-white flex justify-between flex-direction align-center margin-top" style="height: 200rpx;">
+            <input placeholder="输入短信验证码" placeholder-style="color:#fff" model:value="{{checkText}}" style="background:#fdc5c5;border-radius: 40rpx;height: 50%;width: 70%"></input>
+
+            <button class="cu-btn round bg-red shadow margin-top" style="width: 35%" bind:tap="sub">
+                确认开通
+            </button>
+        </view>
+    </view>
+</view>
+
+<view class="cu-modal {{modalName==='DialogModal5'?'show':''}}">
+    <view style="background-repeat: no-repeat;background-size: 100% 100%;background-image: url('https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/live//1608018398176.png');position: relative;display: inline-block;vertical-align: middle;margin-left: auto;margin-right: auto;width: 550rpx;height: 620rpx;max-width: 100%;border-radius: 10rpx;overflow: hidden;">
+
+
+        <view class="cu-bar justify-end">
+            <view class="action" bindtap="hideModal" style="margin-right: 50rpx;margin-top: 90rpx">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-white flex justify-between flex-direction align-center" style="height: 200rpx; margin-top: 100rpx">
+
+            <button class="cu-btn round bg-red shadow margin-top" style="width: 35%" bind:tap="hideModal">
+                确定
+            </button>
+        </view>
+    </view>
+</view>

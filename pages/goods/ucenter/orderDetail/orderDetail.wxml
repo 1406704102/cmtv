@@ -1,0 +1,123 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">订单详情</view>
+</cu-custom>
+<view class="container">
+    <view class="order-info">
+        <view class="item">下单时间：{{orderInfo.addTime}}</view>
+        <view class="item">订单编号：{{orderInfo.orderSn}}</view>
+        <view class="item">订单留言：{{orderInfo.message}}</view>
+        <view class="item-c">
+            <view style="display: flex;">
+                <view>实付：</view>
+                <view wx:if="{{orderInfo.actualPrice>0}}">￥{{orderInfo.actualPrice}}</view>
+                <view style="margin-left: 8rpx;margin-right: 8rpx;"
+                      wx:if="{{orderInfo.actualPrice>0&&orderInfo.cmb>0}}">+
+                </view>
+                <view wx:if="{{orderInfo.cmb>0}}">{{orderInfo.cmb}}草莓币</view>
+            </view>
+            <view class="r">
+                <!--        <view class="btn active" bindtap="cancelOrder" wx:if="{{handleOption.cancel}}">取消订单</view>-->
+                <view class="btn active" bindtap="payOrder" wx:if="{{handleOption.pay}}">去付款</view>
+                <view class="btn active" bindtap="confirmOrder" wx:if="{{handleOption.confirm}}">确认收货</view>
+                <!--        <view class="btn active" bindtap="deleteOrder" wx:if="{{handleOption.delete}}">删除订单</view>-->
+                <!--        <view class="btn active" bindtap="refundOrder" wx:if="{{handleOption.refund}}">申请退款</view>-->
+                <!--        <view class="btn active" bindtap="aftersaleOrder" wx:if="{{handleOption.aftersale}}">申请售后</view>-->
+            </view>
+        </view>
+    </view>
+
+    <view class="order-goods">
+        <view class="h">
+            <view class="label">商品信息</view>
+            <view class="status">{{orderInfo.orderStatusText}}</view>
+        </view>
+        <view class="goods">
+            <view class="item" wx:for="{{orderGoods}}" wx:key="id">
+                <view class="img">
+                    <image src="{{item.picUrl}}"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name">{{item.goodsName}}</text>
+                        <text class="number">x{{item.number}}</text>
+                    </view>
+                    <view class="attr" wx:if="{{orderInfo.couponCode === null || orderInfo.couponCode === ''}}">
+                        {{item.specifications}}
+                    </view>
+                    <view class="text-bold margin-top-sm margin-bottom-sm text-F86564 text-df" wx:else
+                          bind:tap="copyCode">
+                        <view>兑换码【点击复制】：</view>
+                        <view>
+                            <text selectable="true">{{orderInfo.couponCode}}</text>
+                        </view>
+                    </view>
+                    <view style="display: flex;">
+                        <view>实付：</view>
+                        <view wx:if="{{item.price>0}}">￥{{item.price}}</view>
+                        <view style="margin-left: 8rpx;margin-right: 8rpx;"
+                              wx:if="{{orderInfo.actualPrice>0&&orderInfo.cmb>0}}">+
+                        </view>
+                        <view wx:if="{{orderInfo.cmb>0}}">{{orderInfo.cmb/item.number}}草莓币</view>
+                    </view>
+                    <!--          <view class="price">￥{{item.price}} + {{orderInfo.cmb/item.number}} 草莓币</view>-->
+                    <!--          <view class="price">{{orderInfo.cmb/item.number}} 草莓币</view>-->
+                    <!--          <view class="btn active" wx:if="{{handleOption.comment && (item.comment == 0)}}">-->
+                    <!--            <navigator url="../../commentPost/commentPost?orderId={{item.orderId}}&&valueId={{item.goodsId}}&type=0">去评价</navigator>-->
+                    <!--          </view>-->
+                    <!--          <view class="btn active" wx:if="{{handleOption.rebuy}}">-->
+                    <!--            <navigator url="../../goods/goods?id={{item.goodsId}}">再次购买</navigator>-->
+                    <!--          </view>-->
+                </view>
+            </view>
+        </view>
+
+        <view class="order-bottom">
+            <view class="address">
+                <view class="t">
+                    <text class="name">{{orderInfo.consignee}}</text>
+                    <text class="mobile">{{orderInfo.mobile}}</text>
+                </view>
+                <view class="b">{{orderInfo.address}}</view>
+            </view>
+            <!--      <view class="total">-->
+            <!--        <view class="t">-->
+            <!--          <text class="label">商品合计：</text>-->
+            <!--          <text class="txt">￥{{orderInfo.goodsPrice}}</text>-->
+            <!--        </view>-->
+            <!--        <view class="t">-->
+            <!--          <text class="label">运费：</text>-->
+            <!--          <text class="txt">￥{{orderInfo.freightPrice}}</text>-->
+            <!--        </view>-->
+            <!--        <view class="t">-->
+            <!--          <text class="label">优惠：</text>-->
+            <!--          <text class="txt">￥-{{orderInfo.couponPrice}}</text>-->
+            <!--        </view>-->
+            <!--      </view>-->
+            <view class="pay-fee" style="display:flex;">
+                <view>实付：</view>
+                <view wx:if="{{orderInfo.actualPrice>0}}">￥{{orderInfo.actualPrice}}</view>
+                <view style="margin-left: 8rpx;margin-right: 8rpx;"
+                      wx:if="{{orderInfo.actualPrice>0&&orderInfo.cmb>0}}">+
+                </view>
+                <view wx:if="{{orderInfo.cmb>0}}">{{orderInfo.cmb}}草莓币</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="order-express" bindtap="expandDetail" wx:if="{{ orderInfo.expNo }}">
+        <view class="order-express">
+            <view class="title">
+                <view class="t">快递公司：{{orderInfo.expName}}</view>
+                <view class="b">物流单号：{{orderInfo.expNo}}</view>
+            </view>
+            <van-icon class="ti" name="arrow"/>
+        </view>
+        <view class="traces" wx:for="{{expressInfo.Traces}}" wx:key="item" wx:for-item="iitem" wx:if="{{ flag }}">
+            <view class="trace">
+                <view class="acceptStation">{{iitem.AcceptStation}}</view>
+                <view class="acceptTime">{{iitem.AcceptTime}}</view>
+            </view>
+        </view>
+    </view>
+</view>

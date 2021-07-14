@@ -1,0 +1,46 @@
+/* pages/ring/custom/index.wxss */
+page{
+    background: #FAF8F9;
+}
+.body{
+    padding: 30rpx;
+}
+.body image{
+    width:35rpx;
+    height:35rpx;
+    margin-right: 10rpx;
+}
+.input {
+    margin-top: 10rpx;
+    background: #fff;
+    height: 100rpx;
+    box-shadow: 0 4rpx 7rpx 3rpx rgba(213, 213, 213, 0.5);
+    border-radius: 10rpx;
+    padding-left: 30rpx;
+}
+.textarea{
+    margin-top: 10rpx;
+    background: #fff;
+    height: 300rpx;
+    padding: 30rpx;
+    width: 100%;
+    box-shadow: 0 4rpx 7rpx 3rpx rgba(213, 213, 213, 0.5);
+    border-radius: 10rpx;
+}
+.ph {
+    font-size: 35rpx;
+    color: #c6c6c6;
+}
+.btn {
+    margin-top: 30rpx;
+    font-weight: bold;
+    border-radius: 50rpx;
+}
+.tips {
+    margin-top: 30rpx;
+    width: 100%;
+    border: grey 2rpx solid;
+    border-radius: 10rpx;
+    font-size: 35rpx;
+    padding: 10rpx;
+}

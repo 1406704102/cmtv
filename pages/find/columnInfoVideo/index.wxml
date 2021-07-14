@@ -1,0 +1,7 @@
+<cu-custom iconColor="white" isBack="{{true}}">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<video src="{{videoUrl}}" autoplay="{{true}}" object-fit="contain" loop="{{true}}"
+        enable-auto-rotation="{{false}}">
+</video>

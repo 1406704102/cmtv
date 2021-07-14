@@ -1,0 +1,34 @@
+/* pages/active/detailTalk/index.wxss */
+page{
+    background: #F2F2F3;
+}
+.view {
+    width: 750rpx;
+    height: 140rpx;
+    background-size: 100% 103%;
+    background-image: url('http://cmtv.xmay.cc/image/live/bg_03.png')
+}
+.cap{
+    width: 80rpx;
+    height: 80rpx;
+}
+.icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+.icon2 {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+
+}
+.text-F86564{
+    color: #F86564;
+}
+.page-fix{
+    position: fixed;
+}
+.line-gray2 {
+    border-color: #F2F2F3;
+}

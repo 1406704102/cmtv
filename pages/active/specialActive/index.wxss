@@ -1,0 +1,69 @@
+/* pages/active/specialActive/index.wxss */
+.view {
+    width: 750rpx;
+    height: 1035rpx;
+    background-size: 100%;
+    background-image: url('http://cmtv.xmay.cc/image/live/first-bg_02.png');
+    background-repeat: no-repeat;
+}
+
+image {
+    position: relative;
+    top: 0;
+    width: 690rpx;
+    height: 1035rpx;
+}
+
+video {
+    position: relative;
+    width: 600rpx;
+    height: 337.5rpx;
+}
+page{
+    background: #fff;
+}
+
+.text-F86564 {
+    color: #F86564;
+}
+.text-0090a1 {
+    color: #0090a1;
+}
+.bg-428597{
+    background: #0090a1;
+}
+.bg-fcd847{
+    background: #fcd847;
+}
+.bg-69dd96{
+    background: #69dd96;
+}
+.border-F86564{
+    border: #F86564 1px solid
+}
+.border-428597{
+    border: #0090a1 1px solid
+}
+.type-bar{
+    width: 100%;
+    height: 65rpx;
+    border-bottom: rgba(199, 199, 199, 0.26) 1px solid;
+    display: flex;
+    justify-content: start;
+    padding-left: 20rpx;
+}
+.type-bar-image{
+    width: 35rpx;
+    height: 35rpx;
+}
+.icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+.icon2 {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+
+}

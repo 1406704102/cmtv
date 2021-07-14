@@ -1,0 +1,92 @@
+/* pages/ring/home/index.wxss */
+page{
+    background: white;
+}
+/* zmui-banner */
+.zmui-banner {
+    padding-top: 30rpx
+}
+
+.zmui-banner-swiper {
+    height: 306rpx !important;
+    background: #FFFFFF;
+}
+
+.zmui-banner-swiper .zmui-swiper-li {
+    width: 710rpx !important;
+    box-sizing: border-box;
+    padding: 0 10rpx;
+    left: 20rpx;
+}
+
+.zmui-banner-swiper .zmui-swiper-li .zmui-swiper-item {
+    width: 100%;
+    display: block;
+    height: 100%;
+    border-radius: 30rpx;
+    transition: all 0.2s ease-in 0s;
+    overflow: hidden;
+}
+
+.zmui-swiper-item image {
+    width: 710rpx;
+    height: 310rpx;
+}
+
+.zmui-banner-swiper .wx-swiper-dot {
+    width: 8rpx;
+    height: 8rpx;
+    display: inline-flex;
+    background: none;
+    justify-content: space-between;
+}
+
+.zmui-banner-swiper .wx-swiper-dot::before {
+    content: '';
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.zmui-banner-swiper .wx-swiper-dot-active::before {
+    background: #fff;
+}
+
+.zmui-banner-swiper .wx-swiper-dot.wx-swiper-dot-active {
+    width: 16rpx;
+}
+
+/* zmui-bar-ul */
+.zmui-bar-ul {
+    padding-top: 40rpx;
+    white-space: nowrap;
+    padding-left: 30rpx;
+    height: 110rpx;
+    display: flex;
+}
+
+.zmui-bar-li {
+    position: relative;
+    padding-top: 10rpx;
+    padding-right: 50rpx;
+    font-size: 26rpx;
+    color: #2F2F2F;
+}
+
+.zmui-bar-on {
+    position: relative;
+    padding-top: 0;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #2F2F2F;
+}
+
+.zmui-bar-li-img {
+    position: absolute;
+    left: 50%;
+    top: 50rpx;
+    transform: translateX(-130%);
+    width: 30rpx;
+    height: 17rpx;
+}

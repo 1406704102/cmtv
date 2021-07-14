@@ -1,0 +1,71 @@
+<!--<cu-custom isBack="{{true}}" iconColor="white">-->
+<!--    <view slot="backText" class="text-white">返回</view>-->
+<!--    <view slot="content" class="text-white">{{name}}</view>-->
+<!--</cu-custom>-->
+<!--<cu-custom  isCustom="{{true}}" >-->
+<!--    <view slot="backText" class="text-white">返回</view>-->
+<!--    <view slot="content" class="text-white">{{name}}</view>-->
+<!--</cu-custom>-->
+<video src="{{videoUrl}}" autoplay="{{true}}" object-fit="contain"
+       show-fullscreen-btn="{{true}}" enable-auto-rotation="{{false}}">
+</video>
+        <!--<view class="float-back flex justify-center align-center">-->
+        <!--    <view class="cu-item">-->
+        <!--        <text class="cuIcon-back lg text-white margin-right-xs"></text>-->
+        <!--        <text class="text-white">返回</text>-->
+        <!--    </view>-->
+        <!--</view>-->
+<view class="videoInfo text-white " style="z-index: 100">
+    <navigator class="text-xl text-bold text-shadow" url="/pages/my/userDetail/index?id={{userInfo.id}}">
+        @{{videoInfo.userName}}
+    </navigator>
+    <view class="margin-top-xs margin-left-lg text-shadow">
+        {{videoInfo.videoSynopsis}}
+    </view>
+</view>
+<view class="videoInfo bg-black"  style="filter: blur(200rpx)">
+
+</view>
+<view class="text-xs text-white text-center">
+    <view class="float-avatar">
+        <navigator class='text-center' url="/pages/my/userDetail/index?id={{userInfo.id}}">
+            <view class="cu-avatar lg round border-F86564" style="background-image:url('{{userInfo.avatar}}')"></view>
+        </navigator>
+<!--        <view class="attention">-->
+<!--            <image src="/images/attention.png"></image>-->
+<!--        </view>-->
+    </view>
+    <view class="float-button like" bind:tap="doLike" style="z-index: 100">
+        <image src="{{likeImg}}"></image>
+        <!--        <image src="/images/liking.png"></image>-->
+        <view class="text-lg">{{likeNum}}</view>
+    </view>
+    <!--    <view class="float-button comment">-->
+    <!--        <image src="/images/share.png"></image>-->
+    <!--        <view>1123</view>-->
+    <!--    </view>-->
+    <view class="share-button" style="z-index: 100">
+        <view class="text-center" >
+<!--            "-->
+            <button class="cu-btn " open-type="share" style="background-color:transparent;">
+                            <image src="/images/share.png"></image>
+            </button>
+        </view>
+<!--        <button  open-type="share">-->
+<!--&lt;!&ndash;            4123&ndash;&gt;-->
+<!--            <image src="/images/share.png"></image>-->
+<!--        </button>-->
+
+        <view class="margin-left-sm text-lg">{{videoInfo.videoShareNum}}</view>
+    </view>
+
+    <view wx:if="{{ringId!=='0'}}" bind:tap="setVideo" data-item="{{videoInfo}}"  class="forward-btn ring" plain="true" data-video="{{videoInfo}}" >
+        <image class="forward-btn-img" src="/images/ring.png" />
+        <view class="text-white text-shadow">{{videoInfo.videoTypeName}}</view>
+    </view>
+
+
+    <!--    <button open-type="share">-->
+    <!--        1&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+    <!--    </button>-->
+</view>

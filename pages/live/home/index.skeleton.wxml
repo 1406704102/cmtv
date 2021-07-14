@@ -1,0 +1,148 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/6/15 下午3:53:20 
+使用方法：
+1. 在"pages\live\home\index.wxml"中使用`include`指令引入此模板，
+2. 在"pages\live\home\index.wxss"中使用`import`指令引入"pages\live\home\index.skeleton.wxss"
+3. 书写对应的逻辑，来控制骨架屏的显示与隐藏
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<view class="sk-container">
+  <view is="colorui/components/cu-custom">
+    <view class="cu-custom custom--cu-custom" style="height:60px">
+      <view class="cu-bar custom--cu-bar fixed custom--fixed none-bg custom--none-bg text-white custom--text-white bg-img custom--bg-img sk-image" style="height:60px;padding-top:20px;background-image:url(https://jh.xmay.cc/002.jpg)">
+        <view class="content custom--content" style="top:20px">
+          <view class="sk-transparent sk-text-24-0000-292 sk-text" style="background-size: 19.5489% 1.5625rem; background-position-x: 50%;">直播</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="justify-center flex view padding-top-sm padding-bottom-sm sk-image">
+    <view class="radius" style="width: 302px;">
+      <swiper autoplay="true" circular="true" class="screen-swiper radius" duration="500" easing-function="easeOutCubic" indicator-active-color="#F86465" indicator-dots="true" interval="5000"></swiper>
+    </view>
+  </view>
+  <view>
+    <view class="bg-white">
+      <view class="type-bar" style="border: none;">
+        <view class="flex justify-center flex-direction">
+          <image class="type-bar-image sk-image"></image>
+        </view>
+        <view class="flex justify-center flex-direction margin-left-sm">
+          <view class="sk-transparent sk-text-14-2857-583 sk-text" style="background-size: 100% 0.9625rem;">原创节目</view>
+        </view>
+      </view>
+      <navigator class="shadow bg-white margin-sm flex justify-between radius-l border-fdd1d1" style="padding: 15px 14px 18px; border: none;">
+        <view class="flex justify-start">
+          <view class="text-center">
+            <view class="cu-avatar xl round border-F86564" style="background-image: url(&quot;https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKerhicfTMvNOllxCkXWdicicd3xwiaJxnFWticT3Fab7vDPGibmibGwN0a5GibS98fqJ1WM8U1E2iagFJQfSg/132&quot;); border: none;">
+              <view>
+                <image style="width: 14px;height: 14px;margin-top: 46px;margin-left: 46px;" class="sk-image"></image>
+              </view>
+            </view>
+          </view>
+          <view class="text-left justify-between flex flex-direction padding-left-sm margin-top-xs" style="height: 46px;width: 140px;">
+            <view class="flex justify-start text-lg sk-transparent sk-text-14-2857-204 sk-text" style="background-size: 39.7964% 1.1375rem;">%%%🙄
+            </view>
+            <view class="text-sm margin-top-xs sk-transparent sk-text-14-2857-112 sk-text" style="color: #6a6a6a">直播名称直播名称直播名称直播名称直播名称直播名称</view>
+            <view class="text-xs text-gray sk-transparent sk-text-14-2857-39 sk-text" style="background-size: 28.9773% 0.7rem;">1,241 订阅</view>
+          </view>
+        </view>
+        <view class="text-center flex justify-between flex-direction" style="margin-top: 16px">
+          <view><button class="cu-btn bg-F86564 shadow text-white sk-transparent sk-button sk-pseudo sk-pseudo-circle" data-item="[object Object]" data-target="DialogModal2">观看直播
+                    </button></view>
+          <view class="text-sm text-center text-gray flex justify-center" style="margin-top: 2px">
+            <view class="cu-item justify-center flex-direction flex"><text class="cuIcon-video sl text-F86564 sk-pseudo sk-pseudo-circle"></text></view>
+            <view class="justify-center text-xs flex-direction flex margin-left-xs text-F86564 sk-transparent sk-text-14-2857-536 sk-text" style="background-size: 100% 0.7rem; background-position-x: 50%;">
+              正在直播
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator class="shadow bg-white margin-sm flex justify-between radius-l border-fdd1d1" style="padding: 15px 14px 18px; border: none;">
+        <view class="flex justify-start">
+          <view class="text-center">
+            <view class="cu-avatar xl round border-428597" style="background-image: url(&quot;https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKerhicfTMvNOllxCkXWdicicd3xwiaJxnFWticT3Fab7vDPGibmibGwN0a5GibWtnYeQRRSja62c8Z52WiaIg/132&quot;); border: none;"></view>
+          </view>
+          <view class="text-left justify-between flex flex-direction padding-left-sm margin-top-xs" style="height: 46px;width: 140px;">
+            <view class="flex justify-start text-lg sk-transparent sk-text-14-2857-598 sk-text" style="background-size: 16.4418% 1.1375rem;">$$$
+            </view>
+            <view class="text-sm margin-top-xs sk-transparent sk-text-14-2857-378 sk-text" style="color: rgb(106, 106, 106); background-size: 48.8636% 0.875rem;">zz3333zz3333</view>
+            <view class="text-xs text-gray sk-transparent sk-text-14-2857-487 sk-text" style="background-size: 28.9773% 0.7rem;">1,241 订阅</view>
+          </view>
+        </view>
+        <view class="text-center flex justify-between flex-direction" style="margin-top: 16px">
+          <view><button class="cu-btn bg-428597 shadow text-white sk-transparent sk-button sk-pseudo sk-pseudo-circle" data-replay="null" data-target="DialogModal3">直播回放
+                    </button></view>
+          <view class="text-xs text-center text-gray flex justify-around" style="margin-top: 2px">
+            <view class="sk-transparent sk-text-14-2857-283 sk-text" style="background-size: 100% 0.7rem; background-position-x: 50%;">
+              6月5日 11:56 开播
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator class="shadow bg-white margin-sm flex justify-between radius-l" style="padding: 15px 14px 18px 14px;">
+        <view class="flex justify-start">
+          <view class="text-center">
+            <view class="cu-avatar xl round border-428597" style="background-image: url(&quot;https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM7LO130AicPQg2pIKaiaujMtFEaD4IZJbFPY96qySfnnAoq0jKVs7wDBskaRic6R9p3K1cTYibC5pvcAQ/132&quot;); border: none;"></view>
+          </view>
+          <view class="text-left justify-between flex flex-direction padding-left-sm margin-top-xs" style="height: 46px;width: 140px;">
+            <view class="flex justify-start text-lg sk-transparent sk-text-14-2857-50 sk-text" style="background-size: 19.697% 1.1375rem;">老邓
+            </view>
+            <view class="text-sm margin-top-xs sk-transparent sk-text-14-2857-519 sk-text" style="color: rgb(106, 106, 106); background-size: 21.0582% 0.875rem;">..........</view>
+            <view class="text-xs text-gray sk-transparent sk-text-14-2857-726 sk-text" style="background-size: 17.1757% 0.7rem;">0 订阅</view>
+          </view>
+        </view>
+        <view class="text-center flex justify-between flex-direction" style="margin-top: 16px">
+          <view><button class="cu-btn bg-428597 shadow text-white sk-transparent sk-button sk-pseudo sk-pseudo-circle">暂无直播
+                    </button></view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-modal sk-pseudo sk-pseudo-circle">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content" style="height: 29px">
+          <image style="height: 29px;width: 29px;" class="sk-image"></image>
+        </view>
+        <view class="action"><text class="cuIcon-close text-red sk-pseudo sk-pseudo-circle"></text></view>
+      </view>
+      <view class="padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+        <view class="sk-transparent sk-text-14-2857-987 sk-text" style="background-size: 84.3882% 1.1375rem; background-position-x: 50%;">
+          小程序观看或者复制
+        </view>
+        <view class="text-red padding-left-xs padding-right-xs sk-transparent sk-text-14-2857-367 sk-text" style="background-size: 82.535% 1.1375rem; background-position-x: 50%;">
+          快手 抖音
+        </view>
+        <view class="sk-transparent sk-text-14-2857-310 sk-text" style="background-size: 84.3882% 1.1375rem; background-position-x: 50%;">
+          直播码
+        </view>
+      </view>
+      <view class="cu-bar bg-white padding">
+        <navigator class="cu-btn round lines-red shadow sk-transparent sk-text-0-0000-54 sk-text sk-pseudo sk-pseudo-circle" style="width: 45%;">
+          小程序观看
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="cu-modal sk-pseudo sk-pseudo-circle">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content" style="height: 29px">
+          <image style="height: 29px;width: 29px;" class="sk-image"></image>
+        </view>
+        <view class="action"><text class="cuIcon-close text-red sk-pseudo sk-pseudo-circle"></text></view>
+      </view>
+      <view class="padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+        <view class="sk-transparent sk-text-14-2857-911 sk-text" style="background-size: 84.3882% 1.1375rem; background-position-x: 50%;">
+          回放生成中...
+        </view>
+      </view>
+      <view class="cu-bar bg-white padding"><button class="cu-btn round lines-red shadow sk-transparent sk-button sk-pseudo sk-pseudo-circle" style="width: 45%;">
+                取消
+                </button><button class="cu-btn round bg-red shadow sk-transparent sk-button sk-pseudo sk-pseudo-circle" style="width: 45%;">确定
+            </button></view>
+    </view>
+  </view>
+</view>

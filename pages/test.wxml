@@ -1,0 +1,7 @@
+<swiper class="video-swiper" circular="{{circular}}" vertical bind:change="change" current="{{current}}">
+    <swiper-item wx:for="{{videoList}}" wx:key="*this" class="justify-center flex flex-direction padding-top-xxl">
+        <video id="video_{{index}}" class="video_item"  enable-play-gesture enable-progress-gesture="{{true}}" show-center-play-btn="{{false}}" controls="{{true}}" show-play-btn="{{false}}" show-fullscreen-btn="{{true}}"
+               src="{{item.videoUrl}}" object-fit="{{item.objectFit || 'contain'}}">
+        </video>
+    </swiper-item>
+</swiper>

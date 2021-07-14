@@ -1,0 +1,5 @@
+/* pages/active/allActive/index.wxss */
+image {
+    width: 160rpx;
+    height: 160rpx;
+}

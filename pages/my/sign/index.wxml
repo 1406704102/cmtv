@@ -1,0 +1,21 @@
+<cu-custom  isHome="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="content" class="text-white">活动报名</view>
+</cu-custom>
+<image src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/detail//1599896875732.jpg" mode="widthFix" style="width: 750rpx;"></image>
+<view class="cu-form-group margin-top">
+    <view class="title">姓名</view>
+    <input placeholder="请填写姓名" model:value="{{name}}"></input>
+</view>
+<view class="cu-form-group margin-top">
+    <view class="title">学校</view>
+    <input placeholder="请填写学校" model:value="{{school}}"></input>
+</view>
+<view class="cu-form-group margin-top">
+    <view class="title">系别</view>
+    <input placeholder="请填写系别" model:value="{{major}}"></input>
+</view>
+<view class="cu-form-group margin-top">
+    <view class="title">班级</view>
+    <input placeholder="请填写班级" model:value="{{class}}"></input>
+</view>
+<button class="bg-F86564 text-white margin margin-top-150" type="info" lang="zh_CN" bind:tap="sign" block>报名</button>

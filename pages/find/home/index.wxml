@@ -1,0 +1,159 @@
+<cu-custom bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png">
+    <view slot="content" class="text-white">草莓台</view>
+</cu-custom>
+<include src="./index.skeleton.wxml" wx:if="{{unReady}}"/>
+
+<view class="justify-center flex view margin-top-sm">
+    <view style="width: 710rpx;" class="radius">
+        <swiper class="screen-swiper radius" easing-function="easeOutCubic" indicator-dots="true" circular="true"
+                autoplay="true" interval="5000" duration="500" indicator-active-color="#F86564">
+            <swiper-item wx:for="{{swiperList}}" wx:key class="radius">
+                <image src="{{item.bannerUrl}}" mode="aspectFill" class="radius"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
+        <!--<view class="margin-tb-sm text-center flex justify-end padding-right">-->
+        <!--    <button class="cu-btn sm round line shadow ">-->
+        <!--        <view class="flex flex-direction justify-center margin-right-xs text-lg" style="padding-top: 1rpx">-->
+        <!--            <view class="cu-item">-->
+        <!--                <text class="cuIcon-refresh text-black"></text>-->
+        <!--            </view>-->
+        <!--        </view>-->
+        <!--        换一换-->
+        <!--    </button>-->
+        <!--</view>-->
+<view class="padding-top-sm flex justify-start flex-wrap" style="width: 750rpx;">
+    <!--    <txv-video vid="l3101s57slz" playerid="123154" style="width: 100%;height: 100%;"></txv-video>-->
+
+    <view wx:for="{{livingData}}" wx:key="{{item.id}}"
+          class="bg-white margin-bottom-sm item shadow radius" style="margin-left: 21.5rpx" catch:tap="showModal"
+          data-target="DialogModal2" data-item="{{item}}">
+        <view class="item-image" style="background-image: url('{{item.livePic}}')">
+            <view class="flex justify-start padding-left-xs text-white text-sm"
+                  style="height: 40rpx;background-image: linear-gradient(0deg, rgba(39,41,46,0.53), rgba(63,62,62,0.39), rgba(88,83,78,0.17), rgba(215,215,215,0))">
+                <view class="flex justify-end flex-direction">
+                    {{item.userName}}
+                </view>
+            </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-top-18 padding-left-xs padding-bottom-xs padding-right-xs">
+            <view class=" text-black text-cut-2 text-shadow">
+                {{item.liveName}}
+            </view>
+            <view class="text-26 flex justify-between text-gray">
+                <view class="text-center radius flex justify-center text-red "
+                      style="border: 1rpx red solid;width: 80rpx;height: 35rpx;">
+                    <view class="flex flex-direction justify-center">
+                        <view class="cu-item">
+                            <text class="cuIcon-videofill lg text-red"></text>
+                        </view>
+                    </view>
+                    <view class="flex flex-direction justify-center text-xs" style="margin-right: 5rpx">
+                        直播
+                    </view>
+                </view>
+                <view class="flex justify-between">
+                    <view class="flex flex-direction justify-center margin-right-xs">
+                        <view class="cu-item">
+                            <text class="cuIcon-like text-gray"></text>
+                        </view>
+                    </view>
+                    <view class="flex flex-direction justify-center margin-right-xs">
+                        {{item.fansNum}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <navigator
+            wx:for="{{videoData}}" wx:key="{{item.id}}"
+            url="/pages/find/videoDetail/index?id={{item.id}}&url={{item.videoUrl}}&name={{item.videoName}}"
+            class="bg-white margin-bottom-sm  item shadow radius" style="margin-left: 21.5rpx">
+        <view class="item-image" style="background-image: url('{{item.videoPic}}')">
+            <view class="flex justify-end padding-right-xs text-white text-sm"
+                  style="height:40rpx;background-image: linear-gradient(0deg, rgba(43,43,43,0.56), rgba(78,78,78,0.36), rgba(170,170,170,0.16), rgba(215,215,215,0))">
+                <view class="flex justify-end flex-direction">
+                    {{item.createTime}}
+                </view>
+            </view>
+        </view>
+        <view class="bottom flex flex-direction justify-between padding-top-18 padding-left-xs padding-bottom-xs padding-right-xs">
+            <view class="text-black text-cut-2  text-shadow">
+                {{item.videoName}}
+            </view>
+            <view class="text-26 flex justify-between text-gray">
+                <view class="text-center radius flex justify-center ">
+                    <view class="flex flex-direction justify-around margin-right-xs">
+                        <view class="cu-item">
+                            <text class="cuIcon-videofill lg"></text>
+                        </view>
+                    </view>
+                    <view class="flex flex-direction justify-center">
+                        {{item.videoViewNum}}
+                    </view>
+                </view>
+                <view class="flex justify-between">
+                    <view class="flex flex-direction justify-around margin-right-xs">
+                        <view class="cu-item">
+                            <text class="cuIcon-like text-gray"></text>
+                        </view>
+                    </view>
+                    <view class="flex flex-direction justify-center margin-right-xs">
+                        {{item.videoLikeNum}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </navigator>
+
+    <view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 750rpx"></view>
+</view>
+
+<view class="cu-modal {{modalName==='DialogModal2'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view wx:if="{{clickItem.liveWxId}}">
+                小程序观看或者
+            </view>
+            <view>
+                复制
+            </view>
+            <view class="text-red padding-left-xs padding-right-xs">
+                {{clickItem.liveKUrl !== null ? '快手' : '' }}
+                {{clickItem.liveDUrl !== null ? '抖音' : '' }}
+            </view>
+            <view>
+                直播码
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <navigator wx:if="{{clickItem.liveWxId}}" class="cu-btn round lines-red shadow" style="width: 45%;"
+                       url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{clickItem.liveWxId}}">
+                <!--            <button class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">-->
+                小程序观看
+                <!--            </button>-->
+            </navigator>
+            <button wx:else class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">
+                取消
+            </button>
+            <button wx:if="{{clickItem.liveKUrl}}" class="cu-btn round bg-red shadow" style="width: 45%;"
+                    bindtap="copyUrl" data-type="k">
+                复制直播码
+            </button>
+            <button class="cu-btn round bg-red shadow" wx:if="{{clickItem.liveDUrl}}" style="width: 45%;"
+                    bindtap="copyUrl" data-type="d">复制直播码
+            </button>
+        </view>
+    </view>
+</view>

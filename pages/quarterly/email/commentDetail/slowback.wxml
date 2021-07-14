@@ -1,0 +1,32 @@
+<!--pages/slowback/slowback.wxml-->
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+  <view slot="backText" class="text-white">返回</view>
+  <view slot="content" class="text-white"></view>
+</cu-custom>
+<view class="zmui-container">
+  <view class="zmui-title">
+    <view class="zmui-title-icon">
+      <image class="zmui-title-icon-img" src="../../../../images/icon-alt.png"></image>
+    </view>
+    <view class="zmui-title-name text-cut-1">{{comment.email.emailContent}}</view>
+  </view>
+  <view class="zmui-writer">
+    <view class="zmui-user-infos">
+      <view class="zmui-user-name">{{comment.email.authorName}} 收</view>
+    </view>
+
+    <view class="zmui-content">
+      <text>{{comment.commentsContent}}</text>
+    </view>
+
+    <view class="zmui-user-to">
+      <view class="zmui-user-width"></view>
+      <view class="zmui-user-to-name">{{comment.userName}}</view>
+    </view>
+    <view class="zmui-user-time">{{comment.createTime}}</view>
+  </view>
+
+  <view class="zmui-writer-btn flex justify-center">
+    <view class="zmui-writer-button flex justify-center" bindtap="goback">返 回</view>
+  </view>
+</view>

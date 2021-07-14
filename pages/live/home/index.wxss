@@ -1,0 +1,71 @@
+@import 'index.skeleton.wxss';
+page{
+    background: white;
+}
+.tower-swiper .tower-item {
+    transform: scale(calc(0.5 + var(--index) / 10));
+    margin-left: calc(var(--left) * 100rpx - 150rpx);
+    z-index: var(--index);
+}
+.view {
+    width: 750rpx;
+    background-size: 100% 100%;
+    background-image: url('http://cmtv.xmay.cc/image/live/first-bg_02.png')
+}
+.text-F86564 {
+    color: #F86564;
+}
+.text-0090a1 {
+    color: #0090a1;
+}
+.bg-428597{
+    background: #0090a1;
+}
+.bg-fcd847{
+    background: #fcd847;
+}
+.bg-69dd96{
+    background: #69dd96;
+}
+.border-F86564{
+    border: #F86564 1px solid
+}
+.border-428597{
+    border: #0090a1 1px solid
+}
+.type-bar{
+    width: 100%;
+    height: 65rpx;
+    border-bottom: rgba(199, 199, 199, 0.26) 1px solid;
+    display: flex;
+    justify-content: start;
+    padding-left: 20rpx;
+}
+.type-bar-image{
+    width: 35rpx;
+    height: 35rpx;
+}
+.ps{
+    background: rgba(213, 213, 213, 0.2);
+
+    border-bottom: rgba(199, 199, 199, 0.26) 1px solid;
+    border-top: rgba(199, 199, 199, 0.26) 1px solid;
+}
+.top {
+    height: 50rpx;
+    width: 50rpx;
+}
+.top image{
+    width: 100%;
+    height: 100%;
+}
+.test{
+    position:fixed;
+    right: 100rpx;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    bottom: 100rpx;
+    height: 100rpx;
+    width: 100rpx;
+}

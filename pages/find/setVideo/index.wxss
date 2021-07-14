@@ -1,0 +1,44 @@
+video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+}
+.view-bg{
+    background: #ee6161;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+.icon {
+    width: 200rpx;
+    height: 200rpx;
+}
+.icon2 {
+    width: 50rpx;
+    height: 50rpx;
+}
+.icon3{
+    width: 100rpx;
+    height: 100rpx;
+}
+.item-view {
+    width: 150rpx;
+}
+.view-b{
+    position: fixed;
+    width: 750rpx;
+    bottom: 150rpx;
+}
+input::-webkit-input-placeholder{
+    color:white;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:white;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:white;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:white;
+}

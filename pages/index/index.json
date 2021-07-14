@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "live": "/pages/live/home/index",
+    "find": "/tabbar/find/home/index",
+    "active": "/tabbar/active/home/index",
+    "my": "/tabbar/my/home/index"
+  }
+}

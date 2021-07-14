@@ -1,0 +1,306 @@
+<view class="{{modalName === 'Image'?'page-fix':''}}">
+
+    <cu-custom wx:if="{{share === 0}}" isBack="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+        <view slot="backText" class="text-white">返回</view>
+        <view slot="content" class="text-white">{{active.activeName}}</view>
+    </cu-custom>
+    <cu-custom wx:if="{{share === 1}}" isHome="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+        <view slot="backText" class="text-white">主页</view>
+        <view slot="content" class="text-white">{{active.activeName}}</view>
+    </cu-custom>
+
+    <view class="view padding-sm flex justify-start">
+        <view>
+            <image class="cap" src="/images/active/cap.png"></image>
+        </view>
+        <view style="height: 80rpx" class="text-white flex flex-direction justify-between">
+            <view class="flex justify-start align-center text-26">
+                <view class="cu-item">
+                    <text class="cuIcon-title sm text-white"></text>
+                </view>
+                <view>
+                    {{active.startTime}} - {{active.endTime}}
+                </view>
+            </view>
+            <view wx:if="{{active.activeStatic === '0'}}" class="flex justify-start align-center">
+                <view class="cu-item">
+                    <text class="cuIcon-title sm text-white"></text>
+                </view>
+                <view>
+                    活动已结束
+                </view>
+            </view>
+            <view wx:if="{{active.activeStatic === '1'}}" class="flex justify-start align-center">
+                <view class="cu-item">
+                    <text class="cuIcon-title sm text-white"></text>
+                </view>
+                <view>
+                    活动未开始
+                </view>
+            </view>
+            <view wx:if="{{active.activeStatic === '2'}}" class="flex justify-start align-center">
+                <view class="cu-item">
+                    <text class="cuIcon-title sm text-white"></text>
+                </view>
+                <view>
+                    活动进行中
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="margin-lr-sm bg-white radius" style="margin-top: -25rpx;width: 710rpx">
+        <view class=" text-center">
+            <view class="flex justify-between">
+                <view wx:if="{{active.activeStatic === '2'}}">
+                    <image src="/images/active/joining.png" style="width: 150rpx; height: 150rpx"></image>
+                </view>
+                <view wx:if="{{active.activeStatic === '1'}}">
+                    <image src="/images/active/unStart.png" style="width: 150rpx; height: 150rpx"></image>
+                </view>
+                <view wx:if="{{active.activeStatic === '0'}}">
+                    <image wx:if="{{join === '0'}}" src="/images/active/unFilsh.png"
+                           style="width: 150rpx; height: 150rpx"></image>
+                    <image wx:if="{{activeJoin.finished === '0'}}" src="/images/active/unFilsh.png"
+                           style="width: 150rpx; height: 150rpx"></image>
+                    <image wx:if="{{activeJoin.finished === '1'}}" src="/images/active/filsh.png"
+                           style="width: 150rpx; height: 150rpx"></image>
+                </view>
+                <view class="margin-top-lg">
+                    <image src="/images/active/activeIcon.png" style="width: 200rpx; height: 200rpx"></image>
+                </view>
+                <view style="width: 150rpx; height: 150rpx">
+                </view>
+            </view>
+            <view class=" margin-top-xs">
+                {{active.activeName}}
+            </view>
+            <view class="margin-top-sm text-xxl text-bold">
+                {{active.activeSubtitle}}
+            </view>
+            <view class="margin-top-sm flex justify-center">
+                <view>
+                    已有
+                </view>
+                <view style="color: #F86564" class="justify-center flex flex-direction">
+                    {{active.joinNum}}
+                </view>
+                <view>
+                    人报名参加
+                </view>
+            </view>
+            <view class="text-gray text-sm margin-top-xs">
+                人数限制:{{active.joinMax}}人
+            </view>
+            <view style="border-bottom: #F2F2F3 1rpx solid" class="flex justify-around margin-top-sm padding-bottom-sm">
+                <view style="width: 355rpx">
+                    <view>
+                        草莓币奖励
+                    </view>
+                    <view class="text-xxl" style="color: #F86564">
+                        {{active.basicReward}}
+                    </view>
+                </view>
+                <view style="border-left: #F2F2F3 1rpx solid;width: 355rpx;">
+                    <view>特别奖励</view>
+                    <view class="text-xxl" style="color: #F86564">
+                        {{active.specialReward}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="padding-sm" style="border-bottom:#F2F2F3 1rpx solid ">
+            <view class="flex justify-start" wx:if="{{active.activeStatic !== '1'}}">
+                <view class="cu-item flex flex-direction justify-center">
+                    <text class="cuIcon-title sm" style="color: #F86564"></text>
+                </view>
+                <view>
+                    已参加粉丝
+                </view>
+            </view>
+            <view catch:tap="joinList" class="margin-top-sm flex justify-start align-center"
+                  wx:if="{{active.activeStatic !== '1'}}">
+                <view wx:for="{{joinList}}" class="margin-left-xs" wx:key="{{item.id}}">
+                    <image src="{{item.userAvatar}}" class="icon">
+                    </image>
+                </view>
+                <view class="cu-item flex flex-direction justify-center " style="height: 108rpx">
+                    <text class="cuIcon-right lg text-gray"></text>
+                </view>
+            </view>
+
+            <view class="margin-top-sm">
+                <view wx:if="{{active.activeStatic === '2'}}">
+                    <button wx:if="{{join === '0'}}" class="bg-F86564 text-white" type="info" block catch:tap="join"
+                            data-item="{{active}}">{{btnText[0]}}
+                    </button>
+                    <view wx:else class="flex flex-direction">
+                        <navigator wx:if="{{active.attendanceTimes > nowAttTimes}}"
+                                   url="/pages/active/attTalk/index?id={{active.id}}&name={{active.activeName}}"
+                                   class=" cu-btn bg-F86564 radius-l text-white lg">{{btnText[1]}}
+                        </navigator>
+                        <button wx:else class=" cu-btn bg-F86564 radius-l text-white lg">{{btnText[2]}}</button>
+
+                    </view>
+                </view>
+                <view wx:if="{{active.activeStatic === '1'}}">
+                    <!--                <button class="bg-F86564 text-white" type="info" block>未开始</button>-->
+
+                </view>
+                <view wx:if="{{active.activeStatic === '0'}}">
+                    <!--                <button class="bg-F86564 text-white" type="info" block></button>-->
+
+                </view>
+
+            </view>
+            <view class="margin-top flex justify-between">
+                <view class="flex justify-start">
+                    <view class="cu-item flex flex-direction justify-center">
+                        <text class="cuIcon-title sm" style="color: #F86564"></text>
+                    </view>
+                    <view class="flex flex-direction justify-center">
+                        玩法简介
+                    </view>
+                </view>
+                <view>
+                    <button class="cu-btn sm round line-gray " catch:tap="showDetail" data-item="{{active}}">
+                        <view class="text-sm text-black">
+                            活动详情
+                        </view>
+                    </button>
+                </view>
+            </view>
+            <view class="margin-top-sm padding">
+                <image src="/images/active/introduction.png" style="width: 100%;height: 135rpx;">
+                </image>
+            </view>
+        </view>
+        <view style="border-bottom:#F2F2F3 1rpx solid " class="padding" wx:if="{{active.activeStatic !== '1'}}">
+            <view class="radius" style="border:#F2F2F3 1rpx solid ">
+                <view class="text-center" style="border-bottom:#F2F2F3 1rpx solid ">
+                    <view class="margin-top-sm">
+                        <image src="/images/active/hot.png" style="width: 170rpx;height:100rpx"></image>
+                    </view>
+                    <view class="text-xs text-gray margin-top-xs margin-bottom-sm">
+                        (热力值由用户近期的活跃程度决定)
+                    </view>
+                </view>
+                <navigator wx:for="{{hotList}}"
+                           url="/pages/active/attTalkList/index?userId={{item.userId}}&name={{item.userName}}&activeId={{active.id}}"
+                           wx:key="{{item.id}}" class="padding-sm flex justify-between"
+                           style="border-bottom:#F2F2F3 1rpx solid ">
+                    <view class="flex justify-start align-center">
+                        <view class="text-xl text-black">
+                            {{index+1}}
+                        </view>
+                        <view class="margin-lr-sm">
+                            <image src="{{item.userAvatar}}" class="icon2"></image>
+                        </view>
+                        <view class="text-xl text-black">
+                            {{item.userName}}
+                        </view>
+                    </view>
+                    <view class="flex justify-end align-center">
+                        <view class="text-xxl text-yellow">
+                            {{item.heat}}
+                        </view>
+                        <view class="margin-left-sm">
+                            <view class="cu-item">
+                                <text class="cuIcon-right lg text-gray"></text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+                <view class="flex justify-center margin-tb">
+                    <!--                <button class="round line-gray text-black bg-white">查看完整排行</button>-->
+                    <navigator url="/pages/active/hotList/index?id={{active.id}}&name={{active.name}}"
+                               class="cu-btn round text-black bg-white" style="border:#F2F2F3 1rpx solid ">
+                        查看完整排行
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <view class="padding" wx:if="{{active.activeStatic !== '1'}}">
+            <view class="radius" style="border:#F2F2F3 1rpx solid ">
+                <view class="padding-sm text-lg">
+                    <image src="/images/active/joinFans.png" style="width: 30rpx;height: 30rpx;"
+                           class="margin-right-xs"></image>
+                    参与用户
+                </view>
+<!--                <navigator wx:for="{{attTalkList}}"-->
+<!--                           url="/pages/active/attTalkList/index?userId={{item.userId}}&name={{item.userName}}&activeId={{active.id}}"-->
+<!--                           wx:key="{{item.id}}"-->
+                <view wx:for="{{attTalkList}}"  wx:key="{{item.id}}" style="border-top:#F2F2F3 1rpx solid "
+                      class="padding-sm flex justify-start">
+                    <view catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}">
+                        <image catch:tap="toUseTalk" data-userid="{{item.userId}}" data-name="{{item.userName}}" data-activeid="{{active.id}}" src="{{item.userAvatar}}" class="icon2"></image>
+                    </view>
+                    <view class="margin-left-sm" style="width: 550rpx;" catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}">
+                        <view class="text-xl" style="color:#00A9BD;"  catch:tap="toUseTalk" data-userid="{{item.userId}}" data-name="{{item.userName}}" data-activeid="{{active.id}}">{{item.userName}}</view>
+                        <view class="text-cut-5 margin-top-xs">{{item.attDetail}}
+                        </view>
+                        <view class="margin-top-xs" wx:if="{{item.attPic}}">
+                            <image src="{{item.attPic}}" mode="aspectFill" catch:tap='previewImg'
+                                   data-url="{{item.attPic}}"
+                                   style="width: 450rpx;height: 450rpx;border-radius: 10rpx"></image>
+                        </view>
+                        <view class="margin-top-sm flex justify-between align-center">
+                            <view class="text-sm text-gray">
+                                {{item.createTime}}
+                            </view>
+                            <view class="flex justify-end">
+                                <view catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}"
+                                           class="text-gray margin-right flex justify-start">
+                                    <image src="/images/active/replay.png" style="width: 30rpx;height: 30rpx;">
+                                    </image>
+                                    <view class="margin-left-xs text-sm">
+                                        {{item.replayNum}}
+                                    </view>
+                                </view>
+
+                                <view class="text-gray flex justify-start" catch:tap="doLike" data-item="{{item}}"
+                                      data-index="{{index}}" data-activeStatic="{{active.activeStatic}}">
+                                    <image wx:if="{{item.like===1}}" src="/images/active/liking.png"
+                                           style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                                    </image>
+                                    <image wx:else src="/images/active/unlike.png"
+                                           style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                                    </image>
+                                    <view class="margin-left-xs text-sm">
+                                        {{item.likeNum}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 690rpx"></view>
+        </view>
+
+    </view>
+
+<!--    <view class="radius-l"-->
+<!--          style="background-repeat: no-repeat;background-size: 100% 100%;height: 916rpx;width:550rpx;top: 15%;left: 100rpx;position: fixed;background-image: url('{{active.activeDetail}}')"-->
+<!--          wx:if="{{HFShow}}">-->
+<!--        <view style="width: 100%;" class="flex justify-end radius-l" catch:tap="hideHF">-->
+<!--            <view class="bg-F86564 flex justify-center align-center radius-l"-->
+<!--                  style=" width: 70rpx;height: 70rpx;opacity:0.5;">-->
+<!--                <text class="cuIcon-close lg text-white"></text>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+
+    <view class="cu-modal {{modalName=='Image'?'show':''}}" bindtap="hideModal">
+        <view class="cu-dialog">
+            <scroll-view scroll-y style="height: 900rpx">
+                <image src="{{active.activeDetail}}" mode="widthFix"></image>
+            </scroll-view>
+
+            <view class=" justify-end text-white" style="position: absolute;bottom: 20rpx;right: 20rpx">
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close lg text-F86564"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

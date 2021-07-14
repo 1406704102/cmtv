@@ -1,0 +1,107 @@
+<cu-custom wx:if="{{share === 1}}" isHome="{{true}}"  iconColor="white">
+    <view slot="backText" class="text-white">主页</view>
+    <view slot="content" class="text-white">打卡兑换草莓币</view>
+</cu-custom>
+<cu-custom wx:else isBack="{{true}}"  iconColor="white">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">打卡兑换草莓币</view>
+</cu-custom>
+<!--<view style="height:500rpx">1111</view>-->
+<!--<view>累计打卡数{{times}}</view>-->
+<!--<view>今日打卡数{{stepInfo.times}}</view>-->
+<!--<view >当前步数{{stepNum}}-->
+<!--    <input model:value="{{stepNum}}"></input>-->
+<!--</view>-->
+<!--<view>当前已兑换步数{{stepInfo.stepNum}}</view>-->
+<!--<view>当前可兑换步数{{stepNum - stepInfo.stepNum}}</view>-->
+<!--<view>今日草莓币{{stepInfo.cmb}}</view>-->
+<!--<view>我的草莓币{{userInfo.chbeanNum/100}}</view>-->
+<!--<view class="bg-blue" catch:tap="doStep">-->
+<!--    打卡-->
+<!--</view>-->
+        <!--pages/steps/steps.wxml-->
+<view class="container">
+    <view class="zmui-header">
+<!--        <view class="zmui-header-title" style="top: {{height}}px">-->
+<!--            <view class="zmui-header-title-back" bindtap="goback">-->
+<!--                <image class="zmui-header-title-img" src="../../../images/bg-steps.jpg"></image>-->
+<!--            </view>-->
+<!--            <view class="zmui-header-title-text">打卡兑换草莓币</view>-->
+<!--        </view>-->
+
+        <view class="zmui-header-ul">
+            <view class="zmui-header-li">
+                <view class="zmui-header-li-name">当前步数</view>
+                <view class="zmui-header-li-num">{{stepNum - stepInfo.stepNum < 0 ? 0 : stepNum - stepInfo.stepNum }}</view>
+            </view>
+            <view class="zmui-header-line"></view>
+            <view class="zmui-header-li">
+                <view class="zmui-header-li-name">今日草莓币</view>
+                <view class="zmui-header-li-num">{{stepInfo.cmb}}</view>
+            </view>
+            <view class="zmui-header-line"></view>
+            <navigator url="/pages/my/CHBeanLog/index?id={{userInfo.id}}" class="zmui-header-li" hover-class="none">
+                <view class="zmui-header-li-name">我的草莓币</view>
+                <view class="zmui-header-li-num">{{chbeanNum}}</view>
+            </navigator>
+        </view>
+
+        <image class="zmui-header-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/step_bg.jpg"></image>
+    </view>
+
+    <view class="zmui-content">
+        <view class="zmui-date">
+            <view class="zmui-date-ul">
+                <view class="zmui-data-li">
+                    <view class="zmui-data-text">累计打卡</view>
+                    <view class="zmui-data-num">
+                        <view class="zmui-data-number">{{times}}</view>
+                        <view class="zmui-date-unit">天</view>
+                    </view>
+                </view>
+                <view class="zmui-data-li">
+                    <view class="zmui-data-text">今日打卡</view>
+                    <view class="zmui-data-num">
+                        <view class="zmui-data-number">{{stepInfo.times}}</view>
+                        <view class="zmui-date-unit">次</view>
+                    </view>
+                </view>
+            </view>
+            <image class="zmui-date-bg" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/bg.png"></image>
+        </view>
+<!--        <input model:value="{{stepNum}}"></input>-->
+
+        <view class="zmui-btn">
+            <view class="zmui-button" bindtap="doStep">打卡</view>
+            <navigator class="zmui-button-white" url="/pages/goods/ucenter/index/index">去商城逛逛～</navigator>
+        </view>
+
+        <view class="zmui-infos">
+            <view class="zmui-infos-title">打卡说明 :</view>
+            <view class="zmui-infos-content">
+                <view class="zmui-infos-li">点击打卡会消耗当前步数，当前步数每日24点清零</view>
+                <view class="zmui-infos-li">当前步数与草莓币打卡兑换的比例为 100:1</view>
+                <view class="zmui-infos-li">每日可兑换获得的草莓币上限暂为 100</view>
+                <view class="zmui-infos-li">每日可兑换打卡的次数不限</view>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="zmui-box-box" wx:if="{{isShow}}">
+        <view class="zmui-box-ok">
+            <image class="zmui-box-ok-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/ok.png"></image>
+        </view>
+
+        <view class="zmui-box-title">打卡成功</view>
+        <view class="zmui-box-time flex justify-center align-center" >
+            <image class="zmui-box-time-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/icon.png"></image>
+            <text class="zmui-box-time-small">成功兑换：</text>
+            <text class="zmui-box-time-big">{{nowCmb}}</text>
+        </view>
+        <view class="zmui-box-btn">
+            <view class="zmui-box-button" bindtap="closeBox">确定</view>
+        </view>
+    </view>
+    <view class="zmui-box-bg" wx:if="{{isShow}}"></view>
+</view>

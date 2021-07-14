@@ -1,0 +1,289 @@
+<cu-custom wx:if="{{share === 0}}" isBack="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{active.activeName}}</view>
+</cu-custom>
+<cu-custom wx:if="{{share === 1}}" isHome="{{true}}" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">主页</view>
+    <view slot="content" class="text-white">{{active.activeName}}</view>
+</cu-custom>
+<view class="flex flex-direction align-center view padding-bottom-sm" style="height: 1200rpx">
+    <view style="background-image:url('{{active.posterUrl}}'); width: 710rpx;height: 1200rpx; background-size: 100%;" class="radius-l flex justify-end flex-direction align-center" catch:tap="toWeb">
+            <video src="{{active.videoUrl}}" wx:if="{{active.videoShow === 1}}" autoplay="true" loop="true" show-fullscreen-btn="false" class="radius-l"></video>
+
+
+        <view class="shadow bg-white margin-sm flex justify-between radius-l bg-gray" style="padding: 20rpx 20rpx 20rpx 20rpx;">
+            <view class="flex justify-start" catch:tap="wVideo" data-item="{{active.userInfo}}">
+
+                <view class='text-center'>
+                    <view class="cu-avatar xl round {{active.userInfo.living === 2 ? 'border-F86564':'border-428597'}}"
+                          style="background-image:url({{active.userInfo.avatar}});">
+
+                        <view wx:if="{{active.userInfo.living === 2}}">
+                            <image wx:if="{{active.userInfo.livingK !== 'null'}}" src="/images/Kwai.png"
+                                   style="width: 34rpx;height: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                            <image wx:elif="{{active.userInfo.livingD !== 'null'}}" src="/images/TikTop2.png"
+                                   style="width: 34rpx;height: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                            <image wx:else src="/images/live.png"
+                                   style="width: 34rpx;height: 34rpx;margin-top: 110rpx;margin-left: 110rpx;"></image>
+                        </view>
+
+                    </view>
+                </view>
+                <view class='text-left justify-between flex flex-direction padding-left-sm margin-top-xs '
+                      style="height: 120rpx;width: 320rpx;">
+                    <view class="flex justify-start text-lg text-bold" >
+                        {{active.userInfo.nickname}}
+                        <view wx:if="{{active.userInfo.subing}}">
+                            <view class="cu-tag radius bg-428597 sm text-white text-xs margin-left-xs">已订阅</view>
+                        </view>
+                    </view>
+
+                    <view class="text-sm margin-top-xs text-cut" style="color: #6a6a6a" wx:if="{{liveName}}">
+                        {{liveName}}
+                    </view>
+                    <view class="text-sm margin-top-xs text-cut" style="color: #6a6a6a" wx:else>{{active.userInfo.signature}}
+                    </view>
+                    <view class="text-xs text-gray">{{active.userInfo.fansNum}} 订阅</view>
+                </view>
+            </view>
+
+            <view class="text-center flex justify-between flex-direction" style="margin-top: 35rpx">
+                <view wx:if="{{active.userInfo.living === 2}}">
+                    <button class="cu-btn bg-F86564 shadow text-white" catch:tap="showModal"
+                            data-target="DialogModal2"
+                            data-item="{{active.userInfo}}">观看直播
+                    </button>
+                </view>
+<!--                <view wx:if="{{active.userInfo.living === 1 && item.remind===0}}">-->
+                <view wx:if="{{active.userInfo.living === 1 && active.userInfo.remind===0}}">
+                    <button class="cu-btn text-0090a1 " catch:tap="remind" data-item="{{liveId}}"
+                            style="background:#ffffff;border: #428597 solid 1rpx">直播提醒
+                    </button>
+                </view>
+                <!--                    <button class="cu-btn round line{{bordersize?bordersize:''}}-{{item.name}} {{shadow?'shadow':''}}">{{item.title}}</button>-->
+                <view wx:if="{{active.userInfo.living === 1 &&active.userInfo.remind===1}}">
+                    <button class="cu-btn bg-ffb554 shadow text-white" catch:tap="reminded">等待直播
+                    </button>
+                </view>
+
+
+                <view wx:if="{{active.userInfo.living === 0}}">
+                    <button class="cu-btn bg-428597 shadow text-white" catch:tap="showModal2"
+                            data-target="DialogModal3"
+                            data-replay="{{active.userInfo.replay}}">直播回放
+                    </button>
+                </view>
+                <view wx:if="{{active.userInfo.living === -1}}">
+                    <button class="cu-btn bg-69dd96 shadow text-white" catch:tap="wVideo" data-item="{{active.userInfo}}">观看视频
+                    </button>
+                </view>
+                <view class="text-sm text-center text-gray flex justify-center" wx:if="{{active.userInfo.living === 2}}"
+                      style="margin-top: 5rpx">
+                    <view class="cu-item justify-center flex-direction flex">
+                        <text class="cuIcon-video sl text-F86564"></text>
+                    </view>
+                    <view class="justify-center text-xs flex-direction flex margin-left-xs text-F86564">
+                        正在直播
+                    </view>
+                </view>
+                <view class="text-xs text-center text-gray flex justify-around" wx:else style="margin-top: 5rpx">
+                    <view wx:if="{{startTime && active.userInfo.living!==-1}}">
+                        {{startTime}} 开播
+                    </view>
+                </view>
+            </view>
+
+
+        </view>
+
+    </view>
+</view>
+<view class="type-bar">
+    <view class="flex justify-center flex-direction">
+        <image class="type-bar-image" src="/images/cm_icon.png"></image>
+    </view>
+    <view class="flex justify-center flex-direction margin-left-sm">
+        <view>活动详情</view>
+    </view>
+</view>
+<scroll-view scroll-y style="width: 750rpx;height: 1020rpx;padding: 20rpx 20rpx 0 20rpx;" catch:tap="toWeb2">
+    <image src="{{active.detailImgUrl}}" mode="widthFix" class="radius-l" style="width: 100%;"></image>
+</scroll-view>
+<!--活动未开始-->
+<view class="flex flex-direction" style="padding: 0 20rpx 0 20rpx;border-bottom:#F2F2F3 1rpx solid " wx:if="{{active.sastatic === '-1'}}">
+    <button class="cu-btn bg-6d6d6d margin-tb-sm lg text-white">{{btnTexts[0]}}</button>
+</view >
+<!--活动进行中-->
+<view class="flex flex-direction" style="padding: 0 20rpx 0 20rpx;border-bottom:#F2F2F3 1rpx solid " wx:if="{{active.sastatic === '1'}}">
+    <button class="cu-btn bg-F86564 margin-tb-sm lg text-white" wx:if="{{attTimes > nowAttTimes}}" catch:tap="doMark">{{btnTexts[1]}}</button>
+    <button class="cu-btn bg-6d6d6d margin-tb-sm lg text-white" wx:if="{{attTimes <= nowAttTimes}}">{{btnTexts[2]}}</button>
+</view >
+<!--活动已结束-->
+<view class="flex flex-direction" style="padding: 0 20rpx 0 20rpx;border-bottom:#F2F2F3 1rpx solid " wx:if="{{active.sastatic === '0'}}">
+    <button class="cu-btn bg-6d6d6d margin-tb-sm lg text-white">{{btnTexts[3]}}</button>
+</view >
+
+<view style="padding: 20rpx">
+    <view class="radius" style="border:#F2F2F3 1rpx solid ">
+        <view class="padding-sm text-lg"  style="border-bottom:#F2F2F3 1rpx solid ">
+            <image src="/images/active/joinFans.png" style="width: 30rpx;height: 30rpx;"
+                   class="margin-right-xs"></image>
+            参与用户
+        </view>
+        <scroll-view scroll-x class="bg-white nav">
+            <view class="flex text-center">
+                <view class="cu-item flex-sub {{index==TabCur?'text-F86564 cur':''}}" wx:for="{{2}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+                    {{TabList[index]}}
+                </view>
+            </view>
+        </scroll-view>
+        <view wx:for="{{attTalkList}}" wx:key="{{item.id}}" style="border-top:#F2F2F3 1rpx solid "
+              class="padding-sm flex justify-start">
+            <view catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}">
+                <image catch:tap="toUseTalk" data-userid="{{item.userId}}" data-name="{{item.userName}}" data-activeid="{{activeId}}" src="{{item.userAvatar}}" class="icon2"></image>
+            </view>
+            <view class="margin-left-sm" style="width: 580rpx;" catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}">
+                <view class="text-xl" style="color:#00A9BD;" catch:tap="toUseTalk" data-userid="{{item.userId}}" data-name="{{item.userName}}" data-activeid="{{activeId}}">{{item.userName}}</view>
+                <view class="text-cut-5 margin-top-xs">{{item.attDetail}}
+                </view>
+                <view class="margin-top-xs" wx:if="{{item.attPic}}">
+                    <image src="{{item.attPic}}" mode="aspectFill" catch:tap='previewImg'
+                           data-url="{{item.attPic}}"
+                           style="width: 450rpx;height: 450rpx;border-radius: 10rpx"></image>
+                </view>
+                <view class="margin-top-sm flex justify-between align-center">
+                    <view class="text-sm text-gray">
+                        {{item.createTime}}
+                    </view>
+                    <view class="flex justify-end">
+                        <view catch:tap="toDetail" data-id="{{item.id}}" data-userName="{{item.userName}}"
+                                   class="text-gray margin-right flex justify-start">
+                            <image src="/images/active/replay.png" style="width: 30rpx;height: 30rpx;">
+                            </image>
+                            <view class="margin-left-xs text-sm">
+                                {{item.replayNum}}
+                            </view>
+                        </view>
+
+                        <view class="text-gray flex justify-start" catch:tap="doLike" data-item="{{item}}"
+                              data-index="{{index}}" data-activeStatic="{{active.activeStatic}}">
+                            <image wx:if="{{item.like===1}}" src="/images/active/upon.png"
+                                   style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                            </image>
+                            <image wx:else src="/images/active/up.png"
+                                   style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                            </image>
+                            <view class="margin-left-xs text-sm">
+                                {{item.likeNum}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cu-load text-F86564 {{isLoad?'loading':'over'}}" style="width: 720rpx"></view>
+</view>
+
+
+<view class="cu-modal {{modalName==='DialogModal2'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view wx:if="{{clickItem.livingW !== 'null'}}">
+                小程序观看或者
+            </view>
+            <view>
+                复制
+            </view>
+            <view class="text-red padding-left-xs padding-right-xs">
+                {{clickItem.livingK !== 'null' ? '快手' : '' }}
+                {{clickItem.livingD !== 'null' ? '抖音' : '' }}
+            </view>
+            <view>
+                直播码
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <navigator wx:if="{{clickItem.livingW !== 'null'}}" class="cu-btn round lines-red shadow"
+                       style="width: 45%;"
+                       url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{clickItem.livingW}}">
+                <!--            <button class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">-->
+                小程序观看
+                <!--            </button>-->
+            </navigator>
+            <button wx:else class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">
+                取消
+            </button>
+            <button wx:if="{{clickItem.livingK !== 'null'}}" class="cu-btn round bg-red shadow" style="width: 45%;"
+                    bindtap="copyUrl" data-type="k">
+                复制直播码
+            </button>
+            <button class="cu-btn round bg-red shadow" wx:if="{{clickItem.livingD !== 'null'}}" style="width: 45%;"
+                    bindtap="copyUrl" data-type="d">复制直播码
+            </button>
+        </view>
+    </view>
+</view>
+<view class="cu-modal {{modalName==='DialogModal3'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view>
+                回放生成中...
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <button class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">
+                取消
+                <!--                {{clickItem.livingW}}-->
+            </button>
+            <button class="cu-btn round bg-red shadow" style="width: 45%;" bindtap="hideModal">确定
+            </button>
+        </view>
+    </view>
+</view>
+<view class="cu-modal {{modalName=='Image'?'show':''}}" bindtap="hideModal">
+    <navigator url="{{HFAims}}" class="cu-dialog"
+               style="background-repeat: no-repeat;background-size: 100% 100%;height: 916rpx;width:550rpx;top: 25%;left: 100rpx;position: fixed;background-image: url('{{HFPic}}')">
+        <!--        <scroll-view scroll-y style="height: 900rpx">-->
+        <!--            <image src="{{active.activeDetail}}" mode="widthFix"></image>-->
+        <!--        </scroll-view>-->
+
+        <view class=" justify-end text-white" style="position: absolute;bottom: 20rpx;right: 20rpx">
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close lg text-F86564"></text>
+            </view>
+        </view>
+    </navigator>
+</view>
+<view class="cu-modal {{modalName=='QRCode'?'show':''}}" catch:tap="hideModal">
+    <view class="cu-dialog"
+          style="background-repeat: no-repeat;background-size: 100% 100%;height: 916rpx;width:550rpx;top: 25%;left: 100rpx;position: fixed;background-image: url('{{QRCode}}')">
+        <!--        <scroll-view scroll-y style="height: 900rpx">-->
+        <!--            <image src="{{active.activeDetail}}" mode="widthFix"></image>-->
+        <!--        </scroll-view>-->
+
+        <view class=" justify-end text-white" style="position: absolute;bottom: 20rpx;right: 20rpx">
+            <view class="action" catch:tap="hideModal">
+                <text class="cuIcon-close lg text-F86564"></text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,13 @@
+/* pages/active/attTalkList/index.wxss */
+page{
+    background: #fff;
+}
+.icon2 {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+
+}
+.text-F86564{
+    color: #F86564;
+}

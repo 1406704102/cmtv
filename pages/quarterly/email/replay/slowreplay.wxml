@@ -1,0 +1,140 @@
+<!--pages/slowreplay/slowreplay.wxml-->
+<cu-custom isBack="{{true}}" iconColor="white" bgColor="bg-F86564">
+  <view slot="backText" class="text-white">返回</view>
+  <view slot="content" class="text-white"></view>
+</cu-custom>
+<view class="zmui-container">
+  <view class="zmui-tab" wx:if="{{type==='1'}}">
+    <view class="zmui-writer">
+      <view class="zmui-user-infos">
+        <view class="zmui-user-avatar">
+          <image class="zmui-user-avatar-img" src="{{email.authorAvatar}}">
+          </image>
+        </view>
+        <view class="zmui-user-name">{{email.authorName}} 收</view>
+      </view>
+      <view class="zmui-writer-con">
+        <textarea maxlength="-1" class="zmui-textarea" placeholder-class="zmui-textarea-placeholder" model:value="{{replayContent}}"
+          placeholder="请输入回信内容……"></textarea>
+      </view>
+      <view class="zmui-writer-pic margin-top">
+        <view class="cu-form-group ">
+          <view class="grid col-4 grid-square flex-sub radius">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
+                  data-url="{{imgList[index]}}">
+              <image src='{{imgList[index]}}' mode='aspectFill'></image>
+              <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                <text class="cuIcon-close"></text>
+              </view>
+            </view>
+            <view class="solids" bindtap="Choose" wx:if="{{imgList.length<9}}">
+              <text class="cuIcon-cameraadd"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{videoFile}}" class="cu-form-group">
+
+        <video style="width: 100%;" src="{{videoFile.tempFilePath}}"></video>
+      </view>
+      <view class="zmui-choose-tab">
+        <view class="zmui-writer-infos">*信件将于 {{sendTimes[writerTabbarId]}} 后送达，消耗草莓币可提前送达</view>
+        <view class="zmui-write-choose">
+          <view class="zmui-write-choose-li" wx:for="{{writerTabbar}}" wx:key="index" data-index="{{index}}"
+                bindtap="changWriteTabbar">
+            <view class="zmui-write-choose-li-btn">
+              <image class="zmui-choose-li-img" wx:if="{{index === writerTabbarId}}"
+                     src="../../../../images/icon-on.png"></image>
+              <image class="zmui-choose-li-img" wx:else src="../../../../images/icon-off.png"></image>
+              <text>{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+<!--      <view class="zmui-choose-tab">-->
+<!--        <view class="zmui-shudong-choose">-->
+<!--          <view class="zmui-write-choose-li" wx:for="{{shudongTabbar}}" wx:key="index" data-index="{{index}}"-->
+<!--                bindtap="changShudongTabbar">-->
+<!--            <view class="zmui-write-choose-li-btn">-->
+<!--              <image class="zmui-choose-li-img" wx:if="{{index === shudongTabbarId}}"-->
+<!--                     src="../../../../images/icon-on.png"></image>-->
+<!--              <image class="zmui-choose-li-img" wx:else src="../../../../images/icon-off.png"></image>-->
+<!--              <text>{{item}}</text>-->
+<!--            </view>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+    </view>
+
+    <view class="zmui-writer-btn flex justify-center">
+      <view class="zmui-writer-button flex justify-center" catch:tap="checkCMB">确 定</view>
+    </view>
+  </view>
+  <view class="zmui-tab" wx:else>
+    <view class="zmui-title">
+      <view class="zmui-title-icon">
+        <image class="zmui-title-icon-img" src="../../../../images/icon-alt.png"></image>
+      </view>
+      <view class="zmui-title-name">{{email.emailContent}}</view>
+    </view>
+    <view class="zmui-writer">
+      <view class="zmui-writer-con">
+        <textarea  maxlength="-1" class="zmui-textarea" placeholder-class="zmui-textarea-placeholder"
+          placeholder="请输入回信内容……" model:value="{{replayContent}}"></textarea>
+      </view>
+      <view class="flex flex-direction">
+        <view class="zmui-choose-tab">
+          <view class="zmui-shudong-choose">
+            <view class="zmui-write-choose-li" wx:for="{{shudongTabbar}}" wx:key="index" data-index="{{index}}"
+                  bindtap="changShudongTabbar">
+              <view class="zmui-write-choose-li-btn">
+                <image class="zmui-choose-li-img" wx:if="{{index === shudongTabbarId}}"
+                       src="../../../../images/icon-on.png"></image>
+                <image class="zmui-choose-li-img" wx:else src="../../../../images/icon-off.png"></image>
+                <text>{{item}}</text>
+              </view>
+            </view>
+
+
+          </view>
+        </view>
+
+
+        <view class="zmui-choose-tab" wx:if="{{shudongTabbarId === 1}}">
+          <view class="zmui-shudong-choose2 flex flex-direction padding " >
+            <view class="zmui-write-choose-li" wx:for="{{names}}" wx:key="index" data-index="{{index}}"
+                  bindtap="setName">
+              <view class="zmui-write-choose-li-btn2 flex justify-end align-center ">
+                <text class="margin-right-xs text-sm">{{item}}</text>
+                <text wx:if="{{index === 0}}" class="margin-right-xs text-xs  text-blue">「重新生成」</text>
+                <text wx:else class="margin-right-xs  text-xs">「上次使用」</text>
+                <image class="zmui-choose-li-img" wx:if="{{index === nameId}}"
+                       src="../../../../images/icon-on.png"></image>
+                <image class="zmui-choose-li-img" wx:else src="../../../../images/icon-off.png"></image>
+              </view>
+            </view>
+
+
+          </view>
+        </view>
+      </view>
+
+
+<!--      <view class="zmui-shudong-choose">-->
+<!--        <view class="zmui-write-choose-li" wx:for="{{shudongTabbar}}" wx:key="index" data-index="{{index}}"-->
+<!--          bindtap="changShudongTabbar">-->
+<!--          <view class="zmui-write-choose-li-btn">-->
+<!--            <image class="zmui-choose-li-img" wx:if="{{index === shudongTabbarId}}"-->
+<!--              src="../../../../images/icon-on.png"></image>-->
+<!--            <image class="zmui-choose-li-img" wx:else src="../../../../images/icon-off.png"></image>-->
+<!--            <text>{{item}}</text>-->
+<!--          </view>-->
+<!--        </view>-->
+<!--      </view>-->
+    </view>
+
+    <view class="zmui-writer-btn flex justify-center" catch:tap="submit">
+      <view class="zmui-writer-button flex justify-center" >确 定</view>
+    </view>
+  </view>
+</view>

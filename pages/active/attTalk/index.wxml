@@ -1,0 +1,87 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<view class="cu-form-group margin-top margin-lr" style="border-top-right-radius: 16rpx;border-top-left-radius: 16rpx" >
+    <textarea maxlength="-1" bindinput="textareaAInput" placeholder="请按照 “活动详情” 内的要求正确填写作品相关文案" style="height: 300rpx" model:value="{{attDetail}}"></textarea>
+</view>
+<view class="margin-lr " style="border-top:#F2F2F3 1rpx solid  ">
+    <view class="cu-bar bg-white">
+        <view class="action text-26">
+            上传
+        </view>
+        <!--    <view class="action">-->
+        <!--        {{imgList.length}}/4-->
+        <!--    </view>-->
+    </view>
+    <view class="cu-form-group ">
+        <view class="grid col-4 grid-square flex-sub radius">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+                <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" bindtap="Choose" wx:if="{{imgList.length<1}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+<!--    <view wx:if="{{videoFile}}" class="cu-form-group">-->
+<!--        <view class="title">联系方式</view>-->
+<!--        <input placeholder="输入你的手机号码" model:value="{{videoName}}"></input>-->
+<!--    </view>-->
+<!--    <view wx:if="{{videoFile}}" class="cu-form-group">-->
+<!--        <button class="file_upload" bindtap="chooseCover">{{coverFile ? '已添加封面' : '添加封面'}}</button>-->
+<!--    </view>-->
+    <view class="cu-form-group" wx:if="{{videoFile}}">
+        <view class="title">视频封面</view>
+<!--        <input placeholder="输入框带个按钮"></input>-->
+        <button class="cu-btn {{coverFile ? 'bg-F86564 text-white' : 'bg-green'}} shadow " bindtap="chooseCover">{{coverFile ? '已添加封面' : '添加封面'}}</button>
+    </view>
+    <view wx:if="{{videoFile}}" class="cu-form-group">
+
+        <video style="width: 100%;"  src="{{videoFile.tempFilePath}}"></video>
+    </view>
+<!--    -->
+    <view wx:if="{{videoFile}}" class="cu-form-group flex justify-start">
+        <checkbox data-checked="{{isChecked}}" class="round red" bind:tap="check"/>
+        <view class=" margin-left-sm">我已阅读并同意</view>
+        <navigator url="/pages/active/activeDetailNew/index?pic={{activeStatement}}&type=statement" class="text-red ">
+            《草莓台视频上传声明》
+        </navigator>
+    </view>
+</view>
+<!--<progress percent="{{progress}}" show-info />-->
+<!--    <button class="file_upload" bindtap="chooseVideo">{{videoFile ? '已添加视频' : '添加视频（必选）'}}</button>-->
+<!--<button class="file_upload" bindtap="startUpload">开始上传</button>-->
+<view  class="padding flex flex-direction">
+    <button class=" cu-btn bg-F86564 radius-l text-white lg" catch:tap="submit" wx:if="{{canSub}}">提交</button>
+    <button class=" cu-btn bg-grey radius-l text-white lg"  wx:else>提交</button>
+</view>
+<view class="cu-modal {{modalName==='DialogModal3'?'show':''}}">
+    <view class="cu-dialog">
+
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view>
+                选择上传图片或视频
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <button class="cu-btn round bg-red shadow" bindtap="ChooseImage" style="width: 45%;">
+                图片
+                <!--                {{clickItem.livingW}}-->
+            </button>
+            <button class="cu-btn round bg-red shadow" style="width: 45%;" bindtap="chooseVideo">视频
+            </button>
+        </view>
+    </view>
+</view>

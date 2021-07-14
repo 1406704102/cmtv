@@ -1,0 +1,74 @@
+<mp-video-swiper class="video-swiper" video-list="{{videoList}}" bindplay="onPlay" bindpause="onPause" bindtimeupdate="onTimeUpdate" bindended="onEnded" binderror="onError" bindwaiting="onWaiting" bindprogress="onProgress" bindloadedmetadata="onLoadedMetaData"
+  bindchange="onChange" bindshowPause="onShowPause" bindhidePause="onHidePause"></mp-video-swiper>
+<!-- <view class="container">
+
+</view> -->
+
+  <image wx:if="{{!isPlaying}}" class="imagePlayer" style="left:{{systemInfo.screenWidth/2-40/2}}px;top:{{systemInfo.screenHeight/2-40/2}}px" src="../../../images/player.png">
+
+  </image>
+<!--<view class="viewFloat">-->
+<!--  <view class="videoTitle">{{videoInfo.userName}}</view>-->
+<!--  <view class="videoDes">{{videoInfo.videoSynopsis}}</view>-->
+<!--</view>-->
+<view class="videoInfo text-white " style="z-index: 100"  wx:if="{{videoInfo.userId}}">
+  <navigator class="text-xl text-bold text-shadow" url="/pages/my/userDetail/index?id={{videoInfo.userId}}">
+    @{{videoInfo.userName}}
+  </navigator>
+  <view class="margin-top-xs margin-left text-shadow">
+    {{videoInfo.videoSynopsis}}
+  </view>
+</view>
+<view class="videoInfo bg-black"  style="filter: blur(200rpx)">
+
+</view>
+<view class="text-xs text-white text-center"  wx:if="{{videoInfo.userId}}">
+  <view class="float-avatar">
+    <navigator class='text-center' url="/pages/my/userDetail/index?id={{videoInfo.userId}}">
+      <view class="cu-avatar lg round border-F86564" style="background-image:url('{{userInfo.avatar}}')"></view>
+    </navigator>
+    <!--        <view class="attention">-->
+    <!--            <image src="/images/attention.png"></image>-->
+    <!--        </view>-->
+  </view>
+  <view class="float-button like" bind:tap="doLike" style="z-index: 100">
+    <image src="{{likeImg}}"></image>
+<!--    <image wx:if="{{videoInfo.like === 1}}" src="/images/liking.png"></image>-->
+    <!--        <image src="/images/liking.png"></image>-->
+    <view class="text-lg">{{videoInfo.videoLikeNum}}</view>
+  </view>
+  <view class="float-button like bg-black"  style="filter: blur(100rpx)">
+
+  </view>
+  <!--    <view class="float-button comment">-->
+  <!--        <image src="/images/share.png"></image>-->
+  <!--        <view>1123</view>-->
+  <!--    </view>-->
+  <view class="share-button" style="z-index: 100">
+    <view class="text-center" >
+      <!--            "-->
+      <button class="cu-btn " open-type="share" style="background-color:transparent;">
+        <image src="/images/share.png"></image>
+      </button>
+    </view>
+    <!-- <button  open-type="share">
+        <image src="/images/share.png"></image>
+    </button> -->
+
+    <view class="margin-left-sm text-lg">{{videoInfo.videoShareNum}}</view>
+  </view>
+
+  <view wx:if="{{videoInfo.lvType.typeName==='视频彩铃'}}" class="float-button2 comment" bind:tap="setVideo" data-item="{{videoInfo}}" style="z-index: 100">
+    <button class="cu-btn round line-gray shadow text-white text-sm">视频彩铃</button>
+  </view>
+
+  <view class="share-button bg-black"  style="filter: blur(100rpx)">
+
+  </view>
+
+
+  <!--    <button open-type="share">-->
+  <!--        1&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+  <!--    </button>-->
+</view>
+

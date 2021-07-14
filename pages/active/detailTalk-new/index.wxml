@@ -1,0 +1,223 @@
+<cu-custom wx:if="{{share === 0}}" isBack="{{true}}" iconColor="{{color}}" bgImage="{{bgImage}}" >
+<!--    bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png"-->
+    <view slot="backText" class="text-{{color}} ">返回</view>
+    <view slot="content" class="text-{{color}} ">#{{activeInfo.activeName}}</view>
+</cu-custom>
+<cu-custom wx:if="{{share === 1}}" isHome="{{true}}" iconColor="{{color}}" bgImage="{{bgImage}}">
+    <view slot="backText" class="text-{{color}}">主页</view>
+    <view slot="content" class="text-{{color}}">#{{activeInfo.activeName}}</view>
+</cu-custom>
+<view class="container">
+    <view style="background: url('{{activeInfo.activeHomeImg}}')  center center no-repeat; background-size: cover;width: 750rpx;height: 610rpx; position:absolute;z-index:-1000">
+
+    </view>
+    <view class="zmui-header">
+<!--        <view class="zmui-header-title" style="top: {{height}}px">-->
+<!--            <view class="zmui-header-title-back" bindtap="goback">-->
+<!--                <image class="zmui-header-title-img" src="../../static/img/global/back.png"></image>-->
+<!--            </view>-->
+<!--        </view>-->
+
+        <view class="zmui-header-infos">
+            <view class="zmui-header-avatar">
+                <image class="zmui-header-avatar-img" src="{{activeInfo.activeBgImg}}"></image>
+            </view>
+            <view class="flex flex-direction justify-between margin-left-sm margin-bottom-xs">
+                <view>
+                    <view class="zmui-header-user-title">#{{activeInfo.activeName}}</view>
+                    <view class="zmui-header-user-tag">
+                        <view class="zmui-header-user-tag-li" wx:if="{{activeInfo.specialReward}}">
+                            {{activeInfo.specialReward}}</view>
+                        <view class="zmui-header-user-tag-li" wx:else>{{activeInfo.basicReward}}草莓币</view>
+                        <view class="zmui-header-user-tag-li" wx:for="{{labels}}" wx:key="{{index}}" >{{item}}</view>
+                    </view>
+                    <view class="margin-top">
+
+                        <view class="flex justify-start text-white margin-top-xs">
+                            <view class="flex justify-start">
+                                <view class="margin-right-xs">
+                                    <image class="zmui-header-user-img" src="../../../images/active/views.png"></image>
+                                </view>
+                                <view class="text-shadow">{{viewNum}}</view>
+                            </view>
+                            <view class="flex justify-start margin-left">
+                                <view class="margin-right-xs">
+                                    <image class="zmui-header-user-img" src="../../../images/active/mark.png"></image>
+                                </view>
+                                <view class="text-shadow">{{markNum}}</view>
+                            </view>
+                        </view>
+                        <view class="zmui-header-user-detail text-shadow">{{activeInfo.activeDescription}}</view>
+                    </view>
+
+                </view>
+                <view class="zmui-header-user-btn">
+                    <view catch:tap="toWinner" class="zmui-header-user-button">获奖名单</view>
+                    <navigator url="/pages/active/activeDetailNew/index?pic={{activeInfo.activeDetailPic}}&type=detail" class="zmui-header-user-button">活动规则</navigator>
+                </view>
+            </view>
+        </view>
+<!--        <image class="zmui-header-bg" src="../../static/img/ads/timg.png"></image>-->
+
+    </view>
+
+    <view class="zmui-content">
+        <view class="zmui-my-select" id="pj">
+            <view class="zmui-my-select-tag {{index === TabCur?'zmui-my-select-on':''}}" wx:for="{{tabList}}" wx:key="index"
+                  data-id="{{index}}" catchtap="tabSelect">
+                <image class="zmui-my-select-img" wx:if="{{index === TabCur}}" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/select-on.png">
+                </image>
+                <text>{{item}}</text>
+            </view>
+        </view>
+
+
+
+<!--    <scroll-view scroll-x class="bg-white nav">-->
+<!--        <view class="flex text-center">-->
+<!--            <view class="cu-item flex-sub {{index==TabCur?'text-F86564 cur':''}}" wx:for="{{tabList}}" wx:key-->
+<!--                  bindtap="tabSelect" data-id="{{index}}">-->
+<!--                {{item}}-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </scroll-view>-->
+    <view wx:if="{{TabCur === 0}}">
+        <!--    <view wx:for="{{leftList}}">-->
+        <!--        <image wx:if="{{item.attPic}}" src="{{item.attPic}}" mode="widthFix" />-->
+
+        <!--        {{item.attDetail}}-->
+        <!--    </view>-->
+        <view class="post-content">
+            <view class="content-bg">
+                <view class="content">
+                    <view class="left">
+                        <view wx:for="{{dataList}}">
+                            <pbItem wx:if="{{index%2==0}}" object2="{{item}}" activeName="true"
+                                    userId="{{userInfo.id}}" showTop="true"></pbItem>
+                        </view>
+                    </view>
+
+                    <view class="right">
+                        <view wx:for="{{dataList}}">
+                            <pbItem wx:if="{{index%2==1}}" object2="{{item}}" userId="{{userInfo.id}}"
+                                    showTop="true"></pbItem>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{TabCur === 1}}">
+        <!--    <brickLayout-->
+        <!--            dataSet="{{dataList}}"-->
+        <!--            option="{{op}}"-->
+        <!--            bind:tapCard="tapCard"-->
+        <!--            bind:tapLike="tapLike"-->
+        <!--            bind:tapUser="tapUser"-->
+        <!--            bind:onCardExpanded="onCardExpanded"-->
+        <!--    />-->
+        <view class="post-content">
+            <view class="content-bg">
+                <view class="content">
+                    <view class="left">
+                        <view wx:for="{{dataList}}">
+                            <pbItem wx:if="{{index%2==0}}" object2="{{item}}" activeName="true" showTop="true"
+                                    userId="{{userInfo.id}}"></pbItem>
+                        </view>
+                    </view>
+
+                    <view class="right">
+                        <view wx:for="{{dataList}}">
+                            <pbItem wx:if="{{index%2==1}}" object2="{{item}}" userId="{{userInfo.id}}"
+                                    showTop="true"></pbItem>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cu-load text-F86564 {{isLoad?'loading':'over'}} margin-top" style="width: 750rpx"></view>
+    <view wx:if="{{sign===0}}"
+          catch:tap="doMark"
+          class="add-btn">参与话题
+    </view>
+    <view class="cu-modal {{modalName=='Image'?'show':''}}" bindtap="hideModal">
+        <view class="cu-dialog">
+            <scroll-view scroll-y style="height: 900rpx">
+                <image src="{{activeInfo.activeDetailPic}}" mode="widthFix"></image>
+            </scroll-view>
+
+            <!--        <view class=" justify-end text-white" style="position: absolute;bottom: 20rpx;right: 20rpx">-->
+            <!--            <view class="action" bindtap="hideModal">-->
+            <!--                <text class="cuIcon-close lg text-F86564"></text>-->
+            <!--            </view>-->
+            <!--        </view>-->
+        </view>
+        <view style="position: absolute;bottom: 180rpx;left:350rpx; z-index:1000" catch:tap="hideModal">
+            <image src="../../../images/close.png" style="width:50rpx;height:50rpx"></image>
+        </view>
+    </view>
+    </view>
+
+</view>
+<!--<view class="flex justify-between flex-direction"-->
+<!--      style="width: 750rpx;height: 450rpx ">-->
+<!--    <view class="padding-xs padding-lr flex justify-between">-->
+<!--        <view class="cu-tag bg-yellow round text-white" wx:if="{{activeInfo.isBasicReward === '1'}}">奖励生效中</view>-->
+<!--        <view class="cu-tag bg-yellow round text-white light" wx:else>奖励未生效</view>-->
+<!--        <view class="flex justify-between text-white text-center text-26">-->
+<!--            <view class="padding-right-sm flex justify-around align-center">-->
+<!--                <image class="icon" src="../../../images/active/views.png"></image>-->
+<!--                <view>-->
+<!--                    {{viewNum}}-->
+<!--                </view>-->
+<!--            </view>-->
+<!--            <view class=" flex justify-around align-center">-->
+<!--                <image class="icon2" src="../../../images/active/mark.png"></image>-->
+<!--                <view>-->
+<!--                    {{markNum}}-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="text-white padding-xs padding-lr-lg text-shadow">-->
+<!--        <view class="text-xl  text-bold  text-shadow">#{{activeInfo.activeName}}</view>-->
+<!--        <view class=" text-shadow">-->
+<!--            {{activeInfo.activeDescription}}-->
+<!--        </view>-->
+<!--        <view class="margin-top-xs flex justify-start">-->
+<!--            <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:if="{{activeInfo.specialReward}}">-->
+<!--                {{activeInfo.specialReward}}-->
+<!--            </view>-->
+<!--            <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs" wx:else>{{activeInfo.basicReward}}草莓币-->
+<!--            </view>-->
+
+
+<!--            <view wx:for="{{labels}}" wx:key="{{index}}">-->
+<!--                <view class="cu-tag-38 bg-F86564 round text-white margin-right-xs">{{item}}</view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="flex justify-end">-->
+<!--            <navigator url="/pages/active/activeDetailNew/index?pic={{activeInfo.activeDetailPic}}&type=detail"-->
+<!--                       class="cu-tag bg-gray round text-black margin-right-xs">活动详情-->
+<!--            </navigator>-->
+<!--        </view>-->
+
+<!--    </view>-->
+
+<!--</view>-->
+
+
+
+
+
+
+<!--<view class="cu-modal {{modalName=='Image'?'show':''}}" catch:tap="hideModal">-->
+
+<!--    <view class="cu-dialog" catch:tap="imageClick" data-url="{{HFAims}}"-->
+<!--          style="background-repeat: no-repeat;background-size: 100% 100%;height: 916rpx;width:550rpx;top: 25%;left: 100rpx;position: fixed;background-image: url('{{HFPic}}')">-->
+<!--    </view>-->
+
+<!--</view>-->

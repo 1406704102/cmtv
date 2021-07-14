@@ -1,0 +1,5 @@
+<cu-custom isBack="{{true}}" iconColor="white" bgImage="http://cmtv.xmay.cc/image/live/bg_01.png">
+    <view slot="backText" class="text-white">返回</view>
+    <view slot="content" class="text-white">{{name}}</view>
+</cu-custom>
+<image src="{{pic}}" mode="widthFix" style="width:100%" ></image>

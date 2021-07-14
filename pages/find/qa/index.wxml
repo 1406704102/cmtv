@@ -1,0 +1,205 @@
+<cu-custom wx:if="{{share === 0}}" isBack="{{true}}" iconColor="{{color}}" bgImage="{{bgImage}}" >
+    <!--    bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png"-->
+    <view slot="backText" class="text-{{color}} ">返回</view>
+    <view slot="content" class="text-{{color}} ">{{answerName}}</view>
+</cu-custom>
+<cu-custom wx:if="{{share === 1}}" isHome="{{true}}" iconColor="{{color}}" bgImage="{{bgImage}}">
+    <view slot="backText" class="text-{{color}}">主页</view>
+    <view slot="content" class="text-{{color}}">{{answerName}}</view>
+</cu-custom>
+
+<view class="container"  catchtap="replayClick3"  data-item="{{attTalk}}" data-type="0">
+    <view style="background: url('{{answer.answerBg}}')  center center no-repeat; background-size: cover;width: 750rpx;height: 610rpx; position:absolute;z-index:-1000">
+
+    </view>
+    <view class="zmui-header">
+        <!--        <view class="zmui-header-title" style="top: {{height}}px">-->
+        <!--            <view class="zmui-header-title-back" bindtap="goback">-->
+        <!--                <image class="zmui-header-title-img" src="../../static/img/global/back.png"></image>-->
+        <!--            </view>-->
+        <!--        </view>-->
+
+        <view class="zmui-header-infos">
+            <view class="zmui-header-avatar">
+                <image class="zmui-header-avatar-img" src="{{answer.answerAvatar}}"></image>
+            </view>
+            <view class="flex flex-direction justify-between margin-left-sm margin-bottom-xs">
+                <view>
+                    <view class="zmui-header-user-title">#{{answer.answerName}}</view>
+                    <view class="zmui-header-user-tag margin-top-10">
+                        <view class="zmui-header-user-tag-li" wx:for="{{tag}}" wx:key="{{index}}" >{{item}}</view>
+                    </view>
+                    <view class="margin-top">
+
+                        <view class="flex justify-start text-white margin-top-xs">
+                            <view class="flex justify-start">
+                                <view class="margin-right-xs">
+                                    <image class="zmui-header-user-img" src="../../../images/active/views.png"></image>
+                                </view>
+                                <view class="text-shadow">{{viewNum}}</view>
+                            </view>
+                            <view class="flex justify-start margin-left">
+                                <view class="margin-right-xs">
+                                    <image class="zmui-header-user-img" src="../../../images/active/mark.png"></image>
+                                </view>
+                                <view class="text-shadow">{{markNum}}</view>
+                            </view>
+                        </view>
+                        <view class="zmui-header-user-detail text-shadow">{{answer.answerSummary}}</view>
+                    </view>
+
+                </view>
+                <view class="zmui-header-user-btn">
+                    <navigator url="/pages/active/activeDetailNew/index?pic={{answer.answerSynopsis}}&type=answerSynopsis" class="zmui-header-user-button">人物介绍</navigator>
+                    <navigator url="/pages/active/activeDetailNew/index?pic={{answer.questionScope}}&type=questionScope" class="zmui-header-user-button">提问范围</navigator>
+                </view>
+            </view>
+        </view>
+        <!--        <image class="zmui-header-bg" src="../../static/img/ads/timg.png"></image>-->
+
+    </view>
+<view class="zmui-content">
+    <view class="zmui-my-select" id="pj">
+        <view class="zmui-my-select-tag {{index === typeId?'zmui-my-select-on':''}}" wx:for="{{typeList}}" wx:key="index"
+              data-index="{{index}}" catchtap="selectSort">
+            <image class="zmui-my-select-img" wx:if="{{index === typeId}}" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/select-on.png">
+            </image>
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class="zmui-assess" wx:if="{{answer.replaySum>0}}">
+    <!--        <view class="zmui-assess-title  radius-l">-->
+    <!--            <view class="zmui-assess-text">-->
+    <!--                <image class="zmui-bar-li-img" src="../../static/img/global/select-on.png"></image>-->
+    <!--                <text>评论 {{attTalk.replayNum}}</text>-->
+    <!--            </view>-->
+    <!--            <view class="zmui-assess-long"></view>-->
+    <!--            <view class="zmui-assess-ul">-->
+    <!--                <view class="zmui-assess-li {{index === typeId?'zmui-assess-li-on':''}}" wx:for="{{typeList}}" data-index="{{index}}" bindtap="selectSort"-->
+    <!--                      wx:key="index">{{item}}-->
+    <!--                </view>-->
+    <!--            </view>-->
+    <!--        </view>-->
+
+    <view class="zmui-popup-content">
+        <view class="zmui-popup-ul">
+            <view class="zmui-popup-li" wx:for="{{activeAttTalkReplays}}" wx:key="{{item.id}}" wx:for-index="i">
+                <view class="zmui-popup-li-user">
+                    <view class="zmui-popup-li-avatar">
+                        <image class="zmui-popup-li-avatar-img" src="{{item.userAvatar}}"></image>
+                    </view>
+                    <view class="zmui-popup-li-infos">
+                        <view class="zmui-popup-li-name">{{item.userName}}</view>
+                        <view class="zmui-popup-li-text">{{item.replayDetail}}</view>
+                    </view>
+                    <view class="flex justify-center flex-direction" style="width:100rpx">
+                        <view class="flex justify-center" style="width:100%"  catch:tap="doLike" data-item="{{item}}" data-index="{{i}}">
+                            <image wx:if="{{item.like===0}}" src="/images/active/up.png"
+                                   style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                            </image>
+                            <image wx:if="{{item.like===1}}" src="/images/active/upon.png"
+                                   style="width: 32rpx;height: 32rpx;margin-top: -5rpx">
+                            </image>
+                        </view>
+                        <view class="zmui-popup-li-collect-num text-center">{{item.likeNum}}</view>
+                    </view>
+                </view>
+
+                <view class="zmui-popup-time">
+                    <view class="zmui-popup-time-text">{{item.createTime}}</view>
+                    <view class="zmui-popup-time-replay"
+                          catchtap="replayClick"
+                          data-item="{{item}}" data-type="1" data-index ="{{i}}">回复</view>
+                </view>
+                <view class="zmui-popup-replay-infos" wx:if="{{item.replaySum>0}}">
+                    <view class="zmui-popup-replay-line">
+                        <image class="zmui-popup-replay-line-img" src="/images/active/line.png"></image>
+                    </view>
+                    <view class="zmui-popup-replay-btn" >
+                        <view class="zmui-popup-replay-btn-text" catch:tap="showReplay" data-index="{{i}}">{{item.replaySum}}条回复 </view>
+                        <view class="zmui-popup-replay-btn-icon">
+                            <image class="zmui-popup-replay-btn-img"
+                                   src="/images/active/arrow-down.png"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="zmui-popup-replay-list"  wx:if="{{item.replaySum>0&&item.replayShow===true}}">
+                    <view class="zmui-popup-replay-list-li"  wx:for="{{item.replays}}" wx:for-item="item2" catch:tap="replayClick2" data-item="{{item}}" data-item2="{{item2}}" data-index ="{{i}}">
+                        <view class="zmui-popup-replay-list-li-infos" >
+                            <text class="zmui-popup-replay-list-li-infos-user">{{item2.userName}}</text>
+                            <text class="zmui-popup-replay-list-li-infos-text">回复</text>
+                            <text class="zmui-popup-replay-list-li-infos-user">{{item2.replayName}}：</text>
+                            <text class="zmui-popup-replay-list-li-infos-text">{{item2.replayDetail}}</text>
+                        </view>
+                        <view class="zmui-popup-replay-list-li-time">{{item2.createTime}}</view>
+                    </view>
+                </view>
+
+
+            </view>
+        </view>
+    </view>
+</view>
+    <view wx:else class="flex justify-center " style="margin-bottom:150rpx">
+        <image class="image2  margin-top-150" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/detail//1615259176437.png">
+
+        </image>
+    </view>
+</view>
+
+
+
+</view>
+
+<view  class="flex justify-start flex-direction bg-white shadow" style="position: fixed;display: flex; z-index: 1000; bottom: 0;width:750rpx;height:130rpx" wx:if="{{timeline === 0}}">
+
+    <view class="cu-bar input">
+        <!--    <view class="action">-->
+        <!--        <text class="cuIcon-sound text-grey"></text>-->
+        <!--    </view>-->
+        <view class="zmui-footer-text">
+            <input type="text" class="zmui-footer-input" cursor-spacing="15" placeholder-class="zmui-footer-placeholder" focus="{{focus}}"
+                   placeholder="{{placeholder}}" model:value="{{replayDetail}}" bind:blur="blur"/>
+        </view>
+
+        <!--        <input class="solid-bottom" focus="{{focus}}" maxlength="300" cursor-spacing="10" placeholder="{{placeholder}}" model:value="{{replayDetail}}" bind:blur="blur"></input>-->
+        <!--    <view class="action">-->
+        <!--        <text class="cuIcon-emojifill text-grey"></text>-->
+        <!--    </view>-->
+<!--        <view class="flex justify-between" style="width:120rpx" wx:if="{{replayDetail.length<1}}">-->
+<!--            <view class="zmui-footer-tab" catch:tap="doLike2" data-item="{{attTalk}}" >-->
+<!--                <view class="zmui-footer-tab-icon">-->
+<!--                    <image wx:if="{{attTalk.like===0}}" src="/images/active/up.png" class="zmui-footer-tab-icon-img">-->
+<!--                    </image>-->
+<!--                    <image wx:if="{{attTalk.like===1}}" src="/images/active/upon.png" class="zmui-footer-tab-icon-img">-->
+<!--                    </image>-->
+
+
+<!--                    &lt;!&ndash;                    <image wx:if="{{isAssess}}" class="zmui-footer-tab-icon-img"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                           src="/images/active/upon.png"></image>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <image wx:else class="zmui-footer-tab-icon-img" src="/images/active/up.png"></image>&ndash;&gt;-->
+<!--                </view>-->
+<!--                <view class="zmui-footer-tab-text text-center margin-top-5">{{attTalk.likeNum}}</view>-->
+<!--            </view>-->
+<!--            &lt;!&ndash;            <view class="zmui-footer-tab">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <view class="zmui-footer-tab-icon">&ndash;&gt;-->
+
+<!--            &lt;!&ndash;                <view class="cu-item flex-direction flex text-center ">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <text class="cuIcon-share lg text-gray"></text>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <text>分享</text>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </view>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </view>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <button style="border:0">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <view class="zmui-footer-tab-icon">&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <image class="zmui-footer-tab-icon-img" src="/images/active/share.png"></image>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </view>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <view class="zmui-footer-tab-text text-center">分享</view>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </view>&ndash;&gt;-->
+<!--        </view>-->
+        <view>
+            <button class="cu-btn bg-green shadow-blur" style="width:120rpx" catch:tap="submit" wx:if="{{canSub}}">发送</button>
+            <button class="cu-btn bg-green shadow-blur" style="width:120rpx" wx:else>发送</button>
+        </view>
+    </view>
+</view>

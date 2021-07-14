@@ -1,0 +1,112 @@
+<cu-custom bgImage="http://cmtv.xmay.cc/image/live/first-bg_01.png" radius="true">
+    <view slot="content" class="text-white">视频彩铃</view>
+</cu-custom>
+
+<view class="zmui-banner">
+    <swiper class="zmui-banner-swiper" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+            duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+        <swiper-item class="zmui-swiper-li" wx:for="{{swiperList}}" wx:key="index">
+            <view class="zmui-swiper-item" catch:tap="imageClick"
+                  data-url="{{item.bannerJumpUrl}}">
+                <image src="{{item.bannerUrl}}" mode="aspectFill"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<!--<view class="bg-white radius-p margin-lr-sm" style="margin-top: 20rpx">-->
+<!--&lt;!&ndash;    <scroll-view scroll-x class="nav">&ndash;&gt;-->
+<!--&lt;!&ndash;        <view class="flex text-center bg-white radius-p solid-bottom shadow">&ndash;&gt;-->
+<!--&lt;!&ndash;            <view class="cu-item flex-sub shadow {{index==TabCur?' text-F86564 cur text-lg':''}}" wx:for="{{tabList}}" wx:key&ndash;&gt;-->
+<!--&lt;!&ndash;                  bindtap="tabSelect" data-id="{{index}}">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{item}}&ndash;&gt;-->
+<!--&lt;!&ndash;            </view>&ndash;&gt;-->
+<!--&lt;!&ndash;        </view>&ndash;&gt;-->
+<!--&lt;!&ndash;    </scroll-view>&ndash;&gt;-->
+<!--    <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">-->
+<!--        <view class="cu-item shadow {{index==TabCur?'text-F86564 cur text-lg':''}}" wx:for="{{tabList}}" wx:key bindtap="tabSelect" data-id="{{index}}">-->
+<!--            {{item}}-->
+<!--        </view>-->
+<!--    </scroll-view>-->
+<!--</view>-->
+<view class="  padding-sm flex margin-top padding-top " style="width:750rpx;height:190rpx;border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;box-shadow: 0rpx -8rpx 10rpx 3rpx rgb(248, 101, 100,0.2)">
+    <navigator url="/pages/webView/webView/index?src=https://club.10155.com/h5/chuangwen/eightvideo.html#/index?chl=3000008235"  hover-class="none" style="width:345rpx;height:170rpx;" class=" margin-right-sm">
+        <image src="{{setting.unicomBg}}" mode="aspectFill" style="width:345rpx;height:170rpx;"  class=" radius-l"></image>
+    </navigator>
+    <navigator url="/pages/ring/custom/index" hover-class="none" style="width:345rpx;height:170rpx" class="radius-l">
+        <image src="{{setting.customBg}}" mode="aspectFill" style="width:345rpx;height:170rpx;"  class=" radius-l"></image>
+    </navigator>
+</view>
+<scroll-view class="zmui-bar-ul" id="tabId2" scroll-left="{{scrollLeft}}" scroll-with-animation scroll-x="true" enable-flex="true">
+    <view class="zmui-bar-li {{index==TabCur?'zmui-bar-on':''}}" wx:for="{{tabList}}" wx:key="index"
+          data-id="{{index}}" bindtap="selectBar">
+        <image class="zmui-bar-li-img" wx:if="{{index===TabCur}}" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com/newIcon/select-on.png"></image>
+        <text>{{item}}</text>
+    </view>
+</scroll-view>
+<view style="height: 50%;">
+    <view class="padding-sm">
+            <view class="content">
+                <view class="left">
+                    <view wx:for="{{ringList}}">
+                        <pbItem wx:if="{{index%2==0}}" object2="{{item}}" activeName="true" type="ring"
+                                userId="{{userInfo.id}}"></pbItem>
+                    </view>
+                </view>
+
+                <view class="right">
+                    <view wx:for="{{ringList}}">
+                        <pbItem wx:if="{{index%2==1}}" object2="{{item}}" userId="{{userInfo.id}}"></pbItem>
+
+                    </view>
+                </view>
+            </view>
+    </view>
+
+</view>
+<view class="cu-load text-F86564 bg-white margin-bottom-xl {{isLoad?'loading':'over'}}" ></view>
+<view class="cu-modal {{modalName==='DialogModal2'?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content" style="height: 70rpx">
+                <image src="/images/cm_icon.png" style="height: 70rpx;width: 70rpx;"></image>
+            </view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class=" padding-top padding-bottom text-lg text-black bg-white flex justify-center">
+            <view wx:if="{{clickItem.livingW !== 'null'}}">
+                小程序观看或者
+            </view>
+            <view>
+                复制
+            </view>
+            <view class="text-red padding-left-xs padding-right-xs">
+                {{clickItem.livingK !== 'null' ? '快手' : '' }}
+                {{clickItem.livingD !== 'null' ? '抖音' : '' }}
+            </view>
+            <view>
+                直播码
+            </view>
+        </view>
+        <view class="cu-bar bg-white padding">
+            <navigator wx:if="{{clickItem.livingW !== 'null'}}" class="cu-btn round lines-red shadow"
+                       style="width: 45%;"
+                       url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{clickItem.livingW}}">
+                <!--            <button class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">-->
+                小程序观看
+                <!--            </button>-->
+            </navigator>
+            <button wx:else class="cu-btn round lines-red shadow" bindtap="hideModal" style="width: 45%;">
+                取消
+            </button>
+            <button wx:if="{{clickItem.livingK !== 'null'}}" class="cu-btn round bg-red shadow" style="width: 45%;"
+                    bindtap="copyUrl" data-type="k">
+                复制直播码
+            </button>
+            <button class="cu-btn round bg-red shadow" wx:if="{{clickItem.livingD !== 'null'}}" style="width: 45%;"
+                    bindtap="copyUrl" data-type="d">复制直播码
+            </button>
+        </view>
+    </view>
+</view>
