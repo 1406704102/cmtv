@@ -1,0 +1,32 @@
+    <navigator url="/pages/find/videoDetail/index?id={{object2.id}}&url={{object2.videoUrl}}&name={{object2.videoName}}" class="item-ring" style="margin-bottom: 20rpx;">
+        <image class="item-img2" wx:if="{{object2.videoPic}}" src="{{object2.videoPic}}" mode="widthFix" >
+
+        </image>
+        <view class="videoName">
+           <view style="margin-top: 20rpx">{{object2.videoName}}</view>
+<view style="display: flex;justify-content: start;text-align: center;margin-top: 5rpx">
+    <image src="/images/like.png" style="width: 30rpx;height: 30rpx;margin-right: 5rpx"></image>
+    <view style="margin-top: 4rpx;">{{object2.videoLikeNum}}</view>
+
+</view>
+        </view>
+<!--        <image class="item-img" wx:if="{{object2.videoUrl}}" src="{{object2.videoImg}}" mode="widthFix">-->
+<!--        </image>-->
+
+<!--        <view class="SPItem2" wx:if="{{object2.isTop>0}}">-->
+
+<!--        </view>-->
+    </navigator>
+        <!-- 时间戳转换为时间格式 -->
+        <!-- var Y = date.getFullYear() + '-'; 获取年份-->
+<!--<wxs module="format">-->
+<!--  var toDate = function (time) {-->
+<!--    var date = getDate(time);-->
+<!--    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';-->
+<!--    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();-->
+<!--    var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();-->
+<!--    var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();-->
+<!--    return (M + D + " " + h + ":" + m);-->
+<!--  }-->
+<!--  module.exports.toDate = toDate;-->
+<!--</wxs>-->

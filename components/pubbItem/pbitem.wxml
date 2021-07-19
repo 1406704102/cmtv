@@ -1,0 +1,67 @@
+<view>
+    <view class="item"  bind:tap="toDetail" data-id="{{object2.id}}" data-userName="{{object2.userName}}">
+        <image class="item-img" wx:if="{{object2.attPic}}" src="{{object2.attPic}}" mode="widthFix" style="">
+        </image>
+        <image class="item-img" wx:if="{{object2.videoUrl}}" src="{{object2.videoImg}}" mode="widthFix">
+        </image>
+        <view class="SPItem" wx:if="{{object2.videoUrl}}">
+            视频
+        </view>
+
+        <view class="SPItem2" wx:if="{{object2.isTop>0 && showTop}}">
+            <image src="/images/hot2.png"></image>
+        </view>
+<!--        <view wx:if="{{object2.attPic}}"  style="background-image: url('{{object2.attPic}}')">-->
+
+<!--        </view>-->
+        <view class="bottom">
+
+            <view class="video-icon" wx:if="{{object2.videoUrl}}" >
+                <image class="icon-img" src="https://obs-qych2.obs.cn-north-4.myhuaweicloud.com//cmtv/active/logo//1615790985463.png">
+                </image>
+            </view>
+<!--            <view class="item-title" wx:if="{{activeName}}" >#{{object2.activeName}}</view>-->
+            <text class='description' selectable="true">{{object2.attDetail}}</text>
+
+            <view class="footer">
+                <view class="author-view">
+                    <image class="avatar" src="{{object2.userAvatar}}"></image>
+                    <text class="author-name">{{object2.userName}}</text>
+                    <!--                    <text class="time">{{format.toDate(object2.createTime)}}</text>-->
+                </view>
+                <view class="footer-right">
+                    <view class="like">
+                        <image class="icon2" src="../../images/active/replay.png"></image>
+                        {{object2.replayNum}}
+                    </view>
+                    <view class="like"  catch:tap="doLike" data-item="{{object2}}">
+                        <image wx:if="{{object2.like===1}}" src="/images/active/upon.png"
+                               class="icon">
+                        </image>
+                        <image wx:else src="/images/active/up.png"
+                               class="icon">
+                        </image>
+<!--                        <text wx:if="{{object2.likeNum>99}}">99+</text>-->
+<!--                        <text wx:else>{{object2.likeNum}}</text>-->
+                        <text >{{object2.likeNum}}</text>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+
+    </view>
+</view>
+        <!-- 时间戳转换为时间格式 -->
+        <!-- var Y = date.getFullYear() + '-'; 获取年份-->
+<wxs module="format">
+  var toDate = function (time) {
+    var date = getDate(time);
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+    return (M + D + " " + h + ":" + m);
+  }
+  module.exports.toDate = toDate;
+</wxs>

@@ -1,0 +1,10 @@
+<!--
+ * @description 下弹出窗口
+ * @author 杨德春 
+ * @constant 1020536633@qq.com
+-->
+
+<view class="zmui-popup-class zmui-bottom-popup {{show?'zmui-popup-show':''}}" style="background:{{bgcolor}};{{height?'height:'+height+'rpx':''}}">
+  <slot></slot>
+</view>
+<view class="zmui-popup-mask {{show?'zmui-mask-show':''}}" wx:if="{{mask}}" bindtap="handleClose"></view>

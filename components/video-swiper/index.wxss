@@ -1,0 +1,31 @@
+.container{width:100%;height:100%}
+.video-swiper{width:100%;height:100%;position: absolute;top: 0rpx;}
+.video_item{height:100%;width:100%;}
+.videoContainer{
+  width: 100%;height: 100%;
+}
+.videoContentCotainer{
+  position: absolute;
+  display: flex;
+  z-index: 1000;
+  width: 500rpx;
+  bottom: 60px;
+  color: white;
+  margin:20rpx;
+  flex-direction: column
+}
+
+.videoTitle{
+  font-size: 18px;
+  font-weight: 500;
+
+}
+.videoDes{
+  font-size: 14px;
+}
+.imagePlayer{
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  z-index: 1000;
+}
